@@ -12,21 +12,41 @@
 </head>
 
 <body>
-    <nav class="navbar bg-body-tertiary ">
+    <nav class="navbar bg-body-tertiary">
         <div class="container-fluid header">
-            <a class="navbar-brand">ButacaBox</a>
-            <form class="d-flex" role="search">
-                <button class="btn btn-outline-success" type="submit">Logar</button>
-            </form>
+            <div style="display: flex; flex-direction: column; align-items: center;">
+                <span class="navbar-brand-logo">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2598/2598702.png" alt="">
+                </span>
+                <strong style="font-size: .8em;">BUTACABOX</strong>
+            </div>
+
+            <div class="d-flex align-items-center">
+                <div class="svg">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                        class="bi bi-person-circle" viewBox="0 0 16 16">
+                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                        <path fill-rule="evenodd"
+                            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                    </svg>
+                </div>
+                <div class="fs-2">
+                    <a class="d-block" id="loginbutton" href="pages/login.html">Entrar ou
+                        <br>
+                        cadastrar-se</a>
+
+
+                </div>
+            </div>
         </div>
     </nav>
 
     <nav class="navbar bg-body-tertiary" id="navheader">
-        <div class="container-fluid">
+        <div class="container-fluid d-flex justify-content-around">
             <a class="navbar-brand" href="#estreias">Estreias</a>
             <a class="navbar-brand" href="#em_cartaz">Em cartaz</a>
-            <a class="navbar-brand">Pré Venda</a>
-            <a class="navbar-brand">Promoções</a>
+            <a class="navbar-brand" href="#em_breve">Pré Venda</a>
         </div>
     </nav>
 
@@ -70,25 +90,22 @@
     <div class="container-fluid mt-5 mb-5" id="estreias">
         <div class="container text-right">
             <h1 class="display-6">Estreia</h1>
-            <div class="row row-cols-3">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 justify-content-evenly">
                 <div class="col w-33">
                     <div class="movie-image d-flex justify-content-center align-items-center">
-                        <img style="max-width: 300px;"
-                            src="https://ingresso-a.akamaihd.net/prd/img/movie/the-chosen-os-escolhidos/4aa34173-a898-4eca-950b-3cd59bd01c91.webp"
+                        <img src="https://ingresso-a.akamaihd.net/prd/img/movie/the-chosen-os-escolhidos/4aa34173-a898-4eca-950b-3cd59bd01c91.webp"
                             alt="">
                     </div>
                 </div>
                 <div class="col w-33">
                     <div class="movie-image d-flex justify-content-center align-items-center">
-                        <img style="max-width: 300px;"
-                            src="https://ingresso-a.akamaihd.net/prd/img/movie/godzilla-e-kong-um-novo-imperio/a82080b8-3d1b-4ba9-927c-aafb0f575b4f.webp"
+                        <img src="https://ingresso-a.akamaihd.net/prd/img/movie/godzilla-e-kong-um-novo-imperio/a82080b8-3d1b-4ba9-927c-aafb0f575b4f.webp"
                             alt="">
                     </div>
                 </div>
                 <div class="col w-33">
                     <div class="movie-image d-flex justify-content-center align-items-center">
-                        <img style="max-width: 300px;"
-                            src="https://ingresso-a.akamaihd.net/prd/img/movie/duna-parte-2/3971d5d6-702d-40d8-b990-872d4ffe3e32.webp"
+                        <img src="https://ingresso-a.akamaihd.net/prd/img/movie/duna-parte-2/3971d5d6-702d-40d8-b990-872d4ffe3e32.webp"
                             alt="">
                     </div>
                 </div>
@@ -99,7 +116,8 @@
     <div class="container-fluid mt-5 mb-5" id="em_cartaz">
         <div class="container text-right">
             <h1 class="display-6">Em cartaz</h1>
-            <div class="row row-cols-8">
+            <div
+                class="row row-cols-1 row row-cols-sm-2 row-cols-md-3 row-cols-lg-6 row-cols-xg-8 justify-content-between">
                 <div class="col">
                     <div class="movie-image">
                         <img src="https://ingresso-a.akamaihd.net/prd/img/movie/the-chosen-os-escolhidos/4aa34173-a898-4eca-950b-3cd59bd01c91.webp"
@@ -107,31 +125,32 @@
                     </div>
                 </div>
                 <div class="col">
-                    <div class="movie-image">
-                        <img src="https://ingresso-a.akamaihd.net/prd/img/movie/godzilla-e-kong-um-novo-imperio/a82080b8-3d1b-4ba9-927c-aafb0f575b4f.webp"
+                    <div class="movie-image d-flex justify-content-center align-items-center">
+                        <img class=""
+                            src="https://ingresso-a.akamaihd.net/prd/img/movie/godzilla-e-kong-um-novo-imperio/a82080b8-3d1b-4ba9-927c-aafb0f575b4f.webp"
                             alt="">
                     </div>
                 </div>
                 <div class="col">
-                    <div class="movie-image">
+                    <div class="movie-image d-flex justify-content-center align-items-center">
                         <img src="https://ingresso-a.akamaihd.net/prd/img/movie/kung-fu-panda-4/0ee79c4d-3a37-4d03-8b2e-b7da7cd386c8.webp"
                             alt="">
                     </div>
                 </div>
                 <div class="col">
-                    <div class="movie-image">
+                    <div class="movie-image d-flex justify-content-center align-items-center">
                         <img src="https://ingresso-a.akamaihd.net/prd/img/movie/duna-parte-2/3971d5d6-702d-40d8-b990-872d4ffe3e32.webp"
                             alt="">
                     </div>
                 </div>
                 <div class="col">
-                    <div class="movie-image">
+                    <div class="movie-image d-flex justify-content-center align-items-center">
                         <img src="https://ingresso-a.akamaihd.net/prd/img/movie/os-farofeiros-2/6aa0e761-c692-44a5-83b2-eeb444f18413.webp"
                             alt="">
                     </div>
                 </div>
                 <div class="col">
-                    <div class="movie-image">
+                    <div class="movie-image d-flex justify-content-center align-items-center">
                         <img src="https://ingresso-a.akamaihd.net/prd/img/movie/o-menino-e-a-garca/654da114-f4e6-4929-aa37-176f44b84bc7.webp"
                             alt="">
                     </div>
@@ -144,39 +163,40 @@
     <div class="container-fluid mt-5 mb-5" id="em_breve">
         <div class="container text-right">
             <h2 class="display-6">Em breve</h2>
-            <div class="row row-cols-8">
+            <div
+                class="row row-cols-1 row row-cols-sm-2 row-cols-md-3 row-cols-lg-6 row-cols-xg-8 justify-content-between">
                 <div class="col">
-                    <div class="movie-image">
+                    <div class="movie-image d-flex justify-content-center align-items-center">
                         <img src="https://ingresso-a.akamaihd.net/prd/img/movie/a-matriarca/3c4847b9-6839-4cca-8ba1-dc26893dace8.webp"
                             alt="">
                     </div>
                 </div>
                 <div class="col">
-                    <div class="movie-image">
+                    <div class="movie-image d-flex justify-content-center align-items-center">
                         <img src="https://ingresso-a.akamaihd.net/prd/img/movie/ascensao-e-queda-john-galliano/7d10ff0e-0b93-4937-ab2e-bb17827459cb.webp"
                             alt="">
                     </div>
                 </div>
                 <div class="col">
-                    <div class="movie-image">
+                    <div class="movie-image d-flex justify-content-center align-items-center">
                         <img src="https://ingresso-a.akamaihd.net/prd/img/movie/instinto-materno/82f1f86f-935b-41e6-b421-cfd51ec2aafd.webp"
                             alt="">
                     </div>
                 </div>
                 <div class="col">
-                    <div class="movie-image">
+                    <div class="movie-image d-flex justify-content-center align-items-center">
                         <img src="https://ingresso-a.akamaihd.net/prd/img/movie/ate-o-cair-da-noite/900d48ec-1390-421c-b1e3-4504fcacb2ad.webp"
                             alt="">
                     </div>
                 </div>
                 <div class="col">
-                    <div class="movie-image">
+                    <div class="movie-image d-flex justify-content-center align-items-center">
                         <img src="https://ingresso-a.akamaihd.net/prd/img/movie/a-materia-noturna/f715c667-e5b3-4077-abf9-447f2c2e294a.webp"
                             alt="">
                     </div>
                 </div>
                 <div class="col">
-                    <div class="movie-image">
+                    <div class="movie-image d-flex justify-content-center align-items-center">
                         <img src="https://ingresso-a.akamaihd.net/prd/img/movie/a-primeira-profecia/9c53e9b0-8c55-4f8f-ab37-c2a72de476f4.webp"
                             alt="">
                     </div>
@@ -187,14 +207,14 @@
     </div>
 
 
-    <div class="container-fluid mt-5">
-        <footer class="bd-footer py-4 py-md-5 mt-5 bg-body-light">
-            <div class="container py-4 py-md-5 px-4 px-md-3 text-body-secondary">
-                <div class="row ">
-                    <strong>Formas de Pagamento</strong>
-                    <div class="pb-4">
+    <div class="container-fluid mt-5" style="padding: 0;">
+        <footer class="bd-footer mt-5 bg-body-light">
+            <div class="container pt-4  text-body-secondary text-center">
+                <strong>Formas de Pagamento</strong>
+                <div class="row row-cols-2">
+                    <div class="pb-4 text-start">
                         <h3>Crédito</h3>
-                        <div class="d-flex flex-wrap items-baseline w-100">
+                        <div class="d-flex flex-wrap justify-content-start w-100">
                             <div class="relative mb-2 mr-2 box-border inline-block" width="40" height="30">
                                 <div><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                         width="40" height="30" viewBox="0 0 53 40" class="injected-svg"
@@ -360,9 +380,9 @@
                         </div>
                     </div>
 
-                    <div class="pb-4">
+                    <div class="pb-4 text-center">
                         <h4 class="">Débito</h4>
-                        <div class="d-flex flex-wrap items-baseline w-100">
+                        <div class="d-flex flex-wrap justify-content-end w-100">
                             <div class="relative mb-2 mr-2 box-border inline-block" width="40" height="30">
                                 <div><svg width="40" height="30" viewBox="0 0 39 27" fill="none"
                                         xmlns="http://www.w3.org/2000/svg" class="injected-svg"
@@ -501,8 +521,16 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
+
+                <div class=" px-0 pb-2 pt-4 text-center footer-text">
+                    <p>ButacaBox.com Ltda / CNPJ: 008606400001-71 Endereço: R. Konrad Adenauer, 442 - Tarumã, Curitiba -
+                        PR, 82820-540</p>
+                    <p>© 2024 - Copyright
+                        ButacaBox - todos os direitos reservados</p>
+                </div>
+
+
             </div>
     </div>
     </footer>
