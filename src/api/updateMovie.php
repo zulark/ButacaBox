@@ -4,46 +4,57 @@ include 'db_connection.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
     $data = json_decode(file_get_contents('php://input'), true);
-
     $id_filme = isset($_GET['id_filme']) ? intval($_GET['id_filme']) : null;
 
     if ($id_filme === null) {
-        echo json_encode(['error' => 'Missing id_filme parameter']);
+        echo json_encode(['error' => 'Id_filme é obrigatório']);
         http_response_code(400);
         exit;
     }
 
-    if (!isset($data['titulo'], $data['cartaz_filme'], $data['diretor'], $data['genero'], $data['fk_fornecedor_id'])) {
-        echo json_encode(['error' => 'Missing required fields']);
-        http_response_code(400); 
-        exit;
+    // Inicializa um array para armazenar as partes da consulta SQL
+    $update_fields = [];
+
+    // Verifica e adiciona cada campo fornecido na requisição à consulta SQL
+    if (isset($data['titulo'])) {
+        $titulo = mysqli_real_escape_string($conn, $data['titulo']);
+        $update_fields[] = "titulo = '$titulo'";
     }
-    $titulo = mysqli_real_escape_string($conn, $data['titulo']);
-    $cartaz_filme = mysqli_real_escape_string($conn, $data['cartaz_filme']);
-    $diretor = mysqli_real_escape_string($conn, $data['diretor']);
-    $genero = mysqli_real_escape_string($conn, $data['genero']);
-    $fk_fornecedor_id = intval($data['fk_fornecedor_id']);
+    if (isset($data['cartaz_filme'])) {
+        $cartaz_filme = mysqli_real_escape_string($conn, $data['cartaz_filme']);
+        $update_fields[] = "cartaz_filme = '$cartaz_filme'";
+    }
+    if (isset($data['diretor'])) {
+        $diretor = mysqli_real_escape_string($conn, $data['diretor']);
+        $update_fields[] = "diretor = '$diretor'";
+    }
+    if (isset($data['genero'])) {
+        $genero = mysqli_real_escape_string($conn, $data['genero']);
+        $update_fields[] = "genero = '$genero'";
+    }
+    if (isset($data['duracao'])) {
+        $duracao = intval($data['duracao']);
+        $update_fields[] = "duracao = $duracao";
+    }
+    if (isset($data['fornecedor_id'])) {
+        $fornecedor_id = intval($data['fornecedor_id']);
+        $update_fields[] = "fornecedor_id = $fornecedor_id";
+    }
+    if (isset($data['descricao'])) {
+        $descricao = mysqli_real_escape_string($conn, $data['descricao']);
+        $update_fields[] = "descricao = '$descricao'";
+    }
 
-    $sql = "UPDATE filme SET 
-                titulo = '$titulo', 
-                cartaz_filme = '$cartaz_filme', 
-                diretor = '$diretor', 
-                genero = '$genero', 
-                fk_fornecedor_id = $fk_fornecedor_id 
-            WHERE id_filme = $id_filme";
+    // Constrói a consulta SQL
+    $update_sql = "UPDATE filmes SET " . implode(", ", $update_fields) . " WHERE id_filme = ?";
+    $stmt = $conn->prepare($update_sql);
+    $stmt->bind_param("i", $id_filme);
+    $stmt->execute();
 
-    if ($conn->query($sql) === TRUE) {
-        $updated_movie = [
-            'id_filme' => $id_filme,
-            'titulo' => $titulo,
-            'cartaz_filme' => $cartaz_filme,
-            'diretor' => $diretor,
-            'genero' => $genero,
-            'fk_fornecedor_id' => $fk_fornecedor_id
-        ];
-        echo json_encode(['message' => 'Filme atualizado com sucesso', 'movie' => $updated_movie]);
+    if ($stmt->affected_rows > 0) {
+        echo json_encode(['message' => 'Filme atualizado com sucesso']);
     } else {
-        echo json_encode(['error' => 'Erro ao atualizar filme', 'sql_error' => $conn->error]);
+        echo json_encode(['error' => 'Erro ao atualizar filme']);
         http_response_code(500);
     }
 } else {
