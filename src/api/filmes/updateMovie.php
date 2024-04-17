@@ -1,21 +1,24 @@
 <?php
 header("Content-Type: application/json");
-include 'db_connection.php';
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: PUT");
+header("Access-Control-Allow-Headers: Content-Type");
+
+include '../db_connection.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
     $data = json_decode(file_get_contents('php://input'), true);
     $id_filme = isset($_GET['id_filme']) ? intval($_GET['id_filme']) : null;
 
     if ($id_filme === null) {
-        echo json_encode(['error' => 'Id_filme é obrigatório']);
+        echo json_encode(['error' => 'ID do filme é obrigatório']);
         http_response_code(400);
         exit;
     }
 
-    // Inicializa um array para armazenar as partes da consulta SQL
     $update_fields = [];
 
-    // Verifica e adiciona cada campo fornecido na requisição à consulta SQL
+    // Validate and sanitize input data
     if (isset($data['titulo'])) {
         $titulo = mysqli_real_escape_string($conn, $data['titulo']);
         $update_fields[] = "titulo = '$titulo'";
@@ -45,20 +48,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
         $update_fields[] = "descricao = '$descricao'";
     }
 
-    // Constrói a consulta SQL
+    if (empty($update_fields)) {
+        echo json_encode(['error' => 'Nenhum dado fornecido para atualização']);
+        http_response_code(400);
+        exit;
+    }
+
     $update_sql = "UPDATE filmes SET " . implode(", ", $update_fields) . " WHERE id_filme = ?";
     $stmt = $conn->prepare($update_sql);
     $stmt->bind_param("i", $id_filme);
     $stmt->execute();
 
+    // Check if the update was successful
     if ($stmt->affected_rows > 0) {
-        echo json_encode(['message' => 'Filme atualizado com sucesso']);
+        echo json_encode(['success' => true, 'message' => 'Filme atualizado com sucesso']);
     } else {
-        echo json_encode(['error' => 'Erro ao atualizar filme']);
-        http_response_code(500);
+        echo json_encode(['success' => false, 'error' => 'Nenhum dado foi atualizado ou ID do filme não encontrado']);
+        http_response_code(404); // Consider using 404 status code for resource not found
     }
 } else {
-    echo json_encode(['error' => 'Request Inválido']);
+    echo json_encode(['error' => 'Método de requisição inválido']);
     http_response_code(405);
 }
 

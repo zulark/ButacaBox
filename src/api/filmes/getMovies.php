@@ -1,9 +1,12 @@
 <?php
 header("Content-Type: application/json");
-include 'db_connection.php';
+header("Access-Control-Allow-Origin: *"); 
+header("Access-Control-Allow-Methods: GET, PUT, POST"); 
+header("Access-Control-Allow-Headers: Content-Type"); 
+include '../db_connection.php';
 
-if (isset($_GET['id_filme'])) {
-    $id_filme = intval($_GET['id_filme']);
+if (isset($_GET['id'])) {
+    $id_filme = intval($_GET['id']);
     $sql = "SELECT * FROM filmes WHERE id_filme = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $id_filme);

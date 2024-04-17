@@ -1,6 +1,6 @@
 <?php
 header("Content-Type: application/json");
-include 'db_connection.php';
+include '../db_connection.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
     $id_filme = isset($_GET['id_filme']) ? intval($_GET['id_filme']) : null;
