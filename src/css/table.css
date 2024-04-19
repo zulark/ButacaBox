@@ -19,40 +19,31 @@
 
 .table {
     font-size: 100%;
-    /* Reset font size */
 }
 
 .table th,
 .table td {
     font-size: 1rem;
     max-width: 200px;
-
-    /* Base font size */
 }
 
 @media (min-width: 768px) {
-
     .table th,
     .table td {
         font-size: 0.9rem;
-        /* Adjust font size for medium devices */
     }
 }
 
 @media (min-width: 992px) {
-
     .table th,
     .table td {
         font-size: 0.8rem;
-        /* Adjust font size for large devices */
     }
 }
 
 @media (min-width: 1200px) {
-
     .table th,
     .table td {
         font-size: 0.85rem;
-        /* Adjust font size for extra-large devices */
     }
 }

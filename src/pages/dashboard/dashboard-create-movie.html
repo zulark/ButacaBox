@@ -27,16 +27,24 @@
             <ul class="nav nav-pills flex-column mb-auto">
                 <li class="nav-item">
                     <a href="dashboard.html" class="nav-link active" aria-current="page">
-                        <svg class="bi pe-none me-2" width="16" height="16">
-                            <use xlink:href="#home"></use>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-camera-reels-fill" viewBox="0 0 16 16">
+                            <path d="M6 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                            <path d="M9 6a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
+                            <path
+                                d="M9 6h.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 7.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 16H2a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z" />
                         </svg>
                         Filmes
                     </a>
                 </li>
                 <li>
                     <a href="../dashboard/funcionarios/funcionarios.html" class="nav-link text-white">
-                        <svg class="bi pe-none me-2" width="16" height="16">
-                            <use xlink:href="#table"></use>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-clipboard" viewBox="0 0 16 16">
+                            <path
+                                d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1z" />
+                            <path
+                                d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0z" />
                         </svg>
                         Funcionarios
                     </a>
@@ -84,11 +92,25 @@
                         </div>
                         <div class="col-md-12">
                             <label for="fornecedor_id" class="form-label">ID do Fornecedor</label>
-                            <input type="number" min="1" max="999" class="form-control" id="fornecedor_id" name="fornecedor_id">
+                            <input type="number" min="1" max="999" class="form-control" id="fornecedor_id"
+                                name="fornecedor_id">
                         </div>
                         <div class="col-12">
                             <label for="descricao" class="form-label">Descrição</label>
                             <textarea class="form-control" id="descricao" name="descricao"></textarea>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="youtube_url" class="form-label">Link do trailer</label>
+                            <input type="text" class="form-control" id="youtube_url" name="youtube_url">
+                        </div>
+                        <div class="col-12">
+                            <label for="status_filme" class="form-label ">Status de lançamento</label>
+                            <select class="form-select form-select-md" name="status_filme" id="status_filme">
+                                <option selected disabled class="disabled">Selecionar status</option>
+                                <option value="estreia">Estreia</option>
+                                <option value="cartaz">Em cartaz</option>
+                                <option value="em_breve">Em breve</option>
+                            </select>
                         </div>
                         <div class="col-12">
                             <button type="submit" class="btn btn-success">Salvar</button>
@@ -97,10 +119,11 @@
                     <div class="p-3 text-end">
                         <a href="dashboard.html">
                             <button class="btn btn-primary">
-                                <svg style="color: #fff;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-                                    <path fill="none" d="M0 0h24v24H0V0z"/>
-                                    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
-                                  </svg>
+                                <svg style="color: #fff;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                    width="24" height="24" fill="currentColor">
+                                    <path fill="none" d="M0 0h24v24H0V0z" />
+                                    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
+                                </svg>
                             </button>
                         </a>
                     </div>
@@ -114,6 +137,10 @@
     </main>
 
     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('createForm').reset();
+        });
+
         document.getElementById('createForm').addEventListener('submit', function (event) {
             event.preventDefault();
 
@@ -124,11 +151,13 @@
                 genero: document.getElementById('genero').value,
                 duracao: document.getElementById('duracao').value,
                 fornecedor_id: document.getElementById('fornecedor_id').value,
-                descricao: document.getElementById('descricao').value
+                descricao: document.getElementById('descricao').value,
+                status_filme: document.getElementById('status_filme').value,
+                youtube_url: document.getElementById('youtube_url').value
             };
 
             var jsonData = JSON.stringify(formData);
-            
+
             fetch('http://localhost/ButacaBox/ButacaBox/src/api/filmes/createMovie.php', {
                 method: 'POST',
                 headers: {

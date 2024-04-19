@@ -28,6 +28,8 @@ function displayMovies(movies) {
                 <td>${movie.genero}</td>
                 <td>${movie.duracao}</td>
                 <td>${movie.fornecedor_id}</td>
+                <td>${movie.status_filme}</td>
+                <td>${movie.youtube_url}</td>
                 <td" class="d-flex">
                     <button style="background-color: #3ba6ff;" class="btn btn-sm w-50 text-white" id="editMovieButton" onclick="editMovie(${movie.id_filme})">Editar</button>
                     <button style="background-color: #d9534f;" class="btn btn-sm w-50 text-white" onclick="deleteMovie(${movie.id_filme})">Deletar</button>
@@ -41,7 +43,7 @@ function searchMovies() {
     var searchValue = document.getElementById('searchInput').value.trim();
     if (searchValue !== '') {
         var filteredMovies = movies.filter(function (movie) {
-            return movie.id_filme.toString().indexOf(searchValue) !== -1;
+            return movie.id_filme.toString().indexOf(searchValue) !== -1 || movie.titulo.toLowerCase().includes(searchValue);
         });
         displayMovies(filteredMovies);
     } else {
@@ -88,6 +90,8 @@ function editMovie(id) {
             document.getElementById("duracao").value = data.duracao;
             document.getElementById("fornecedor_id").value = data.fornecedor_id;
             document.getElementById("descricao").value = data.descricao;
+            document.getElementById("youtube_url").value = data.youtube_url;
+            document.getElementById("status_filme").value = data.status_filme;
             editModal.show();
         })
         .catch(error => {
@@ -106,6 +110,8 @@ function saveMovieChanges(id) {
     var duracao = document.getElementById('duracao').value;
     var fornecedor_id = document.getElementById('fornecedor_id').value;
     var descricao = document.getElementById('descricao').value;
+    var youtube_url = document.getElementById('youtube_url').value;
+    var status_filme = document.getElementById('status_filme').value;
 
     var filmeData = {
         titulo: titulo,
@@ -114,7 +120,9 @@ function saveMovieChanges(id) {
         genero: genero,
         duracao: duracao,
         fornecedor_id: fornecedor_id,
-        descricao: descricao
+        descricao: descricao,
+        status_filme: status_filme,
+        youtube_url: youtube_url
     };
 
     fetch(`../../api/filmes/updateMovie.php?id=${id}`, {
@@ -164,3 +172,4 @@ function deleteMovie(id_filme) {
         confirmDeleteModal.hide();
     });
 }
+

@@ -1,56 +1,46 @@
- .container-fluid {
-   background-color: #f2f2f2;
- }
+  .container-fluid {
+    background-color: #f2f2f2;
+  }
 
- .sidebar {
-   width: 280px;
- }
+  .navbar-brand-logo img {
+    width: 50px;
+    transform: rotate(25deg);
+  }
 
- @media (max-width: 576px) {
-   .sidebar {
-     display: none !important;
-   }
- }
+  .table {
+    font-size: 100%;
+    /* Reset font size */
+  }
 
- .navbar-brand-logo img {
-   width: 50px;
-   transform: rotate(25deg);
- }
+  .table th,
+  .table td {
+    font-size: 1rem;
+    /* Base font size */
+  }
 
- .table {
-   font-size: 100%;
-   /* Reset font size */
- }
+  @media (min-width: 768px) {
 
- .table th,
- .table td {
-   font-size: 1rem;
-   /* Base font size */
- }
+    .table th,
+    .table td {
+      font-size: 0.9rem;
+      /* Adjust font size for medium devices */
+    }
+  }
 
- @media (min-width: 768px) {
+  @media (min-width: 992px) {
 
-   .table th,
-   .table td {
-     font-size: 0.9rem;
-     /* Adjust font size for medium devices */
-   }
- }
+    .table th,
+    .table td {
+      font-size: 0.8rem;
+      /* Adjust font size for large devices */
+    }
+  }
 
- @media (min-width: 992px) {
+  @media (min-width: 1200px) {
 
-   .table th,
-   .table td {
-     font-size: 0.8rem;
-     /* Adjust font size for large devices */
-   }
- }
-
- @media (min-width: 1200px) {
-
-   .table th,
-   .table td {
-     font-size: 0.85rem;
-     /* Adjust font size for extra-large devices */
-   }
- }
+    .table th,
+    .table td {
+      font-size: 0.85rem;
+      /* Adjust font size for extra-large devices */
+    }
+  }
