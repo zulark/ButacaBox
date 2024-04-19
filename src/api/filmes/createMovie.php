@@ -9,7 +9,7 @@ include '../db_connection.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data = json_decode(file_get_contents('php://input'), true);
 
-    if (!isset($data['titulo'], $data['cartaz_filme'], $data['diretor'], $data['genero'], $data['duracao'], $data['fornecedor_id'], $data['descricao'])) {
+    if (!isset($data['titulo'], $data['cartaz_filme'], $data['diretor'], $data['genero'], $data['duracao'], $data['fornecedor_id'], $data['descricao'], $data['status_filme'])) {
         echo json_encode(['error' => 'Campos não preenchidos']);
         http_response_code(400);
         exit;
@@ -27,9 +27,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $duracao = intval($data['duracao']);
     $fornecedor_id = intval($data['fornecedor_id']);
     $descricao = mysqli_real_escape_string($conn, $data['descricao']);
+    $status_filme = mysqli_real_escape_string($conn, $data['status_filme']);
+    $youtube_url = mysqli_real_escape_string($conn, $data['youtube_url']);
 
-    $sql = "INSERT INTO filmes (titulo, cartaz_filme, diretor, genero, duracao, fornecedor_id, descricao) 
-            VALUES ('$titulo', '$cartaz_filme', '$diretor', '$genero', '$duracao', '$fornecedor_id', '$descricao')";
+    $sql = "INSERT INTO filmes (titulo, cartaz_filme, diretor, genero, duracao, fornecedor_id, descricao, status_filme, youtube_url) 
+            VALUES ('$titulo', '$cartaz_filme', '$diretor', '$genero', '$duracao', '$fornecedor_id', '$descricao', '$status_filme', '$youtube_url')";
 
     if ($conn->query($sql) === TRUE) {
         $new_movie = [
@@ -39,7 +41,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'genero' => $genero,
             'duracao' => $duracao,
             'fornecedor_id' => $fornecedor_id,
-            'descricao' => $descricao
+            'descricao' => $descricao,
+            'status_filme' => $status_filme,
+            'youtube_url' => $youtube_url
         ];
         echo json_encode(['success' => true, 'message' => 'Filme criado com sucesso', 'movie' => $new_movie]);
     } else {

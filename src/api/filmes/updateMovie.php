@@ -46,6 +46,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
         $descricao = mysqli_real_escape_string($conn, $data['descricao']);
         $update_fields[] = "descricao = '$descricao'";
     }
+    if (isset($data['status_filme'])) {
+        $status_filme = mysqli_real_escape_string($conn, $data['status_filme']);
+        $update_fields[] = "status_filme = '$status_filme'";
+    }
+    if (isset($data['youtube_url'])) {
+        $youtube_url = mysqli_real_escape_string($conn, $data['youtube_url']);
+        $update_fields[] = "youtube_url = '$youtube_url'";
+    }
 
     if (empty($update_fields)) {
         echo json_encode(['error' => 'Nenhum dado fornecido para atualização']);
