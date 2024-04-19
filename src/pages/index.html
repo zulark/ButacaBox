@@ -12,18 +12,17 @@
 </head>
 
 <body>
-
     <nav class="navbar bg-body-tertiary">
-        <div class="container-fluid header">
+        <div class="container-fluid header d-flex justify-content-between align-items-center">
             <div style="display: flex; flex-direction: column; align-items: center;">
                 <span class="navbar-brand-logo">
                     <img src="https://cdn-icons-png.flaticon.com/512/2598/2598702.png" alt="">
                 </span>
-                <strong style="font-size: .8em;">BUTACABOX</strong>
+                <strong class="d-none d-sm-block">BUTACABOX</strong>
             </div>
 
             <div class="d-flex align-items-center">
-                <div class="svg">
+                <div class=" d-none d-sm-block svg m-3">
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
                         class="bi bi-person-circle" viewBox="0 0 16 16">
                         <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
@@ -32,7 +31,9 @@
                     </svg>
                 </div>
                 <div class="fs-2">
-                    <a class="d-block" id="loginbutton" href="login/login.html">Entrar ou
+                    <a class="d-xs-flex flex-direction column d-block fs-sx-1" id="loginbutton"
+                        href="login/login.html">Entrar
+                        ou
                         <br>
                         cadastrar-se</a>
                 </div>
@@ -41,12 +42,22 @@
     </nav>
 
     <nav class="navbar bg-body-tertiary" id="navheader">
-        <div class="container text-center">
-            <a class="navbar-brand" href="#estreias">Estreias</a>
-            <a class="navbar-brand" href="#em_cartaz">Em cartaz</a>
-            <a class="navbar-brand" href="#em_breve">Pré Venda</a>
+        <div class="container d-flex justify-content-center align-items-center">
+            <div class="row w-100 text-center">
+                <div class="col-12 col-lg-4 mb-3">
+                    <a class="navbar-brand" href="#estreias">Estreias</a>
+                </div>
+                <div class="col-12 col-lg-4 mb-3">
+                    <a class="navbar-brand" href="#em_cartaz">Em cartaz</a>
+                </div>
+                <div class="col-12 col-lg-4 mb-3">
+                    <a class="navbar-brand" href="#em_breve">Pré Venda</a>
+                </div>
+            </div>
         </div>
     </nav>
+
+
 
     <div class="container-fluid carousel">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
@@ -60,19 +71,26 @@
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img style="max-height: 543px; min-height: 500px;"
-                        src="https://www.cinemark.com.br/Content/uploads/banner/3_banner_destaque__godzilla-vs-kong__1420x543px.jpg"
-                        class="d-block w-100" alt="...">
+                    <a href="http://localhost/ButacaBox/ButacaBox/src/pages/ingresso/detalhes-filme.html?id=16">
+                        <img style="max-height: 543px; min-height: 500px;"
+                            src="https://www.cinemark.com.br/Content/uploads/banner/banner_desk_guerra-civil_1920x550px.jpg"
+                            class="d-block w-100" alt="...">
+                    </a>
                 </div>
                 <div class="carousel-item">
-                    <img style="max-height: 543px; min-height: 500px"
-                        src="https://www.cinemark.com.br/Content/uploads/banner/banner_desk_aprimeiraprofecia_1920x550px.jpg"
-                        class="d-block w-100" alt="...">
+                    <a href="http://localhost/ButacaBox/ButacaBox/src/pages/ingresso/detalhes-filme.html?id=15">
+                        <img style="max-height: 543px; min-height: 500px"
+                            src="https://www.cinemark.com.br/Content/uploads/banner/banner_desk_jorge-da-capadocia_1920x550px.jpg"
+                            class="d-block w-100" alt="...">
+                    </a>
                 </div>
                 <div class="carousel-item">
-                    <img style="max-height: 543px; min-height: 500px;"
-                        src="https://www.cinemark.com.br/Content/uploads/banner/banner_desk_ghostbusters_apocalipse-de-gelo_1920x550px.jpg"
-                        class="d-block w-100" alt="...">
+                    <a href="http://localhost/ButacaBox/ButacaBox/src/pages/ingresso/detalhes-filme.html?id=3">
+
+                        <img style="max-height: 543px; min-height: 500px;"
+                            src="https://www.cinemark.com.br/Content/uploads/banner/banner_desk_ghostbusters_apocalipse-de-gelo_1920x550px.jpg"
+                            class="d-block w-100" alt="...">
+                    </a>
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
@@ -94,17 +112,23 @@
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 justify-content-evenly">
                 <div class="col w-33 mb-5">
                     <div class="movie-image d-flex justify-content-center align-items-center">
-                        <img class="filmes_estreia img-fluid" src="" alt="">
+                        <a href="#" class="movie-link">
+                            <img class="filmes_estreia img-fluid" src="" alt="">
+                        </a>
                     </div>
                 </div>
                 <div class="col w-33 mb-5">
                     <div class="movie-image d-flex justify-content-center align-items-center">
-                        <img class="filmes_estreia img-fluid" src="" alt="">
+                        <a href="#" class="movie-link">
+                            <img class="filmes_estreia img-fluid" src="" alt="">
+                        </a>
                     </div>
                 </div>
                 <div class="col w-33 mb-5">
                     <div class="movie-image d-flex justify-content-center align-items-center">
-                        <img class="filmes_estreia img-fluid" src="" alt="">
+                        <a href="#" class="movie-link">
+                            <img class="filmes_estreia img-fluid" src="" alt="">
+                        </a>
                     </div>
                 </div>
             </div>
@@ -118,32 +142,44 @@
                 class="row row-cols-1 row row-cols-sm-2 row-cols-md-3 row-cols-lg-3 row-cols-xg-6 justify-content-between">
                 <div class="col mb-5">
                     <div class="movie-image">
-                        <img class="filmes_cartaz img-fluid" src="" alt="">
+                        <a href="#" class="movie-link">
+                            <img class="filmes_cartaz img-fluid" src="" alt="">
+                        </a>
                     </div>
                 </div>
                 <div class="col mb-5">
                     <div class="movie-image d-flex justify-content-center align-items-center">
-                        <img class="filmes_cartaz img-fluid" src="" alt="">
+                        <a href="#" class="movie-link">
+                            <img class="filmes_cartaz img-fluid" src="" alt="">
+                        </a>
                     </div>
                 </div>
                 <div class="col mb-5">
                     <div class="movie-image d-flex justify-content-center align-items-center">
-                        <img class="filmes_cartaz img-fluid" src="" alt="">
+                        <a href="#" class="movie-link">
+                            <img class="filmes_cartaz img-fluid" src="" alt="">
+                        </a>
                     </div>
                 </div>
                 <div class="col mb-5">
                     <div class="movie-image d-flex justify-content-center align-items-center">
-                        <img class="filmes_cartaz img-fluid" src="" alt="">
+                        <a href="#" class="movie-link">
+                            <img class="filmes_cartaz img-fluid" src="" alt="">
+                        </a>
                     </div>
                 </div>
                 <div class="col mb-5">
                     <div class="movie-image d-flex justify-content-center align-items-center">
-                        <img class="filmes_cartaz img-fluid" src="" alt="">
+                        <a href="#" class="movie-link">
+                            <img class="filmes_cartaz img-fluid" src="" alt="">
+                        </a>
                     </div>
                 </div>
                 <div class="col mb-5">
                     <div class="movie-image d-flex justify-content-center align-items-center">
-                        <img class="filmes_cartaz img-fluid" src="" alt="">
+                        <a href="#" class="movie-link">
+                            <img class="filmes_cartaz img-fluid" src="" alt="">
+                        </a>
                     </div>
                 </div>
             </div>
@@ -157,32 +193,44 @@
                 class="row row-cols-1 row row-cols-sm-2 row-cols-md-3 row-cols-lg-3 row-cols-xg-6 justify-content-between">
                 <div class="col mb-5">
                     <div class="movie-image d-flex justify-content-center align-items-center">
-                        <img class="filmes_em_breve img-fluid" src="" alt="">
+                        <a href="#" class="movie-link">
+                            <img class="filmes_em_breve img-fluid" src="" alt="">
+                        </a>
                     </div>
                 </div>
                 <div class="col mb-5">
                     <div class="movie-image d-flex justify-content-center align-items-center">
-                        <img class="filmes_em_breve img-fluid" src="" alt="">
+                        <a href="#" class="movie-link">
+                            <img class="filmes_em_breve img-fluid" src="" alt="">
+                        </a>
                     </div>
                 </div>
                 <div class="col mb-5">
                     <div class="movie-image d-flex justify-content-center align-items-center">
-                        <img class="filmes_em_breve img-fluid" src="" alt="">
+                        <a href="#" class="movie-link">
+                            <img class="filmes_em_breve img-fluid" src="" alt="">
+                        </a>
                     </div>
                 </div>
                 <div class="col mb-5">
                     <div class="movie-image d-flex justify-content-center align-items-center">
-                        <img class="filmes_em_breve img-fluid" src="" alt="">
+                        <a href="#" class="movie-link">
+                            <img class="filmes_em_breve img-fluid" src="" alt="">
+                        </a>
                     </div>
                 </div>
                 <div class="col mb-5">
                     <div class="movie-image d-flex justify-content-center align-items-center">
-                        <img class="filmes_em_breve img-fluid" src="" alt="">
+                        <a href="#" class="movie-link">
+                            <img class="filmes_em_breve img-fluid" src="" alt="">
+                        </a>
                     </div>
                 </div>
                 <div class="col mb-5">
                     <div class="movie-image d-flex justify-content-center align-items-center">
-                        <img class="filmes_em_breve img-fluid" src="" alt="">
+                        <a href="#" class="movie-link">
+                            <img class="filmes_em_breve img-fluid" src="" alt="">
+                        </a>
                     </div>
                 </div>
 

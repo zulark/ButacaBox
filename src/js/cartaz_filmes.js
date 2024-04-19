@@ -5,25 +5,58 @@ function fetchMovieData() {
             const filmes_estreia = document.querySelectorAll('.filmes_estreia');
             const filmes_cartaz = document.querySelectorAll('.filmes_cartaz');
             const filmes_em_breve = document.querySelectorAll('.filmes_em_breve');
-            data.forEach((movie, index) => {
+            let indexEstreia = 0;
+            let indexCartaz = 0;
+            let indexEmBreve = 0;
+
+            data.forEach(movie => {
                 const posterURL = movie.cartaz_filme;
-                if (index < 3 && index < filmes_estreia.length) {
-                    filmes_estreia[index].src = posterURL;
-                } else if (index < 9 && (index - 3) < filmes_cartaz.length) {
-                    filmes_cartaz[index - 3].src = posterURL;
-                } else if ((index - 9) < filmes_em_breve.length) {
-                    const em_breve_index = index - 9;
-                    filmes_em_breve[em_breve_index].src = posterURL;
+                const id = movie.id_filme;
+                const movieURL = `../pages/ingresso/detalhes-filme.html?id=${id}`;
+
+
+                switch (movie.status_filme) {
+                    case 'estreia':
+                        if (indexEstreia < filmes_estreia.length) {
+                            filmes_estreia[indexEstreia].src = posterURL;
+                            filmes_estreia[indexEstreia].parentNode.href = movieURL;
+                            indexEstreia++;
+                        }
+                        break;
+                    case 'cartaz':
+                        if (indexCartaz < filmes_cartaz.length) {
+                            filmes_cartaz[indexCartaz].src = posterURL;
+                            filmes_cartaz[indexCartaz].parentNode.href = movieURL;
+                            indexCartaz++;
+                        }
+                        break;
+                    case 'em_breve':
+                        if (indexEmBreve < filmes_em_breve.length) {
+                            filmes_em_breve[indexEmBreve].src = posterURL;
+                            filmes_em_breve[indexEmBreve].parentNode.href = movieURL;
+                            indexEmBreve++;
+                        }
+                        break;
+                    default:
+                        break;
                 }
             });
             hideLoadingIndicator();
         })
         .catch(error => {
-            displayLoadingIndicator();  
-            displayErrorMessage();
+            displayLoadingIndicator();
             console.error('Error:', error);
         });
 }
+
+function toggleLoadingIndicator(show) {
+    const loadingElements = document.querySelectorAll('.spinner-border');
+    loadingElements.forEach(element => {
+        element.parentElement.style.display = show ? 'block' : 'none';
+    });
+}
+
+
 
 function displayLoadingIndicator() {
     const loading = document.createElement('div');
@@ -42,10 +75,6 @@ function hideLoadingIndicator() {
     loadingElements.forEach(element => {
         element.parentElement.remove();
     });
-}
-
-function displayErrorMessage() {
-    alert("Oops! Something went wrong. Please try again later.");
 }
 
 fetchMovieData();
