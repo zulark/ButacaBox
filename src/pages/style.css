@@ -1,6 +1,10 @@
+body{
+	background-color: #041218;
+	color: #fff;
+}
 .h1 {
 	text-transform: uppercase;
-	font-weight: 300;
+	font-weight: 500;
 }
 .header {
 	margin: 0;
@@ -57,13 +61,12 @@
 	cursor: pointer;
 }
 .col {
-	margin: 5px -10px 5px;
 }
 
 .col img {
 	width: 100%;
 	min-width: 200px;
-	transition: .5s;
+	transition: .8s;
 	border-radius: 10px;
 }
 
