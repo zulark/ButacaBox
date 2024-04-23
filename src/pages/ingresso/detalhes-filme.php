@@ -73,7 +73,7 @@
                 <span class="navbar-brand-logo">
                     <img class="d-none d-sm-block" src="https://cdn-icons-png.flaticon.com/512/2598/2598702.png" alt="">
                 </span>
-                <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/index.php">
+                <a href="http://127.0.0.1/ButacaBox/ButacaBox/index.php">
                     <strong class="d-none d-sm-block">BUTACABOX</strong>
                 </a>
             </div>

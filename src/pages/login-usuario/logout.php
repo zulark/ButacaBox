@@ -6,6 +6,6 @@ if (!isset($_SESSION)) {
 
 session_destroy();
 
-header("Location: http://127.0.0.1/ButacaBox/ButacaBox/src/pages/index.php");
+header("Location: http://127.0.0.1/ButacaBox/ButacaBox/index.php");
 
 ?>
