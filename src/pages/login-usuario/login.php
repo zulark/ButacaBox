@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(isset($_SESSION['id_usuario'])) {
-    header("Location: http://127.0.0.1/ButacaBox/ButacaBox/index.php");
+    header("Location: http://127.0.0.1/ButacaBox/ButacaBox/src/pages/index.php");
 }
 
 include ('../../api/db_connection.php');
@@ -33,7 +33,7 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
             $_SESSION['id_usuario'] = $funcionario['id_usuario'];
             $_SESSION['nome'] = $funcionario['nome'];
 
-            header("Location: http://127.0.0.1/ButacaBox/ButacaBox/index.php");
+            header("Location: http://127.0.0.1/ButacaBox/ButacaBox/src/pages/index.php");
 
         } else {
             $errorMessage = "Falha ao logar! E-mail ou senha incorretos";

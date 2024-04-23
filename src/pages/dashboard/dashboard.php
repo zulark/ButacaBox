@@ -66,7 +66,7 @@ include ('../../pages/login-funcionario/protect.php')
           <li>
             <hr class="dropdown-divider">
           </li>
-          <li><a class="dropdown-item" href="http://127.0.0.1/Butacabox/Butacabox/src/pages/login-funcionario/logout.php">
+          <li><a class="dropdown-item" href="../login-funcionario/logout.php">
               Encerrar Sessão
             </a></li>
         </ul>
@@ -199,7 +199,7 @@ include ('../../pages/login-funcionario/protect.php')
     integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
     crossorigin="anonymous"></script>
 
-  <script src="http://127.0.0.1/ButacaBox/ButacaBox/src/js/dashboard.js"></script>
+  <script src="../../js/dashboard.js"></script>
 
 </body>
 

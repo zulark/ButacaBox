@@ -64,7 +64,7 @@ include ('../../../pages/login-funcionario/protect.php')
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><a class="dropdown-item" href="http://127.0.0.1/Butacabox/Butacabox/src/pages/login-funcionario/logout.php">
+                    <li><a class="dropdown-item" href="../../../pages/login-funcionario/logout.php">
                             Encerrar Sessão
                         </a></li>
                 </ul>
