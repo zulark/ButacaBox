@@ -1,5 +1,5 @@
 function fetchMovieData() {
-    fetch('../api/filmes/getMovies.php')
+    fetch('http://127.0.0.1/ButacaBox/ButacaBox/src/api/filmes/getMovies.php')
         .then(response => response.json())
         .then(data => {
             const filmes_estreia = document.querySelectorAll('.filmes_estreia');
@@ -12,7 +12,7 @@ function fetchMovieData() {
             data.forEach(movie => {
                 const posterURL = movie.cartaz_filme;
                 const id = movie.id_filme;
-                const movieURL = `../pages/ingresso/detalhes-filme.html?id=${id}`;
+                const movieURL = `http://127.0.0.1/ButacaBox/ButacaBox/src/pages/ingresso/detalhes-filme.php?id=${id}`;
 
 
                 switch (movie.status_filme) {

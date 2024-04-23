@@ -2,7 +2,7 @@ const urlParams = new URLSearchParams(window.location.search);
 const movieId = urlParams.get('id');
 
 function fetchMovieData() {
-    fetch(`../../api/filmes/getMovies.php?id=${movieId}`)
+    fetch(`http://127.0.0.1/ButacaBox/Butacabox/src/api/filmes/getMovies.php?id=${movieId}`)
         .then(response => response.json())
         .then(data => {
             document.getElementById('cartaz_filme').src = data.cartaz_filme;
@@ -19,7 +19,7 @@ function fetchMovieData() {
 function fetchMovieSession(movieId) {
     const sessionContainer = document.querySelector('.card-body.text-bg-dark');
     const titulo = document.querySelector   ('h5.card-title')
-    fetch(`../../api/filmes/getMovieSession.php?id=${movieId}`)
+    fetch(`http://127.0.0.1/ButacaBox/Butacabox/src/api/filmes/getMovieSession.php?id=${movieId}`)
         .then(response => response.json())
         .then(data => {
             if (data.error) {

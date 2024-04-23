@@ -17,27 +17,49 @@
         <div class="container-fluid header d-flex justify-content-between align-items-center">
             <div style="display: flex; flex-direction: column; align-items: center;">
                 <span class="navbar-brand-logo">
-                    <img src="https://cdn-icons-png.flaticon.com/512/2598/2598702.png" alt="">
+                    <img class="d-none d-sm-block" src="https://cdn-icons-png.flaticon.com/512/2598/2598702.png" alt="">
                 </span>
                 <strong class="d-none d-sm-block">BUTACABOX</strong>
             </div>
 
             <div class="d-flex align-items-center">
-                <div class=" d-none d-sm-block svg m-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
-                        class="bi bi-person-circle" viewBox="0 0 16 16">
-                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
-                        <path fill-rule="evenodd"
-                            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
-                    </svg>
-                </div>
-                <div class="fs-2">
-                    <a class="d-xs-flex flex-direction column d-block fs-sx-1" id="loginbutton"
-                        href="login/login.html">Entrar
-                        ou
-                        <br>
-                        cadastrar-se</a>
-                </div>
+                <?php
+                session_start();
+                if (!isset($_SESSION['id_usuario'])) {
+                    echo 
+                    '
+                    <div class=" d-none d-sm-block svg m-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                            <path fill-rule="evenodd"
+                                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                         </svg>
+                    </div>
+                    <div class="fs-2">
+                        <a class="d-xs-flex flex-direction column d-block fs-sx-1" id="loginbutton" href="login-usuario/login.php">Entrar </br>ou cadastrar-se</a>
+                    </div>
+                    ';
+                } else {
+                    echo
+                        '
+                        <div class="dropdown"">
+                        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                          data-bs-toggle="dropdown" aria-expanded="false">
+                          <strong>'.$_SESSION['nome'].'</strong>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark text-small shadow dropdown-menu-left">
+                          <li><a class="dropdown-item" href="#">Perfil</a></li>
+                          <li>
+                            <hr class="dropdown-divider">
+                          </li>
+                          <li><a class="dropdown-item" href="http://127.0.0.1\ButacaBox\ButacaBox\src\pages\login-usuario\logout.php">
+                              Encerrar Sessão
+                            </a></li>
+                        </ul>
+                      </div>        
+                    ';
+                }
+                ?>
             </div>
         </div>
     </nav>
@@ -72,21 +94,21 @@
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <a href="http://localhost/ButacaBox/ButacaBox/src/pages/ingresso/detalhes-filme.html?id=16">
+                    <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/ingresso/detalhes-filme.html?id=16">
                         <img style="max-height: 543px; min-height: 500px;"
                             src="https://www.cinemark.com.br/Content/uploads/banner/banner_desk_guerra-civil_1920x550px.jpg"
                             class="d-block w-100" alt="...">
                     </a>
                 </div>
                 <div class="carousel-item">
-                    <a href="http://localhost/ButacaBox/ButacaBox/src/pages/ingresso/detalhes-filme.html?id=15">
+                    <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/ingresso/detalhes-filme.html?id=15">
                         <img style="max-height: 543px; min-height: 500px"
                             src="https://www.cinemark.com.br/Content/uploads/banner/banner_desk_jorge-da-capadocia_1920x550px.jpg"
                             class="d-block w-100" alt="...">
                     </a>
                 </div>
                 <div class="carousel-item">
-                    <a href="http://localhost/ButacaBox/ButacaBox/src/pages/ingresso/detalhes-filme.html?id=3">
+                    <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/ingresso/detalhes-filme.html?id=3">
 
                         <img style="max-height: 543px; min-height: 500px;"
                             src="https://www.cinemark.com.br/Content/uploads/banner/banner_desk_ghostbusters_apocalipse-de-gelo_1920x550px.jpg"
@@ -190,7 +212,8 @@
     <div class="container-fluid mt-5 mb-5" id="em_breve">
         <div class="container text-center">
             <p class="h1 mb-4">Em breve</p>
-            <div class="row row-cols-1 row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-3 justify-content-between">
+            <div
+                class="row row-cols-1 row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-3 justify-content-between">
                 <div class="col mb-5">
                     <div class="movie-image d-flex justify-content-center align-items-center">
                         <a href="#" class="movie-link">
@@ -566,16 +589,12 @@
     </div>
     </footer>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
-        </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
-        integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous">
-        </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
-        </script>
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"></script>
     <script src="../js/cartaz_filmes.js"></script>
 
 
