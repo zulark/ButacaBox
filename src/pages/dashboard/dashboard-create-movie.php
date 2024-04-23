@@ -1,6 +1,6 @@
 <?php
 include ('../../pages/login-funcionario/protect.php')
-?>
+    ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -10,10 +10,10 @@ include ('../../pages/login-funcionario/protect.php')
     <title>ButacaBox</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../css/dashboard.css">
+    <link rel="stylesheet" href="http://127.0.0.1/ButacaBox/ButacaBox/src/css/dashboard.css">
 </head>
 
-<body class="vh-100">
+<body>
     <main class="d-flex flex-nowrap h-100">
         <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark sidebar">
             <a href="../../../index.php"
@@ -57,7 +57,8 @@ include ('../../pages/login-funcionario/protect.php')
             <div class="dropdown">
                 <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
                     data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="https://cdn-icons-png.flaticon.com/512/5556/5556468.png" alt="" width="32" height="32" class="rounded-circle me-2">
+                    <img src="https://cdn-icons-png.flaticon.com/512/5556/5556468.png" alt="" width="32" height="32"
+                        class="rounded-circle me-2">
                     <strong><?php echo $_SESSION['nome']; ?></strong>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
@@ -65,13 +66,15 @@ include ('../../pages/login-funcionario/protect.php')
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><a class="dropdown-item" href="../login-funcionario/logout.php">Encerrar sessão</a></li>
+                    <li><a class="dropdown-item"
+                            href="http://127.0.0.1/butacabox/butacabox/src/pages/login-funcionario/logout.php">Encerrar
+                            sessão</a></li>
                 </ul>
             </div>
         </div>
         <div class="container-fluid h-100">
             <div class="d-flex flex-column h-100 d-flex align-items-center justify-content-center">
-                <div class="p-3">
+                <div class="p-5">
                     <form id="createForm" class="row g-3">
                         <div class="col-md-12">
                             <label for="titulo" class="form-label">Título</label>
@@ -117,6 +120,8 @@ include ('../../pages/login-funcionario/protect.php')
                         </div>
                         <div class="col-12">
                             <button type="submit" class="btn btn-success">Salvar</button>
+                            <div class="alert-message d-none m-2" id="alertMessage"></div>
+                            <div id="errorMessage" class="alert alert-danger d-none m-2" role="alert"></div>
                         </div>
                     </form>
                     <div class="p-3 text-end">
@@ -131,10 +136,6 @@ include ('../../pages/login-funcionario/protect.php')
                         </a>
                     </div>
                 </div>
-
-                <div class="alert-message d-none" id="alertMessage"></div>
-                <div id="errorMessage" class="alert alert-danger d-none" role="alert"></div>
-
             </div>
         </div>
     </main>
