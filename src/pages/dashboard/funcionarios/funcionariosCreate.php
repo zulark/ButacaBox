@@ -1,3 +1,6 @@
+<?php
+include ('../../../pages/login-funcionario/protect.php')
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -7,13 +10,14 @@
     <title>ButacaBox</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="dashboard.css">
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2598/2598702.png">
+    <link rel="stylesheet" href="../../../css/dashboard.css">
 </head>
 
 <body class="vh-100">
     <main class="d-flex flex-nowrap h-100">
         <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark sidebar">
-            <a href="../../../index.html"
+            <a href="../../../index.php"
                 class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                 <svg class="bi pe-none me-2" width="40" height="32">
                     <use xlink:href="#bootstrap"></use>
@@ -26,25 +30,23 @@
             <hr>
             <ul class="nav nav-pills flex-column mb-auto">
                 <li class="nav-item">
-                    <a href="dashboard.html" class="nav-link active" aria-current="page">
+                    <a href="../dashboard.php" class="nav-link text-white" aria-current="page">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-camera-reels-fill" viewBox="0 0 16 16">
-                            <path d="M6 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
-                            <path d="M9 6a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
+                            class="bi bi-camera-reels" viewBox="0 0 16 16">
+                            <path d="M6 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0M1 3a2 2 0 1 0 4 0 2 2 0 0 0-4 0" />
                             <path
-                                d="M9 6h.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 7.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 16H2a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z" />
+                                d="M9 6h.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 7.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 16H2a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2zm6 8.73V7.27l-3.5 1.555v4.35zM1 8v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1" />
+                            <path d="M9 6a3 3 0 1 0 0-6 3 3 0 0 0 0 6M7 3a2 2 0 1 1 4 0 2 2 0 0 1-4 0" />
                         </svg>
                         Filmes
                     </a>
                 </li>
                 <li>
-                    <a href="../dashboard/funcionarios/funcionarios.html" class="nav-link text-white">
+                    <a href="#" class="nav-link active">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-clipboard" viewBox="0 0 16 16">
-                            <path
-                                d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1z" />
-                            <path
-                                d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0z" />
+                            class="bi bi-clipboard-fill" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2" />
                         </svg>
                         Funcionarios
                     </a>
@@ -54,15 +56,17 @@
             <div class="dropdown">
                 <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
                     data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="https://github.com/zulark.png" alt="" width="32" height="32" class="rounded-circle me-2">
-                    <strong>Zulark</strong>
+                    <img src="https://cdn-icons-png.flaticon.com/512/5556/5556468.png" alt="" width="32" height="32" class="rounded-circle me-2">
+                    <strong><?php echo $_SESSION['nome']; ?></strong>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
                     <li><a class="dropdown-item" href="#">Perfil</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><a class="dropdown-item" href="../login.html">Encerrar sessão</a></li>
+                    <li><a class="dropdown-item" href="../../../pages/login-funcionario/logout.php">
+                            Encerrar Sessão
+                        </a></li>
                 </ul>
             </div>
         </div>
@@ -71,45 +75,23 @@
                 <div class="p-3">
                     <form id="createForm" class="row g-3">
                         <div class="col-md-12">
-                            <label for="titulo" class="form-label">Título</label>
-                            <input type="text" class="form-control" id="titulo" name="titulo">
+                            <label for="nome" class="form-label">Nome</label>
+                            <input type="text" class="form-control" id="nome" name="nome">
                         </div>
                         <div class="col-md-12">
-                            <label for="cartaz_filme" class="form-label">Cartaz do Filme</label>
-                            <input type="text" class="form-control" id="cartaz_filme" name="cartaz_filme">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email">
                         </div>
                         <div class="col-md-12">
-                            <label for="diretor" class="form-label">Diretor</label>
-                            <input type="text" class="form-control" id="diretor" name="diretor">
+                            <label for="senha" class="form-label">Senha</label>
+                            <input type="password" class="form-control" id="senha" name="senha">
                         </div>
                         <div class="col-md-12">
-                            <label for="genero" class="form-label">Gênero</label>
-                            <input type="text" class="form-control" id="genero" name="genero">
-                        </div>
-                        <div class="col-md-12">
-                            <label for="duracao" class="form-label">Duração (min)</label>
-                            <input type="number" min="1" max="999" class="form-control" id="duracao" name="duracao">
-                        </div>
-                        <div class="col-md-12">
-                            <label for="fornecedor_id" class="form-label">ID do Fornecedor</label>
-                            <input type="number" min="1" max="999" class="form-control" id="fornecedor_id"
-                                name="fornecedor_id">
-                        </div>
-                        <div class="col-12">
-                            <label for="descricao" class="form-label">Descrição</label>
-                            <textarea class="form-control" id="descricao" name="descricao"></textarea>
-                        </div>
-                        <div class="col-md-12">
-                            <label for="youtube_url" class="form-label">Link do trailer</label>
-                            <input type="text" class="form-control" id="youtube_url" name="youtube_url">
-                        </div>
-                        <div class="col-12">
-                            <label for="status_filme" class="form-label ">Status de lançamento</label>
-                            <select class="form-select form-select-md" name="status_filme" id="status_filme">
-                                <option selected disabled class="disabled">Selecionar status</option>
-                                <option value="estreia">Estreia</option>
-                                <option value="cartaz">Em cartaz</option>
-                                <option value="em_breve">Em breve</option>
+                            <label for="filial_id" class="form-label ">Filial</label>
+                            <select class="form-select form-select-md" name="filial_id" id="filial_id">
+                                <option selected disabled class="disabled">Selecionar filial</option>
+                                <option value="1">Matriz</option>
+                                <option value="2">Tarumã</option>
                             </select>
                         </div>
                         <div class="col-12">
@@ -117,7 +99,7 @@
                         </div>
                     </form>
                     <div class="p-3 text-end">
-                        <a href="dashboard.html">
+                        <a href="funcionarios.php">
                             <button class="btn btn-primary">
                                 <svg style="color: #fff;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                                     width="24" height="24" fill="currentColor">
@@ -145,20 +127,15 @@
             event.preventDefault();
 
             var formData = {
-                titulo: document.getElementById('titulo').value,
-                cartaz_filme: document.getElementById('cartaz_filme').value,
-                diretor: document.getElementById('diretor').value,
-                genero: document.getElementById('genero').value,
-                duracao: document.getElementById('duracao').value,
-                fornecedor_id: document.getElementById('fornecedor_id').value,
-                descricao: document.getElementById('descricao').value,
-                status_filme: document.getElementById('status_filme').value,
-                youtube_url: document.getElementById('youtube_url').value
+                nome: document.getElementById('nome').value,
+                email: document.getElementById('email').value,
+                senha: document.getElementById('senha').value,
+                filial_id: document.getElementById('filial_id').value,
             };
 
             var jsonData = JSON.stringify(formData);
 
-            fetch('http://localhost/ButacaBox/ButacaBox/src/api/filmes/createMovie.php', {
+            fetch('http://localhost/ButacaBox/ButacaBox/src/api/funcionarios/createEmployee.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -168,7 +145,7 @@
                 .then(response => response.json())
                 .then(data => {
                     var alertMessage = document.getElementById('alertMessage');
-                    alertMessage.innerHTML = data.success ? '<div class="alert alert-success" role="alert">Filme adicionado com sucesso!</div>' : '<div class="alert alert-danger" role="alert">Erro ao adicionar filme!</div>';
+                    alertMessage.innerHTML = data.success ? '<div class="alert alert-success" role="alert">Funcionario adicionado com sucesso!</div>' : '<div class="alert alert-danger" role="alert">Erro ao adicionar funcionario!</div>';
                     alertMessage.classList.remove('d-none');
                     if (data.success) {
                         setTimeout(() => {
@@ -182,7 +159,7 @@
                 })
                 .catch(error => {
                     var errorMessage = document.getElementById('errorMessage');
-                    errorMessage.innerHTML = 'Erro ao salvar: ' + error;
+                    errorMessage.innerHTML = 'Erro ao salvar: verifique os campos e tente novamente';
                     errorMessage.classList.remove('d-none');
                     setTimeout(() => {
                         errorMessage.classList.add('d-none');

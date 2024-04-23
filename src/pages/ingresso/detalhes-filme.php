@@ -12,13 +12,18 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="http://127.0.0.1/ButacaBox/ButacaBox/src/css/detalhes-filme.css">
 </head>
 
 
 <style>
     body {
         background-color: #041218;
+        color: #fff;
+    }
+
+    a, a:hover {
+        text-decoration: none;
         color: #fff;
     }
 
@@ -62,33 +67,55 @@
 
 <body>
 
-    <nav class="navbar bg-body-tertiary">
+    <nav class="navbar">
         <div class="container-fluid header d-flex justify-content-between align-items-center">
             <div style="display: flex; flex-direction: column; align-items: center;">
                 <span class="navbar-brand-logo">
-                    <img src="https://cdn-icons-png.flaticon.com/512/2598/2598702.png" alt="">
+                    <img class="d-none d-sm-block" src="https://cdn-icons-png.flaticon.com/512/2598/2598702.png" alt="">
                 </span>
-                <a id="logo-name" href="../index.html">
+                <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/index.php">
                     <strong class="d-none d-sm-block">BUTACABOX</strong>
                 </a>
             </div>
 
             <div class="d-flex align-items-center">
-                <div class=" d-none d-sm-block svg m-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
-                        class="bi bi-person-circle" viewBox="0 0 16 16">
-                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
-                        <path fill-rule="evenodd"
-                            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
-                    </svg>
-                </div>
-                <div class="fs-2">
-                    <a class="d-xs-flex flex-direction column d-block fs-sx-1 link-text" id="loginbutton"
-                        href="login/login.html">Entrar
-                        ou
-                        <br>
-                        cadastrar-se</a>
-                </div>
+                <?php
+                session_start();
+                if (!isset($_SESSION['id_usuario'])) {
+                    echo
+                        '
+                    <div class=" d-none d-sm-block svg m-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                            <path fill-rule="evenodd"
+                                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                         </svg>
+                    </div>
+                    <div class="fs-2">
+                        <a class="d-xs-flex flex-direction column d-block fs-sx-1" id="loginbutton" href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/login-usuario/login.php">Entrar </br>ou cadastrar-se</a>
+                    </div>
+                    ';
+                } else {
+                    echo
+                        '
+                        <div class="dropdown"">
+                        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                          data-bs-toggle="dropdown" aria-expanded="false">
+                          <strong>' . $_SESSION['nome'] . '</strong>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark text-small shadow dropdown-menu-left">
+                          <li><a class="dropdown-item" href="#">Perfil</a></li>
+                          <li>
+                            <hr class="dropdown-divider">
+                          </li>
+                          <li><a class="dropdown-item" href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/login-usuario/logout.php">
+                              Encerrar Sessão
+                            </a></li>
+                        </ul>
+                      </div>        
+                    ';
+                }
+                ?>
             </div>
         </div>
     </nav>
@@ -298,7 +325,7 @@
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
 
-    <script async src="detalhes-filme.js"></script>
+    <script async src="http://127.0.0.1/ButacaBox/ButacaBox/src/js/detalhes-filme.js"></script>
 
 </body>
 

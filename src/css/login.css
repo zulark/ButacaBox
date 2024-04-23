@@ -9,25 +9,16 @@
 }
 
 body {
-    background-color: #18122B;
-    height: 100vh;
-}
-
-.form-login {
-    background-color: #393053;
-    color: #EEEEEE;
-    border-radius: 10px;
 }
 
 form a {
     font-weight: 500;
-    color: #ED7D31;
+    color: #fff;
     text-decoration: none;
     text-align: center;
 }
 
 .btn {
-    background-color: #ED7D31;
     color: #EEEEEE;
 }
 
@@ -38,11 +29,6 @@ form a {
     align-items: center;
     justify-content: space-between;
     padding-inline: 45px;
-}
-
-nav {
-    background-color: #ED7D31;
-    color: #F6F1EE;
 }
 
 .navbar-brand-logo img {
