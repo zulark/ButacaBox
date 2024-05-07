@@ -34,8 +34,13 @@ include ('../../../pages/login-funcionario/protect.php')
                         Filmes
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/sessoes/sessoes.php" class="nav-link text-white">
+                        Sessões
+                    </a>
+                </li>
                 <li>
-                    <a href="../funcionarios/funcionarios.php" class="nav-link text-white">
+                    <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/funcionarios/funcionarios.php" class="nav-link text-white">
                         Funcionarios
                     </a>
                 </li>
@@ -130,13 +135,14 @@ include ('../../../pages/login-funcionario/protect.php')
                     alertMessage.innerHTML = data.success ? '<div class="alert alert-success" role="alert">Sala adicionada com sucesso!</div>' : '<div class="alert alert-danger" role="alert">Erro ao adicionar sala!</div>';
                     alertMessage.classList.remove('d-none');
                     if (data.success) {
+                        document.getElementById('createForm').reset();
                         setTimeout(() => {
-                            document.getElementById('createForm').reset();
-                        }, 500);
+                            alertMessage.classList.add('d-none');
+                        }, 2000);
                     } else {
                         setTimeout(() => {
                             alertMessage.classList.add('d-none');
-                        }, 3000);
+                        }, 2000);
                     }
                 })
                 .catch(error => {

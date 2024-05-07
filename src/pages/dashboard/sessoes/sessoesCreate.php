@@ -35,13 +35,13 @@ include ('../../../pages/login-funcionario/protect.php')
                     </a>
                 </li>
                 <li>
-                    <a href="funcionarios.php" class="nav-link active" aria-current="page">
+                    <a href="../funcionarios/funcionarios.php" class="nav-link text-white">
                         Funcionarios
                     </a>
                 </li>
                 <li>
-                    <a href="../salas/salas.php"
-                        class="nav-link text-white">
+                    <a href="salas.php"
+                        class="nav-link active"  aria-current="page">
                         Salas
                     </a>
                 </li>
@@ -75,27 +75,15 @@ include ('../../../pages/login-funcionario/protect.php')
                             <input type="text" class="form-control" id="nome" name="nome">
                         </div>
                         <div class="col-md-12">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" name="email">
-                        </div>
-                        <div class="col-md-12">
-                            <label for="senha" class="form-label">Senha</label>
-                            <input type="password" class="form-control" id="senha" name="senha">
-                        </div>
-                        <div class="col-md-12">
-                            <label for="filial_id" class="form-label ">Filial</label>
-                            <select class="form-select form-select-md" name="filial_id" id="filial_id">
-                                <option selected disabled class="disabled">Selecionar filial</option>
-                                <option value="1">Matriz</option>
-                                <option value="2">Tarumã</option>
-                            </select>
+                            <label for="capacidade" class="form-label">Capacidade</label>
+                            <input type="capacidade" class="form-control" id="capacidade" name="capacidade">
                         </div>
                         <div class="col-12">
                             <button type="submit" class="btn btn-success">Salvar</button>
                         </div>
                     </form>
                     <div class="p-3 text-end">
-                        <a href="funcionarios.php">
+                        <a href="salas.php">
                             <button class="btn btn-primary">
                                 <svg style="color: #fff;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                                     width="24" height="24" fill="currentColor">
@@ -124,14 +112,12 @@ include ('../../../pages/login-funcionario/protect.php')
 
             var formData = {
                 nome: document.getElementById('nome').value,
-                email: document.getElementById('email').value,
-                senha: document.getElementById('senha').value,
-                filial_id: document.getElementById('filial_id').value,
+                capacidade: document.getElementById('capacidade').value,
             };
 
             var jsonData = JSON.stringify(formData);
 
-            fetch('http://127.0.0.1/ButacaBox/ButacaBox/src/api/funcionarios/createEmployee.php', {
+            fetch('http://127.0.0.1/ButacaBox/ButacaBox/src/api/salas/createMovieRoom.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -141,7 +127,7 @@ include ('../../../pages/login-funcionario/protect.php')
                 .then(response => response.json())
                 .then(data => {
                     var alertMessage = document.getElementById('alertMessage');
-                    alertMessage.innerHTML = data.success ? '<div class="alert alert-success" role="alert">Funcionario adicionado com sucesso!</div>' : '<div class="alert alert-danger" role="alert">Erro ao adicionar funcionario!</div>';
+                    alertMessage.innerHTML = data.success ? '<div class="alert alert-success" role="alert">Sala adicionada com sucesso!</div>' : '<div class="alert alert-danger" role="alert">Erro ao adicionar sala!</div>';
                     alertMessage.classList.remove('d-none');
                     if (data.success) {
                         document.getElementById('createForm').reset();

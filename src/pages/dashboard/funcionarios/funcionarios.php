@@ -30,25 +30,24 @@ include ('../../../pages/login-funcionario/protect.php')
       <hr>
       <ul class="nav nav-pills flex-column mb-auto">
         <li class="nav-item">
-          <a href="../dashboard.php" class="nav-link text-white" aria-current="page">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-              class="bi bi-camera-reels" viewBox="0 0 16 16">
-              <path d="M6 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0M1 3a2 2 0 1 0 4 0 2 2 0 0 0-4 0" />
-              <path
-                d="M9 6h.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 7.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 16H2a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2zm6 8.73V7.27l-3.5 1.555v4.35zM1 8v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1" />
-              <path d="M9 6a3 3 0 1 0 0-6 3 3 0 0 0 0 6M7 3a2 2 0 1 1 4 0 2 2 0 0 1-4 0" />
-            </svg>
+          <a href="../dashboard.php" class="nav-link text-white">
             Filmes
           </a>
         </li>
+        <li class="nav-item">
+          <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/sessoes/sessoes.php" class="nav-link text-white">
+            Sessões
+          </a>
+        </li>
         <li>
-          <a href="#" class="nav-link active">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-              class="bi bi-clipboard-fill" viewBox="0 0 16 16">
-              <path fill-rule="evenodd"
-                d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2V14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3.5a2 2 0 0 1 2-2" />
-            </svg>
+          <a href="funcionarios.php" class="nav-link active" aria-current="page">
             Funcionarios
+          </a>
+        </li>
+        <li>
+          <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/salas/salas.php"
+            class="nav-link text-white">
+            Salas
           </a>
         </li>
       </ul>
@@ -65,7 +64,8 @@ include ('../../../pages/login-funcionario/protect.php')
           <li>
             <hr class="dropdown-divider">
           </li>
-          <li><a class="dropdown-item" href="http://127.0.0.1/butacabox/butacabox/src/pages/login-funcionario/logout.php">
+          <li><a class="dropdown-item"
+              href="http://127.0.0.1/butacabox/butacabox/src/pages/login-funcionario/logout.php">
               Encerrar Sessão
             </a></li>
         </ul>

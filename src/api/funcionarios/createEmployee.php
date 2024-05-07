@@ -14,16 +14,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = mysqli_real_escape_string($conn, $data['nome']);
     $email = mysqli_real_escape_string($conn, $data['email']);
     $senha = mysqli_real_escape_string($conn, $data['senha']);
-    $filial_id = mysqli_real_escape_string($conn, $data['filial_id']);
+    $senhaCriptografada = password_hash($senha, PASSWORD_DEFAULT);
+    $filial_id = intval($data['filial_id']);
 
     $sql = "INSERT INTO funcionarios (nome, email, senha, filial_id) 
-            VALUES ('$nome', '$email', '$senha', '$filial_id')";
+            VALUES ('$nome', '$email', '$senhaCriptografada', '$filial_id')";
 
     if ($conn->query($sql) === TRUE) {
         $new_employee = [
             'nome' => $nome,
             'email' => $email,
-            'senha' => $senha,
+            'senha' => $senhaCriptografada,
             'filial_id' => $filial_id,
         ];
         echo json_encode(['success' => true, 'message' => 'Funcionário criado com sucesso', 'employee' => $new_employee]);

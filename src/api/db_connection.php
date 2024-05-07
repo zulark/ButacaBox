@@ -2,7 +2,7 @@
 $hostName = "localhost";
 $username = "root";
 $password = "";
-$database = "butacabox";
+$database = "butacabox_v3";
 
 // Create connection
 $conn = new mysqli($hostName, $username, $password, $database);

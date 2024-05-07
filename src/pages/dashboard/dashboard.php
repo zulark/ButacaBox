@@ -14,7 +14,7 @@ include ('../../pages/login-funcionario/protect.php')
   <link rel="stylesheet" href="http://127.0.0.1/ButacaBox/ButacaBox/src/css/dashboard.css">
 </head>
 
-<body>
+<body class="vh-100">
   <main class="d-flex flex-nowrap h-100">
     <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark sidebar">
       <a href="../../../index.php"
@@ -31,26 +31,24 @@ include ('../../pages/login-funcionario/protect.php')
       <ul class="nav nav-pills flex-column mb-auto">
         <li class="nav-item">
           <a href="dashboard.php" class="nav-link active" aria-current="page">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-              class="bi bi-camera-reels-fill" viewBox="0 0 16 16">
-              <path d="M6 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
-              <path d="M9 6a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
-              <path
-                d="M9 6h.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 7.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 16H2a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z" />
-            </svg>
             Filmes
           </a>
         </li>
+        <li class="nav-item">
+          <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/sessoes/sessoes.php" class="nav-link text-white">
+            Sessões
+          </a>
+        </li>
         <li>
-          <a href="../dashboard/funcionarios/funcionarios.php" class="nav-link text-white">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard"
-              viewBox="0 0 16 16">
-              <path
-                d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1z" />
-              <path
-                d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0z" />
-            </svg>
+          <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/funcionarios/funcionarios.php"
+            class="nav-link text-white">
             Funcionarios
+          </a>
+        </li>
+        <li>
+          <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/salas/salas.php"
+            class="nav-link text-white">
+            Salas
           </a>
         </li>
       </ul>
@@ -58,7 +56,8 @@ include ('../../pages/login-funcionario/protect.php')
       <div class="dropdown">
         <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
           data-bs-toggle="dropdown" aria-expanded="false">
-          <img src="https://cdn-icons-png.flaticon.com/512/5556/5556468.png" alt="" width="32" height="32" class="rounded-circle me-2">
+          <img src="https://cdn-icons-png.flaticon.com/512/5556/5556468.png" alt="" width="32" height="32"
+            class="rounded-circle me-2">
           <strong><?php echo $_SESSION['nome']; ?></strong>
         </a>
         <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
@@ -66,13 +65,13 @@ include ('../../pages/login-funcionario/protect.php')
           <li>
             <hr class="dropdown-divider">
           </li>
-          <li><a class="dropdown-item" href="http://127.0.0.1/butacabox/butacabox/src/pages/login-funcionario/logout.php">
+          <li><a class="dropdown-item"
+              href="http://127.0.0.1/butacabox/butacabox/src/pages/login-funcionario/logout.php">
               Encerrar Sessão
             </a></li>
         </ul>
       </div>
     </div>
-
     <div class="container-fluid h-100">
       <div class="d-flex flex-column h-100">
         <div class="p-3">

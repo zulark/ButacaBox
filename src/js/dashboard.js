@@ -16,7 +16,7 @@ function fetchMovies() {
         })
         .catch(error => console.error(error));
 }
-function displayMovies(movies) {
+function displayMovies(movies) {    
     var tableBody = document.getElementById('movieTableBody');
     tableBody.innerHTML = '';
     movies.forEach(function (movie) {
@@ -43,7 +43,7 @@ function searchMovies() {
     var searchValue = document.getElementById('searchInput').value.trim();
     if (searchValue !== '') {
         var filteredMovies = movies.filter(function (movie) {
-            return movie.id_filme.toString().indexOf(searchValue) !== -1 || movie.titulo.toLowerCase().includes(searchValue);
+            return movie.id_filme.toString().indexOf(searchValue) !== -1 || movie.titulo.toLowerCase().includes(searchValue) || movie.status_filme.toLowerCase().includes(searchValue) ;
         });
         displayMovies(filteredMovies);
     } else {

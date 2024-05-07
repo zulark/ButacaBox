@@ -28,29 +28,30 @@ include ('../../../pages/login-funcionario/protect.php')
         <strong style="font-size: .8em;">BUTACABOX</strong>
       </a>
       <hr>
-           <ul class="nav nav-pills flex-column mb-auto">
-                <li class="nav-item">
-                    <a href="../dashboard.php" class="nav-link text-white">
-                        Filmes
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/sessoes/sessoes.php" class="nav-link text-white">
-                        Sessões
-                    </a>
-                </li>
-                <li>
-                    <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/funcionarios/funcionarios.php" class="nav-link text-white">
-                        Funcionarios
-                    </a>
-                </li>
-                <li>
-                    <a href="salas.php"
-                        class="nav-link active"  aria-current="page">
-                        Salas
-                    </a>
-                </li>
-            </ul>
+      <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+          <a href="../dashboard.php" class="nav-link text-white">
+            Filmes
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="sessoes.php"
+            class="nav-link active" aria-current="page">
+            Sessões
+          </a>
+        </li>
+        <li>
+          <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/funcionarios/funcionarios.php"
+            class="nav-link text-white">
+            Funcionarios
+          </a>
+        </li>
+        <li>
+          <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/salas/salas.php" class="nav-link text-white">
+            Salas
+          </a>
+        </li>
+      </ul>
       <hr>
       <div class="dropdown">
         <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
@@ -82,12 +83,16 @@ include ('../../../pages/login-funcionario/protect.php')
             <thead>
               <tr>
                 <th scope="col">ID</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Capacidade</th>
+                <th scope="col">Data</th>
+                <th scope="col">Horário</th>
+                <th scope="col">Filme</th>
+                <th scope="col">Sala</th>
+                <th scope="col">Filial</th>
+                <th scope="col">Preço do ingresso</th>
                 <th scope="col" class="text-center" style="width: 185px;">Ações</th>
               </tr>
             </thead>
-            <tbody id="movieRoomTableBody">
+            <tbody id="movieSessionTableBody">
             </tbody>
           </table>
         </div>
@@ -123,22 +128,39 @@ include ('../../../pages/login-funcionario/protect.php')
     </div>
 
     <!-- Modal de Edição -->
-    <div class="modal fade" id="editMovieRoomModal" tabindex="-1" aria-labelledby="editMovieMovieMovieRoomModalLabel" aria-hidden="true">
+    <div class="modal fade" id="editMovieSessionModal" tabindex="-1"
+      aria-labelledby="editMovieMovieMovieSessionModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="editMovieRoomModalLabel">Editar Sala</h5>
+            <h5 class="modal-title" id="editMovieSessionModalLabel">Editar Sala</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <form id="editForm">
-              <div class="mb-3">
-                <label for="nome" class="form-label">Nome</label>
-                <input type="text" class="form-control" id="nome" name="nome">
+            <div class="mb-3">
+                <label for="data_sessao" class="form-label">Data</label>
+                <input type="text" class="form-control" id="data_sessao" name="data_sessao">
               </div>
               <div class="mb-3">
-                <label for="capacidade" class="form-label">Quantidade de assentos</label>
-                <input type="number" class="form-control" id="capacidade" name="capacidade">
+                <label for="hora_sessao" class="form-label">Hora</label>
+                <input type="text" class="form-control" id="hora_sessao" name="hora_sessao">
+              </div>
+              <div class="mb-3">
+                <label for="nome_filme" class="form-label">Filme</label>
+                <input type="text" class="form-control" id="nome_filme" name="nome_filme">
+              </div>
+              <div class="mb-3">
+                <label for="nome_sala" class="form-label">Sala</label>
+                <input type="text" class="form-control" id="nome_sala" name="nome_sala">
+              </div>
+              <div class="mb-3">
+                <label for="nome_filial" class="form-label">Filial</label>
+                <input type="text" class="form-control" id="nome_filial" name="nome_filial">
+              </div>
+              <div class="mb-3">
+                <label for="preco_ingresso" class="form-label">Preço do ingresso</label>
+                <input type="text" class="form-control" id="preco_ingresso" name="preco_ingresso">
               </div>
             </form>
           </div>
@@ -160,7 +182,7 @@ include ('../../../pages/login-funcionario/protect.php')
     integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
     crossorigin="anonymous"></script>
 
-  <script src="../../../js/salas.js"></script>
+  <script src="../../../js/sessoes.js"></script>
 
 </body>
 

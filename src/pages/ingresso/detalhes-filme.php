@@ -15,56 +15,6 @@
     <link rel="stylesheet" href="http://127.0.0.1/ButacaBox/ButacaBox/src/css/detalhes-filme.css">
 </head>
 
-
-<style>
-    body {
-        background-color: #041218;
-        color: #fff;
-    }
-
-    a, a:hover {
-        text-decoration: none;
-        color: #fff;
-    }
-
-    .session-table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-bottom: 20px;
-    }
-
-    .session-table caption {
-        font-size: 1.2em;
-        font-weight: bold;
-        margin-bottom: 10px;
-    }
-
-    .card.sessoes {
-        border: solid #E8751A 3px;
-    }
-
-    .session-table th,
-    .session-table td {
-        padding: 8px;
-        text-align: left;
-        border-bottom: 3px solid #994d0f;
-    }
-
-    .session-table button {
-        background-color: #E8751A;
-        color: #fff;
-    }
-
-    .session-table button:hover {
-        background-color: #cf6a17;
-    }
-
-    .modal-header,
-    .modal-footer {
-        border-color: #444;
-    }
-</style>
-
 <body>
 
     <nav class="navbar">
@@ -82,38 +32,40 @@
                 <?php
                 session_start();
                 if (!isset($_SESSION['id_usuario'])) {
+                    echo '<script>window.id_usuario = null;</script>';
                     echo
                         '
                     <div class=" d-none d-sm-block svg m-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
-                            <path fill-rule="evenodd"
-                                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
-                         </svg>
-                    </div>
-                    <div class="fs-2">
-                        <a class="d-xs-flex flex-direction column d-block fs-sx-1" id="loginbutton" href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/login-usuario/login.php">Entrar </br>ou cadastrar-se</a>
-                    </div>
-                    ';
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                    <path fill-rule="evenodd"
+                                    d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                                    </svg>
+                                    </div>
+                                    <div class="fs-2">
+                                    <a class="d-xs-flex flex-direction column d-block fs-sx-1" id="loginbutton" href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/login-usuario/login.php">Entrar </br>ou cadastrar-se</a>
+                                    </div>
+                                    ';
                 } else {
+                    echo '<script>window.id_usuario = ' . $_SESSION['id_usuario'] . ';</script>';
                     echo
                         '
-                        <div class="dropdown"">
-                        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
-                          data-bs-toggle="dropdown" aria-expanded="false">
-                          <strong>' . $_SESSION['nome'] . '</strong>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-dark text-small shadow dropdown-menu-left">
-                          <li><a class="dropdown-item" href="#">Perfil</a></li>
-                          <li>
-                            <hr class="dropdown-divider">
-                          </li>
-                          <li><a class="dropdown-item" href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/login-usuario/logout.php">
-                              Encerrar Sessão
-                            </a></li>
-                        </ul>
-                      </div>        
-                    ';
+                            <div class="dropdown"">
+                            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <strong>' . $_SESSION['nome'] . '</strong>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark text-small shadow dropdown-menu-left">
+                            <li><a class="dropdown-item" href="#">Perfil</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/login-usuario/logout.php">
+                                Encerrar Sessão
+                                </a></li>
+                            </ul>
+                        </div>        
+                        ';
                 }
                 ?>
             </div>
@@ -168,27 +120,21 @@
                                         <div>
                                             <h6 class="my-0 movie-title"></h6>
                                             <small class="text-muted movie-filial text-uppercase"></small><br>
-                                            <small class="fw-800 movie-date"></small>
-                                            <small class="fw-800 movie-hora"></small>
-                                            <small class="fw-800 movie-sala"></small>
+                                            <small class="text-muted movie-date"></small>
+                                            <small class="text-muted movie-hora"></small>
+                                            <small class="text-muted movie-sala"></small>
                                         </div>
-                                        <span class="text-muted preco_ingresso"></span>
+                                        <span class="fw-bold preco_ingresso"></span>
                                     </li>
                                     <li class="list-group-item d-flex justify-content-between">
-                                        <span>Quantidade</span>
+                                        <span>Quantidade:</span>
                                         <strong class="quantidade_ingresso"></strong>
                                     </li>
                                     <li class="list-group-item d-flex justify-content-between">
-                                        <span>Total (BRL)</span>
+                                        <span>Total (BRL):</span>
                                         <strong class="preco_total"></strong>
                                     </li>
                                 </ul>
-                                <form class="card p-2">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Código promocional">
-                                        <button type="submit" class="btn btn-secondary">Resgatar</button>
-                                    </div>
-                                </form>
                             </div>
                             <div class="col-md-7 col-lg-8">
                                 <form class="needs-validation" novalidate="">
@@ -199,39 +145,9 @@
                                     <div class="row gy-3">
                                         <!-- Layout de grade para a seleção de assentos -->
                                         <div class="col text-center">
-                                            <!-- Corredor da esquerda -->
-                                            <button type="button"
-                                                class="btn btn-outline-secondary btn-seat p-2">A1</button>
-                                            <button type="button"
-                                                class="btn btn-outline-secondary btn-seat p-2">A2</button>
+
                                             <!-- Assentos -->
-                                            <button type="button"
-                                                class="btn btn-outline-secondary btn-seat p-2">A3</button>
-                                            <button type="button"
-                                                class="btn btn-outline-secondary btn-seat p-2">A4</button>
-                                            <!-- Corredor central -->
-                                            <div class="w-100"></div> <!-- Cria uma nova linha -->
-                                            <button type="button"
-                                                class="btn btn-outline-secondary btn-seat p-2">B1</button>
-                                            <button type="button"
-                                                class="btn btn-outline-secondary btn-seat p-2">B2</button>
-                                            <!-- Assentos -->
-                                            <button type="button"
-                                                class="btn btn-outline-secondary btn-seat p-2">B3</button>
-                                            <button type="button"
-                                                class="btn btn-outline-secondary btn-seat p-2">B4</button>
-                                            <!-- Corredor direito -->
-                                            <div class="w-100"></div> <!-- Cria uma nova linha -->
-                                            <button type="button"
-                                                class="btn btn-outline-secondary btn-seat p-2">C1</button>
-                                            <button type="button"
-                                                class="btn btn-outline-secondary btn-seat p-2">C2</button>
-                                            <!-- Assentos -->
-                                            <button type="button"
-                                                class="btn btn-outline-secondary btn-seat p-2">C3</button>
-                                            <button type="button"
-                                                class="btn btn-outline-secondary btn-seat p-2">C4</button>
-                                            <!-- Adicione mais botões conforme necessário -->
+                                            <div class="seat-container"></div>
                                         </div>
                                     </div>
 
@@ -242,17 +158,17 @@
                                     <div class="my-3">
                                         <div class="form-check">
                                             <input id="credit" name="paymentMethod" type="radio"
-                                                class="form-check-input" checked="" required="">
+                                                class="form-check-input" checked="">
                                             <label class="form-check-label" for="credit">Crédito</label>
                                         </div>
                                         <div class="form-check">
-                                            <input id="debit" name="paymentMethod" type="radio" class="form-check-input"
-                                                required="">
+                                            <input id="debit" name="paymentMethod" type="radio"
+                                                class="form-check-input">
                                             <label class="form-check-label" for="debit">Débito</label>
                                         </div>
                                         <div class="form-check">
                                             <input id="paypal" name="paymentMethod" type="radio"
-                                                class="form-check-input" required="">
+                                                class="form-check-input">
                                             <label class="form-check-label" for="paypal">PIX</label>
                                         </div>
                                     </div>
@@ -298,7 +214,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <hr class="my-4">
+                                    <hr class="m">
 
                                     <div class="d-flex flex-direction row px-2">
                                         <button id="continuar-compra" class="btn btn-secondary btn-lg mb-2"

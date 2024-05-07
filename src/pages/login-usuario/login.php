@@ -1,46 +1,40 @@
 <?php
 session_start();
-if(isset($_SESSION['id_usuario'])) {
+if (isset($_SESSION['id_usuario'])) {
     header("Location: http://127.0.0.1/ButacaBox/ButacaBox/src/pages/index.php");
 }
 
 include ('../../api/db_connection.php');
 
-if (isset($_POST['email']) || isset($_POST['senha'])) {
+if (isset($_POST['email']) && isset($_POST['senha'])) {
 
-    if (strlen($_POST['email']) == 0) {
+    if (empty($_POST['email'])) {
         $errorMessage = "Preencha seu e-mail";
-    } else if (strlen($_POST['senha']) == 0) {
+    } else if (empty($_POST['senha'])) {
         $errorMessage = "Preencha sua senha";
     } else {
 
         $email = $conn->real_escape_string($_POST['email']);
         $senha = $conn->real_escape_string($_POST['senha']);
 
-        $sql_code = "SELECT * FROM usuarios WHERE email = '$email' AND senha = '$senha'";
+        $sql_code = "SELECT * FROM usuarios WHERE email = '$email'";
         $sql_query = $conn->query($sql_code) or die("Falha na execução do código SQL: " . $conn->error);
 
-        $quantidade = $sql_query->num_rows;
-
-        if ($quantidade == 1) {
-
-            $funcionario = $sql_query->fetch_assoc();
-
-            if (!isset($_SESSION)) {
-                session_start();
+        if ($sql_query->num_rows == 1) {
+            $usuario = $sql_query->fetch_assoc();
+            if (password_verify($senha, $usuario['senha'])) {
+                $_SESSION['id_usuario'] = $usuario['id_usuario'];
+                $_SESSION['nome'] = $usuario['nome'];
+                header("Location: http://127.0.0.1/ButacaBox/ButacaBox/src/pages/index.php");
+                exit();
+            } else {
+                $errorMessage = "Falha ao logar! E-mail ou senha incorretos";
             }
-
-            $_SESSION['id_usuario'] = $funcionario['id_usuario'];
-            $_SESSION['nome'] = $funcionario['nome'];
-
-            header("Location: http://127.0.0.1/ButacaBox/ButacaBox/src/pages/index.php");
-
-        } else {
+        } 
+        else {
             $errorMessage = "Falha ao logar! E-mail ou senha incorretos";
         }
-
     }
-
 }
 ?>
 
@@ -99,7 +93,7 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
                         </div>
                         <div class="form-group d-md-flex">
                             <div class="w-50 text-start">
-                                <a class="break" href="#">Não é cadastrado? Registre-se</a>
+                                <a class="break" href="register.php">Não é cadastrado? Registre-se</a>
                             </div>
                             <div class="w-50 text-end">
                                 <a class="break" href="#">Esqueci minha senha</a>
@@ -113,9 +107,8 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
 
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-        crossorigin="anonymous">
-    </script>
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
+        </script>
 
 </body>
 
