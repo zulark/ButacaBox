@@ -7,13 +7,11 @@ include '../db_connection.php';
 
 if (isset($_GET['id'])) {
     $id_filme = intval($_GET['id']);
-    $sql = "SELECT s.id_sessao, s.data_sessao, s.hora_sessao, salas.nome AS nome_sala, filmes.titulo AS nome_filme, filiais.nome AS nome_filial, s.preco_ingresso, assento_sala.id_assento, assento_sala.numeracao, IFNULL(assento_sessao.disponibilidade, 1) AS disponibilidade
+    $sql = "SELECT s.id_sessao, s.data_sessao, s.hora_sessao, salas.nome AS nome_sala, salas.capacidade AS capacidade_sala, filmes.titulo AS nome_filme, filiais.id_filial, filiais.nome AS nome_filial, s.preco_ingresso
             FROM sessoes AS s 
             INNER JOIN salas ON s.sala_id = salas.id_sala 
             INNER JOIN filmes ON s.filme_id = filmes.id_filme 
             INNER JOIN filiais ON s.filial_id = filiais.id_filial 
-            LEFT JOIN assento_sala ON s.sala_id = assento_sala.sala_id
-            LEFT JOIN assento_sessao ON assento_sala.id_assento = assento_sessao.id_assento AND s.id_sessao = assento_sessao.id_sessao
             WHERE s.filme_id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $id_filme);
@@ -23,70 +21,66 @@ if (isset($_GET['id'])) {
     if ($result->num_rows > 0) {
         $sessions = array();
         while ($row = $result->fetch_assoc()) {
-            $session_id = $row['id_sessao'];
-            if (!isset($sessions[$session_id])) {
-                $sessions[$session_id] = array(
-                    "id_sessao" => $session_id,
-                    "data_sessao" => $row['data_sessao'],
-                    "hora_sessao" => $row['hora_sessao'],
-                    "nome_sala" => $row['nome_sala'],
-                    "nome_filme" => $row['nome_filme'],
-                    "nome_filial" => $row['nome_filial'],
-                    "preco_ingresso" => $row['preco_ingresso'],
-                    "assentos_disponiveis" => array()
-                );
-            }
-            if ($row['id_assento'] !== null) {
-                $sessions[$session_id]["assentos_disponiveis"][] = array(
-                    "id_assento" => $row['id_assento'],
-                    "numeracao" => $row['numeracao'],
-                    "disponibilidade" => $row['disponibilidade']
-                );
-            }
+            $sql_check_availability = "SELECT SUM(qntd_ingressos) AS assentos_ocupados FROM vendas WHERE id_sessao = ?";
+            $stmt_check_availability = $conn->prepare($sql_check_availability);
+            $stmt_check_availability->bind_param("i", $row['id_sessao']);
+            $stmt_check_availability->execute();
+            $result_check_availability = $stmt_check_availability->get_result();
+            $row_check_availability = $result_check_availability->fetch_assoc();
+            $assentos_ocupados = $row_check_availability['assentos_ocupados'] ?? 0;
+            $assentos_disponiveis = $row['capacidade_sala'] - $assentos_ocupados;
+            $sessions[] = array(
+                "id_sessao" => $row['id_sessao'],
+                "id_filial" => $row['id_filial'],
+                "nome_filial" => $row['nome_filial'],
+                "nome_sala" => $row['nome_sala'],
+                "capacidade_sala" => $row['capacidade_sala'],
+                "assentos_disponiveis" => $assentos_disponiveis,
+                "data_sessao" => $row['data_sessao'],
+                "hora_sessao" => $row['hora_sessao'],
+                "nome_filme" => $row['nome_filme'],
+                "preco_ingresso" => $row['preco_ingresso']
+            );
         }
-        echo json_encode(array_values($sessions));
+        echo json_encode($sessions);
     } else {
         echo json_encode(['error' => 'Sessões não encontradas para o filme com o ID fornecido']);
     }
 } else {
-    $sql = "SELECT s.id_sessao, s.data_sessao, s.hora_sessao, salas.nome AS nome_sala, filmes.titulo AS nome_filme, filiais.nome AS nome_filial, s.preco_ingresso, assento_sala.id_assento, assento_sala.numeracao, IFNULL(assento_sessao.disponibilidade, 1) AS disponibilidade
+    $sql = "SELECT s.id_sessao, s.data_sessao, s.hora_sessao, salas.nome AS nome_sala, salas.capacidade AS capacidade_sala, filmes.titulo AS nome_filme, filiais.id_filial, filiais.nome AS nome_filial, s.preco_ingresso
             FROM sessoes AS s 
             INNER JOIN salas ON s.sala_id = salas.id_sala 
             INNER JOIN filmes ON s.filme_id = filmes.id_filme 
-            INNER JOIN filiais ON s.filial_id = filiais.id_filial 
-            LEFT JOIN assento_sala ON s.sala_id = assento_sala.sala_id
-            LEFT JOIN assento_sessao ON assento_sala.id_assento = assento_sessao.id_assento AND s.id_sessao = assento_sessao.id_sessao";
+            INNER JOIN filiais ON s.filial_id = filiais.id_filial";
     $result = $conn->query($sql);
-
     if ($result) {
         $movie_sessions = array();
         while ($row = $result->fetch_assoc()) {
-            $session_id = $row['id_sessao'];
-            if (!isset($movie_sessions[$session_id])) {
-                $movie_sessions[$session_id] = array(
-                    "id_sessao" => $session_id,
-                    "data_sessao" => $row['data_sessao'],
-                    "hora_sessao" => $row['hora_sessao'],
-                    "nome_sala" => $row['nome_sala'],
-                    "nome_filme" => $row['nome_filme'],
-                    "nome_filial" => $row['nome_filial'],
-                    "preco_ingresso" => $row['preco_ingresso'],
-                    "assentos_disponiveis" => array()
-                );
-            }
-            if ($row['id_assento'] !== null) {
-                $movie_sessions[$session_id]["assentos_disponiveis"][] = array(
-                    "id_assento" => $row['id_assento'],
-                    "numeracao" => $row['numeracao'],
-                    "disponibilidade" => $row['disponibilidade']
-                );
-            }
+            $sql_check_availability = "SELECT SUM(qntd_ingressos) AS assentos_ocupados FROM vendas WHERE id_sessao = ?";
+            $stmt_check_availability = $conn->prepare($sql_check_availability);
+            $stmt_check_availability->bind_param("i", $row['id_sessao']);
+            $stmt_check_availability->execute();
+            $result_check_availability = $stmt_check_availability->get_result();
+            $row_check_availability = $result_check_availability->fetch_assoc();
+            $assentos_ocupados = $row_check_availability['assentos_ocupados'] ?? 0;
+            $assentos_disponiveis = $row['capacidade_sala'] - $assentos_ocupados;
+            $movie_sessions[] = array(
+                "id_sessao" => $row['id_sessao'],
+                "id_filial" => $row['id_filial'],
+                "nome_filial" => $row['nome_filial'],
+                "nome_sala" => $row['nome_sala'],
+                "capacidade_sala" => $row['capacidade_sala'],
+                "assentos_disponiveis" => $assentos_disponiveis,
+                "data_sessao" => $row['data_sessao'],
+                "hora_sessao" => $row['hora_sessao'],
+                "nome_filme" => $row['nome_filme'],
+                "preco_ingresso" => $row['preco_ingresso']
+            );
         }
-        echo json_encode(array_values($movie_sessions));
+        echo json_encode($movie_sessions);
     } else {
         echo json_encode(['error' => 'Nenhuma sessão encontrada']);
     }
 }
-
 $conn->close();
 ?>

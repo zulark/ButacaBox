@@ -1,21 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
-
-    let numberOfSelectedSeats = 0;
-    let selectedSeatIds = [];
-    let currentSessionData;
-
     const urlParams = new URLSearchParams(window.location.search);
     const movieId = urlParams.get('id');
-    function resetSelection() {
-        numberOfSelectedSeats = 0;
-        document.querySelector('.preco_total').innerText = 'R$0';
-        document.querySelector('.quantidade_ingresso').innerText = '0x';
-    }
-
-    $('#buyTicketModalCenter').on('hidden.bs.modal', function () {
-        resetSelection();
-    });
-
     function fetchMovieData() {
         fetch(`http://127.0.0.1/ButacaBox/Butacabox/src/api/filmes/getMovies.php?id=${movieId}`)
             .then(response => response.json())
@@ -28,9 +13,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.getElementById('descricao').innerText = data.descricao;
                 document.querySelector('.youtube-video').innerHTML = `<iframe width="560" height="315" src="${data.youtube_url}" title="YouTube video player" frameborder="0" allowfullscreen></iframe>`;
             })
-            .catch(error => console.error('Error:', error));
+        .catch(error => console.error('Error:', error));
     }
-
     function fetchMovieSession(movieId) {
         const sessionContainer = document.querySelector('.card-body.text-bg-dark');
         const titulo = document.querySelector('h5.card-title')
@@ -50,9 +34,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 }
             })
-            .catch(error => console.error('Error:', error));
+        .catch(error => console.error('Error:', error));
     }
-
     function groupSessionsByFilial(sessions) {
         const groupedSessions = {};
         sessions.forEach(session => {
@@ -63,13 +46,11 @@ document.addEventListener('DOMContentLoaded', function () {
         });
         return groupedSessions;
     }
-
     function createSessionTable(filial, sessions) {
         const table = document.createElement('table');
         table.classList.add('session-table');
         table.innerHTML =
-            `
-        <thead>
+        `<thead>
             <tr>
                 <th class="h4 fw-bold" colspan="7">${filial}</th>
             </tr>
@@ -80,8 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <th></th>
             </tr>
         </thead>
-        <tbody></tbody>
-        `;
+        <tbody></tbody>`;
         const tbody = table.querySelector('tbody');
         sessions.forEach(session => {
             const row = document.createElement('tr');
@@ -89,102 +69,88 @@ document.addEventListener('DOMContentLoaded', function () {
             <td>${formatDate(session.data_sessao)}</td>
             <td>${formatHour(session.hora_sessao)}</td>
             <td>${session.nome_sala}</td>
-            <td class="text-center"><button class="btn w-100" data-toggle="modal" data-target="#buyTicketModalCenter">Compre aqui</button></td>
-        `;
+            <td class="text-center"><button class="btn w-100" data-toggle="modal" data-target="#buyTicketModalCenter" ${session.assento_vendido ? 'disabled' : ''}>Compre aqui</button></td>`;
             row.querySelector('button').addEventListener('click', () => buyTicket(session));
             tbody.appendChild(row);
         });
         return table;
     }
-
     function formatDate(dateString) {
         const date = new Date(dateString);
         return `${("0" + date.getDate()).slice(-2)}/${("0" + (date.getMonth() + 1)).slice(-2)}`;
     }
-
     function formatHour(hourString) {
         return hourString.slice(0, 5);
     }
-
     if (movieId) {
         fetchMovieData();
         fetchMovieSession(movieId);
     } else {
-        console.error('Movie ID not provided.');
+        console.error('ID do filme não inserida.');
     }
-
     function buyTicket(sessionData) {
-        currentSessionData = sessionData;
+        let numberOfTickets = 1;
         const formatedHour = formatHour(sessionData.hora_sessao);
         const formatedDate = formatDate(sessionData.data_sessao);
+        const confirmarPagamentoButton = document.getElementById('confirmar-compra');
         document.querySelector('.movie-title').innerText = sessionData.nome_filme;
         document.querySelector('.movie-filial').innerText = sessionData.nome_filial;
         document.querySelector('.movie-date').innerText = `${formatedDate} - `;
         document.querySelector('.movie-hora').innerText = `${formatedHour} - `;
         document.querySelector('.movie-sala').innerText = `${sessionData.nome_sala}`;
         document.querySelector('.preco_ingresso').innerText = `R$${sessionData.preco_ingresso}`;
-        const seatContainer = document.querySelector('.seat-container');
-        seatContainer.innerHTML = '';
-    
-        const rows = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-    
-        sessionData.assentos_disponiveis.forEach(seat => {
-            const seatButton = document.createElement('button');
-            seatButton.classList.add('btn', 'btn-seat', 'btn-outline-secondary');
-            seatButton.id = `seat-${seat.id}-${sessionData.id}`;
-            const numeracaoParts = seat.numeracao.split(' ');
-            const seatNumber = parseInt(numeracaoParts[1]);
-            const rowLetter = rows[seatNumber - 1 >= 0 ? Math.floor((seatNumber - 1) / 10) : 0];
-            const resetSeatNumber = seatNumber % 10 === 0 ? 10 : seatNumber % 10;
-            seatButton.innerText = rowLetter + resetSeatNumber;
-            if (seat.disponibilidade !== 1) {
-                seatButton.disabled = true;
-            }
-            toggleButtonClass(seatButton);
-            seatContainer.appendChild(seatButton);
-        });
-    
-        let numberOfSelectedSeats = 0;
-        let selectedSeatIds = [];
-    
-        function toggleButtonClass(button) {
-            button.addEventListener('click', (event) => {
-                event.preventDefault();
-                if (button.classList.contains('btn-outline-secondary')) {
-                    button.classList.remove('btn-outline-secondary');
-                    button.classList.add('btn-secondary');
-                    numberOfSelectedSeats++;
-                    const id_assento = button.id.split('-')[1];
-                    selectedSeatIds.push(id_assento);
-                } else {
-                    button.classList.remove('btn-secondary');
-                    button.classList.add('btn-outline-secondary');
-                    numberOfSelectedSeats--;
-                    const id_assento = button.id.split('-')[1];
-                    selectedSeatIds = selectedSeatIds.filter(id => id !== id_assento);
-                }
-                const precoIngresso = parseFloat(document.querySelector('.preco_ingresso').innerText.replace('R$', ''));
-                const precoTotal = precoIngresso * numberOfSelectedSeats;
-                document.querySelector('.preco_total').innerText = `R$${precoTotal}`;
-                document.querySelector('.quantidade_ingresso').innerText = `${numberOfSelectedSeats}x`;
-            });
-        }
-    
-        const seatButtons = document.querySelectorAll('.btn-seat');
-        seatButtons.forEach((button) => {
-            toggleButtonClass(button);
-        });
-    
-        const confirmarPagamentoButton = document.getElementById('confirmar-compra');
+        document.getElementById('ticket-quantity').value = numberOfTickets;
+        document.querySelector('.quantidade_ingresso').innerText = `${numberOfTickets}x`;
+        document.querySelector('.preco_total').innerText = `R$${(numberOfTickets * parseFloat(sessionData.preco_ingresso)).toFixed(2)}`;
         confirmarPagamentoButton.addEventListener('click', function () {
-            if (numberOfSelectedSeats > 0) {
-                console.log(`Compra confirmada! Você selecionou os assentos com os IDs: ${selectedSeatIds.join(', ')}`);
-                // Aqui você pode adicionar o código para processar a compra
+            if (numberOfTickets > 0) {
+                dadosDaVenda = {
+                    id_usuario: id_usuario,
+                    id_sessao: sessionData.id_sessao,
+                    qntd_ingressos: numberOfTickets,
+                    valor_venda: parseFloat(document.querySelector('.preco_total').innerText.substring(2)),
+                    filial_id: sessionData.id_filial
+                }
+                console.log(dadosDaVenda)
+                fetch('http://127.0.0.1/ButacaBox/ButacaBox/src/api/venda/vendaIngresso.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(dadosDaVenda)
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if(data.success){
+                            alert('Compra realizada com sucesso');
+                            location.reload(true);
+                        }else{
+                            alert(`Erro ao confirmar a compra: ${data.sql_error}`)
+                        }
+                    })
+                .catch(error => {
+                    alert('Erro ao confirmar a compra:', error);
+                });
             } else {
-                console.log('Por favor, selecione pelo menos um assento antes de confirmar a compra.');
+                alert('Por favor, selecione pelo menos um assento antes de confirmar a compra.');
             }
+        });
+        function updateTotalPrice() {
+            const totalPrice = numberOfTickets * parseFloat(sessionData.preco_ingresso);
+            document.querySelector('.quantidade_ingresso').innerText = `${numberOfTickets}x`;
+            document.querySelector('.preco_total').innerText = `R$${totalPrice.toFixed(2)}`;
+        }
+        document.getElementById('decrease-btn').addEventListener('click', () => {
+            if (numberOfTickets > 1) {
+                numberOfTickets--;
+                document.getElementById('ticket-quantity').value = numberOfTickets;
+                updateTotalPrice();
+            }
+        });
+        document.getElementById('increase-btn').addEventListener('click', () => {
+            numberOfTickets++;
+            document.getElementById('ticket-quantity').value = numberOfTickets;
+            updateTotalPrice();
         });
     }
-    
-
 });

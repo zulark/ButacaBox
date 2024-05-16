@@ -131,30 +131,33 @@
                                         <strong class="quantidade_ingresso"></strong>
                                     </li>
                                     <li class="list-group-item d-flex justify-content-between">
+                                        <div class="col text-center">
+                                            <div class="seat-container">
+                                                <div class="col">
+                                                    <div class="input-group">
+                                                        <button class="btn btn-outline-secondary" type="button"
+                                                            id="decrease-btn">-</button>
+                                                        <input type="text" class="form-control text-center"
+                                                            id="ticket-quantity" readonly>
+                                                        <button class="btn btn-outline-secondary" type="button"
+                                                            id="increase-btn">+</button>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between">
                                         <span>Total (BRL):</span>
                                         <strong class="preco_total"></strong>
                                     </li>
                                 </ul>
                             </div>
                             <div class="col-md-7 col-lg-8">
-                                <form class="needs-validation" novalidate="">
+                                <form class="needs-validation" novalidate="" action="#">
+                                    <h4 class="mb-3 text-center">Confirmação de pagamento</h4>
                                     <hr class="my-4">
-
-                                    <h4 class="mb-3">Seleção de Assentos</h4>
-
-                                    <div class="row gy-3">
-                                        <!-- Layout de grade para a seleção de assentos -->
-                                        <div class="col text-center">
-
-                                            <!-- Assentos -->
-                                            <div class="seat-container"></div>
-                                        </div>
-                                    </div>
-
-                                    <hr class="my-4">
-
                                     <h4 class="mb-3">Pagamento</h4>
-
                                     <div class="my-3">
                                         <div class="form-check">
                                             <input id="credit" name="paymentMethod" type="radio"
@@ -207,7 +210,7 @@
 
                                         <div class="col-md-3">
                                             <label for="cc-cvv" class="form-label">CVV</label>
-                                            <input type="numer" min="1" max="999" class="form-control" id="cc-cvv"
+                                            <input type="number" min="1" max="999" class="form-control" id="cc-cvv"
                                                 placeholder="000" required="">
                                             <div class="invalid-feedback">
                                                 Código de Segurança é obrigatório
