@@ -5,25 +5,24 @@ function fetchMovieSessions() {
         .then(response => response.json())
         .then(data => {
             movieSessions = data;
-            console.log(movieSessions)
             displayMovieSessions(movieSessions);
         })
         .catch(error => console.error(error));
 }
-
 function displayMovieSessions(movieSessions) {
     var tableBody = document.getElementById('movieSessionTableBody');
     tableBody.innerHTML = '';
     movieSessions.forEach(function (movieSession) {
         var row = document.createElement('tr');
         row.innerHTML = `
-            <td>${movieSession.id_sessao}</td>
-            <td>${movieSession.data_sessao}</td>
-            <td>${movieSession.hora_sessao}</td>
+            <td class="text-center">${movieSession.id_sessao}</td>
+            <td class="text-center">${movieSession.data_sessao}</td>
+            <td class="text-center">${movieSession.hora_sessao}</td>
             <td>${movieSession.nome_filme}</td> 
-            <td>${movieSession.nome_sala}</td>
-            <td>${movieSession.nome_filial}</td>
-            <td>R$${movieSession.preco_ingresso}</td>
+            <td class="text-center">${movieSession.nome_sala}</td>
+            <td class="text-center">${movieSession.nome_filial}</td>
+            <td class="text-center">${movieSession.assentos_disponiveis}</td>
+            <td class="text-center">R$${movieSession.preco_ingresso}</td>
             <td class="d-flex">
                 <button style="background-color: #3ba6ff;" class="btn btn-sm w-50 text-white" id="editmovieSessionButton" onclick="editmovieSession(${movieSession.id_sessao})">Editar</button>
                 <button style="background-color: #d9534f;" class="btn btn-sm w-50 text-white" onclick="deletemovieSession(${movieSession.id_sessao})">Deletar</button>
@@ -32,8 +31,6 @@ function displayMovieSessions(movieSessions) {
         tableBody.appendChild(row);
     });
 }
-
-
 function searchMovieSessions() {
     var searchValue = document.getElementById('searchInput').value.trim().toLowerCase();
     if (searchValue !== '') {
@@ -48,24 +45,15 @@ function searchMovieSessions() {
         displayMovieSessions(movieSessions);
     }
 }
-
 document.getElementById('searchInput').addEventListener('input', searchMovieSessions);
-
 fetchMovieSessions();
-
 var editModal = new bootstrap.Modal(document.getElementById('editMovieSessionModal'));
-
-
 document.getElementById('saveChanges').addEventListener('click', function (event) {
     event.preventDefault();
-
     var id = document.getElementById('editMovieSessionModalLabel').innerText.split(":")[1].trim();
-
     savemovieSessionChanges(id);
-
     editModal.hide();
 });
-
 function editmovieSession(id) {
     fetch(`http://127.0.0.1/ButacaBox/ButacaBox/src/api/sessoes/getMovieSessions.php?id=${id}`, {
         method: 'GET',
@@ -80,7 +68,6 @@ function editmovieSession(id) {
             return response.json();
         })
         .then(data => {
-            console.log(data)
             document.getElementById('data_sessao').value = data.data_sessao
             document.getElementById('hora_sessao').value = data.hora_sessao
             document.getElementById('nome_filme').value = data.nome_filme
@@ -92,11 +79,9 @@ function editmovieSession(id) {
         .catch(error => {
             console.error('Erro:', error);
         });
-
     const modalLabel = document.getElementById('editMovieSessionModalLabel');
     modalLabel.innerText = `Editar sessão: ${id}`;
 }
-
 function savemovieSessionChanges(id) {
     var data_sessao = document.getElementById('data_sessao').value;
     var hora_sessao = document.getElementById('hora_sessao').value;
@@ -113,7 +98,6 @@ function savemovieSessionChanges(id) {
         nome_filial: nome_filial,
         preco_ingresso: preco_ingresso
     };
-
     fetch(`http://127.0.0.1/ButacaBox/ButacaBox/src/api/sessoes/updateMovieSessions.php?id=${id}`, {
         method: 'PUT',
         headers: {
@@ -132,13 +116,11 @@ function savemovieSessionChanges(id) {
             alert('Erro ao salvar alterações da sessão: ' + error.message);
         });
 }
-
 function deletemovieSession(id) {
     var confirmDeleteModal = new bootstrap.Modal(document.getElementById('confirmDeleteModal'));
     const modalLabel = document.getElementById('confirmDeleteModalLabel');
     modalLabel.innerText = `Excluir sessão: ${id}?`;
     confirmDeleteModal.show();
-
     document.getElementById('confirmDeleteButton').addEventListener('click', function () {
         fetch(`http://127.0.0.1/ButacaBox/ButacaBox/src/api/sessoes/deleteMovieSessions.php?id=${id}`, {
             method: 'DELETE'
@@ -152,7 +134,6 @@ function deletemovieSession(id) {
                 console.error('Erro ao excluir sessão:', error);
                 alert('Erro ao excluir sessão: ' + error.message);
             });
-
         confirmDeleteModal.hide();
     });
 }

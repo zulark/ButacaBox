@@ -22,14 +22,14 @@ function displayMovies(movies) {
     movies.forEach(function (movie) {
         var row = document.createElement('tr');
         row.innerHTML = `
-                <td>${movie.id_filme}</td>
-                <td>${movie.titulo}</td>
-                <td>${movie.diretor}</td>
-                <td>${movie.genero}</td>
-                <td>${movie.duracao}</td>
-                <td>${movie.fornecedor_id}</td>
-                <td>${movie.status_filme}</td>
-                <td>${movie.youtube_url}</td>
+                <td class="text-center">${movie.id_filme}</td>
+                <td class="text-center">${movie.titulo}</td>
+                <td class="text-center">${movie.diretor}</td>
+                <td class="text-center">${movie.genero}</td>
+                <td class="text-center">${movie.duracao}</td>
+                <td class="text-center">${movie.fornecedor_id}</td>
+                <td class="text-center">${movie.status_filme}</td>
+                <td class="text-center">${movie.youtube_url}</td>
                 <td" class="d-flex">
                     <button style="background-color: #3ba6ff;" class="btn btn-sm w-50 text-white" id="editMovieButton" onclick="editMovie(${movie.id_filme})">Editar</button>
                     <button style="background-color: #d9534f;" class="btn btn-sm w-50 text-white" onclick="deleteMovie(${movie.id_filme})">Deletar</button>

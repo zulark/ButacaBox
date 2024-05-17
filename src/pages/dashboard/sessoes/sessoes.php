@@ -35,8 +35,7 @@ include ('../../../pages/login-funcionario/protect.php')
           </a>
         </li>
         <li class="nav-item">
-          <a href="sessoes.php"
-            class="nav-link active" aria-current="page">
+          <a href="sessoes.php" class="nav-link active" aria-current="page">
             Sessões
           </a>
         </li>
@@ -47,7 +46,8 @@ include ('../../../pages/login-funcionario/protect.php')
           </a>
         </li>
         <li>
-          <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/salas/salas.php" class="nav-link text-white">
+          <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/salas/salas.php"
+            class="nav-link text-white">
             Salas
           </a>
         </li>
@@ -82,13 +82,14 @@ include ('../../../pages/login-funcionario/protect.php')
           <table class="table table-responsive table-lg ">
             <thead>
               <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Data</th>
-                <th scope="col">Horário</th>
-                <th scope="col">Filme</th>
-                <th scope="col">Sala</th>
-                <th scope="col">Filial</th>
-                <th scope="col">Preço do ingresso</th>
+                <th scope="col" class="text-center">ID</th>
+                <th scope="col" class="text-center">Data</th>
+                <th scope="col" class="text-center">Horário</th>
+                <th scope="col" class="text-center">Filme</th>
+                <th scope="col" class="text-center">Sala</th>
+                <th scope="col" class="text-center">Filial</th>
+                <th scope="col" class="text-center">Assentos Disponíveis</th>
+                <th scope="col" class="text-center">Preço do ingresso</th>
                 <th scope="col" class="text-center" style="width: 185px;">Ações</th>
               </tr>
             </thead>
@@ -103,9 +104,6 @@ include ('../../../pages/login-funcionario/protect.php')
         </div>
       </div>
     </div>
-
-    <!-- Modal de Exclusão -->
-
     <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel"
       aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
@@ -115,7 +113,7 @@ include ('../../../pages/login-funcionario/protect.php')
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body label">
-            Tem certeza de que deseja excluir esta sala?
+            Tem certeza de que deseja excluir esta sessão?
           </div>
           <div class="modal-footer">
             <button type="button" class="btn" style="background-color: #3ba6ff; color: #fff;"
@@ -126,19 +124,17 @@ include ('../../../pages/login-funcionario/protect.php')
         </div>
       </div>
     </div>
-
-    <!-- Modal de Edição -->
     <div class="modal fade" id="editMovieSessionModal" tabindex="-1"
       aria-labelledby="editMovieMovieMovieSessionModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="editMovieSessionModalLabel">Editar Sala</h5>
+            <h5 class="modal-title" id="editMovieSessionModalLabel">Editar Sessão</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <form id="editForm">
-            <div class="mb-3">
+              <div class="mb-3">
                 <label for="data_sessao" class="form-label">Data</label>
                 <input type="text" class="form-control" id="data_sessao" name="data_sessao">
               </div>
@@ -174,7 +170,6 @@ include ('../../../pages/login-funcionario/protect.php')
       </div>
     </div>
   </main>
-  <!-- Bootstrap JS files -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
     integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
     crossorigin="anonymous"></script>
