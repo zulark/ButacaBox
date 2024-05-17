@@ -3,7 +3,20 @@ header("Content-Type: application/json");
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET");
 header("Access-Control-Allow-Headers: Content-Type");
+
 include '../db_connection.php';
+
+function getAvailableSeats($conn, $id_sessao, $capacidade_sala) {
+    $sql_check_availability = "SELECT COALESCE(SUM(qntd_ingressos), 0) AS assentos_ocupados FROM vendas WHERE id_sessao = ?";
+    $stmt_check_availability = $conn->prepare($sql_check_availability);
+    $stmt_check_availability->bind_param("i", $id_sessao);
+    $stmt_check_availability->execute();
+    $result_check_availability = $stmt_check_availability->get_result();
+    $row_check_availability = $result_check_availability->fetch_assoc();
+    $assentos_ocupados = $row_check_availability['assentos_ocupados'] ?? 0;
+
+    return $capacidade_sala - $assentos_ocupados;
+}
 
 if (isset($_GET['id'])) {
     $id_filme = intval($_GET['id']);
@@ -21,14 +34,7 @@ if (isset($_GET['id'])) {
     if ($result->num_rows > 0) {
         $sessions = array();
         while ($row = $result->fetch_assoc()) {
-            $sql_check_availability = "SELECT SUM(qntd_ingressos) AS assentos_ocupados FROM vendas WHERE id_sessao = ?";
-            $stmt_check_availability = $conn->prepare($sql_check_availability);
-            $stmt_check_availability->bind_param("i", $row['id_sessao']);
-            $stmt_check_availability->execute();
-            $result_check_availability = $stmt_check_availability->get_result();
-            $row_check_availability = $result_check_availability->fetch_assoc();
-            $assentos_ocupados = $row_check_availability['assentos_ocupados'] ?? 0;
-            $assentos_disponiveis = $row['capacidade_sala'] - $assentos_ocupados;
+            $assentos_disponiveis = getAvailableSeats($conn, $row['id_sessao'], $row['capacidade_sala']);
             $sessions[] = array(
                 "id_sessao" => $row['id_sessao'],
                 "id_filial" => $row['id_filial'],
@@ -56,14 +62,7 @@ if (isset($_GET['id'])) {
     if ($result) {
         $movie_sessions = array();
         while ($row = $result->fetch_assoc()) {
-            $sql_check_availability = "SELECT SUM(qntd_ingressos) AS assentos_ocupados FROM vendas WHERE id_sessao = ?";
-            $stmt_check_availability = $conn->prepare($sql_check_availability);
-            $stmt_check_availability->bind_param("i", $row['id_sessao']);
-            $stmt_check_availability->execute();
-            $result_check_availability = $stmt_check_availability->get_result();
-            $row_check_availability = $result_check_availability->fetch_assoc();
-            $assentos_ocupados = $row_check_availability['assentos_ocupados'] ?? 0;
-            $assentos_disponiveis = $row['capacidade_sala'] - $assentos_ocupados;
+            $assentos_disponiveis = getAvailableSeats($conn, $row['id_sessao'], $row['capacidade_sala']);
             $movie_sessions[] = array(
                 "id_sessao" => $row['id_sessao'],
                 "id_filial" => $row['id_filial'],

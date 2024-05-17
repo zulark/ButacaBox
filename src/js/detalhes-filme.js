@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
     const urlParams = new URLSearchParams(window.location.search);
     const movieId = urlParams.get('id');
+    const userIdToken = id_usuario;
+
     function fetchMovieData() {
         fetch(`http://127.0.0.1/ButacaBox/Butacabox/src/api/filmes/getMovies.php?id=${movieId}`)
             .then(response => response.json())
@@ -13,19 +15,18 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.getElementById('descricao').innerText = data.descricao;
                 document.querySelector('.youtube-video').innerHTML = `<iframe width="560" height="315" src="${data.youtube_url}" title="YouTube video player" frameborder="0" allowfullscreen></iframe>`;
             })
-        .catch(error => console.error('Error:', error));
+            .catch(error => console.error('Error:', error));
     }
     function fetchMovieSession(movieId) {
         const sessionContainer = document.querySelector('.card-body.text-bg-dark');
-        const titulo = document.querySelector('h5.card-title')
+        const titulo = document.querySelector('h5.card-title');
         fetch(`http://127.0.0.1/ButacaBox/Butacabox/src/api/filmes/getMovieSession.php?id=${movieId}`)
             .then(response => response.json())
             .then(data => {
                 if (data.error) {
                     titulo.innerText = 'Ainda não temos sessões para este filme :(';
-                    titulo.classList.add('text-center')
-                }
-                else {
+                    titulo.classList.add('text-center');
+                } else {
                     const groupedSessions = groupSessionsByFilial(data);
                     for (const filial in groupedSessions) {
                         const sessions = groupedSessions[filial];
@@ -34,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 }
             })
-        .catch(error => console.error('Error:', error));
+            .catch(error => console.error('Error:', error));
     }
     function groupSessionsByFilial(sessions) {
         const groupedSessions = {};
@@ -50,27 +51,37 @@ document.addEventListener('DOMContentLoaded', function () {
         const table = document.createElement('table');
         table.classList.add('session-table');
         table.innerHTML =
-        `<thead>
-            <tr>
-                <th class="h4 fw-bold" colspan="7">${filial}</th>
-            </tr>
-            <tr>
-                <th>Dia</th>
-                <th>Horário de inicio</th>
-                <th>Sala</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody></tbody>`;
+            `<thead>
+                <tr>
+                    <th class="h4 fw-bold" colspan="7">${filial}</th>
+                </tr>
+                <tr>
+                    <th class="text-center">Dia</th>
+                    <th class="text-center">Horário de inicio</th>
+                    <th class="text-center">Sala</th>
+                    <th class="text-center">Assentos disponíveis</th>
+                    <th class="text-center"></th>
+                </tr>
+            </thead>
+            <tbody></tbody>`;
         const tbody = table.querySelector('tbody');
         sessions.forEach(session => {
             const row = document.createElement('tr');
             row.innerHTML = `
-            <td>${formatDate(session.data_sessao)}</td>
-            <td>${formatHour(session.hora_sessao)}</td>
-            <td>${session.nome_sala}</td>
-            <td class="text-center"><button class="btn w-100" data-toggle="modal" data-target="#buyTicketModalCenter" ${session.assento_vendido ? 'disabled' : ''}>Compre aqui</button></td>`;
-            row.querySelector('button').addEventListener('click', () => buyTicket(session));
+                <td class="text-center">${formatDate(session.data_sessao)}</td>
+                <td class="text-center">${formatHour(session.hora_sessao)}</td>
+                <td class="text-center">${session.nome_sala}</td>
+                <td class="text-center">${session.assentos_disponiveis}</td>
+                <td class="text-center"><button class="btn w-100" ${userIdToken ? 'data-toggle="modal" data-target="#buyTicketModalCenter"' : ''}>Compre aqui</button></td>`;
+            const button = row.querySelector('button');
+            if (!userIdToken) {
+                button.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    alert('Por favor, logue sua conta antes de comprar.');
+                });
+            } else {
+                button.addEventListener('click', () => buyTicket(session));
+            }
             tbody.appendChild(row);
         });
         return table;
@@ -102,16 +113,17 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('ticket-quantity').value = numberOfTickets;
         document.querySelector('.quantidade_ingresso').innerText = `${numberOfTickets}x`;
         document.querySelector('.preco_total').innerText = `R$${(numberOfTickets * parseFloat(sessionData.preco_ingresso)).toFixed(2)}`;
+
         confirmarPagamentoButton.addEventListener('click', function () {
             if (numberOfTickets > 0) {
-                dadosDaVenda = {
-                    id_usuario: id_usuario,
+                const dadosDaVenda = {
+                    id_usuario: userIdToken,
                     id_sessao: sessionData.id_sessao,
                     qntd_ingressos: numberOfTickets,
                     valor_venda: parseFloat(document.querySelector('.preco_total').innerText.substring(2)),
                     filial_id: sessionData.id_filial
-                }
-                console.log(dadosDaVenda)
+                };
+                console.log(dadosDaVenda);
                 fetch('http://127.0.0.1/ButacaBox/ButacaBox/src/api/venda/vendaIngresso.php', {
                     method: 'POST',
                     headers: {
@@ -119,22 +131,27 @@ document.addEventListener('DOMContentLoaded', function () {
                     },
                     body: JSON.stringify(dadosDaVenda)
                 })
-                    .then(response => response.json())
-                    .then(data => {
-                        if(data.success){
-                            alert('Compra realizada com sucesso');
-                            location.reload(true);
-                        }else{
-                            alert(`Erro ao confirmar a compra: ${data.sql_error}`)
+                    .then(response => response.json().then(data => ({ status: response.status, body: data })))
+                    .then(({ status, body }) => {
+                        if (status >= 200 && status < 300) {
+                            if (body.success) {
+                                alert('Compra realizada com sucesso');
+                                location.reload(true);
+                            } else {
+                                alert(`Erro ao confirmar a compra: ${body.error}`);
+                            }
+                        } else {
+                            alert(`Erro ao confirmar a compra: ${body.error}`);
                         }
                     })
-                .catch(error => {
-                    alert('Erro ao confirmar a compra:', error);
-                });
+                    .catch(error => {
+                        alert('Erro ao confirmar a compra:', error);
+                    });
             } else {
                 alert('Por favor, selecione pelo menos um assento antes de confirmar a compra.');
             }
         });
+
         function updateTotalPrice() {
             const totalPrice = numberOfTickets * parseFloat(sessionData.preco_ingresso);
             document.querySelector('.quantidade_ingresso').innerText = `${numberOfTickets}x`;

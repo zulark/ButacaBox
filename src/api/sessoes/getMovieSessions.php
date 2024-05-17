@@ -1,53 +1,87 @@
 <?php
-header("Content-Type: application/json");
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: GET");
-header("Access-Control-Allow-Headers: Content-Type");
+// Database connection code
 include '../db_connection.php';
-
 if (isset($_GET['id'])) {
-    $id_sessao = intval($_GET['id']);
-    $sql = "SELECT s.*, assento_sala.id_assento, assento_sala.numeracao, assento_sala.disponibilidade
-            FROM sessoes AS s 
-            INNER JOIN assento_sala ON s.sala_id = assento_sala.sala_id
-            WHERE s.id_sessao = ?";
-
+    $id_filme = intval($_GET['id']);
+    $sql = "SELECT 
+    se.id_sessao,
+    se.data_sessao,
+    se.hora_sessao,
+    se.filme_id,
+    se.sala_id,
+    se.filial_id,
+    se.preco_ingresso,
+    COALESCE(SUM(v.qntd_ingressos), 0) AS ingressos_vendidos,
+    s.capacidade,
+    (s.capacidade - COALESCE(SUM(v.qntd_ingressos), 0)) AS assentos_disponiveis
+FROM 
+    sessoes se
+LEFT JOIN 
+    vendas v ON se.id_sessao = v.id_sessao
+JOIN 
+    salas s ON se.sala_id = s.id_sala
+WHERE se.id_sessao = ?
+GROUP BY 
+    se.id_sessao, 
+    se.data_sessao, 
+    se.hora_sessao, 
+    se.filme_id, 
+    se.sala_id, 
+    se.filial_id, 
+    se.preco_ingresso, 
+    s.capacidade
+HAVING 
+    assentos_disponiveis >= 0;
+";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $id_sessao);
+    $stmt->bind_param("i", $id_filme);
     $stmt->execute();
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
-        $session = $result->fetch_assoc();
-        $session['assentos_disponiveis'] = array();
-
-        while ($row = $result->fetch_assoc()) {
-            $session['assentos_disponiveis'][] = array(
-                "id_assento" => $row['id_assento'],
-                "numeracao" => $row['numeracao'],
-                "disponibilidade" => $row['disponibilidade']
-            );
-        }
-
-        echo json_encode($session);
+        $movie = $result->fetch_assoc();
+        echo json_encode($movie);
     } else {
-        echo json_encode(['error' => 'Esta sessão está indisponível']);
+        echo json_encode(['error' => 'Filme não encontrado']);
     }
 } else {
-    $sql = "SELECT s.id_sessao, s.data_sessao, s.hora_sessao, salas.nome AS nome_sala, filmes.titulo AS nome_filme, filiais.nome AS nome_filial, s.preco_ingresso 
-        FROM sessoes AS s 
-        INNER JOIN filmes ON s.filme_id = filmes.id_filme 
-        INNER JOIN salas ON s.sala_id = salas.id_sala 
-        INNER JOIN filiais ON s.filial_id = filiais.id_filial";
+    $sql = "SELECT 
+    se.id_sessao,
+    se.data_sessao,
+    se.hora_sessao,
+    se.filme_id,
+    se.sala_id,
+    se.filial_id,
+    se.preco_ingresso,
+    COALESCE(SUM(v.qntd_ingressos), 0) AS ingressos_vendidos,
+    s.capacidade,
+    (s.capacidade - COALESCE(SUM(v.qntd_ingressos), 0)) AS assentos_disponiveis
+FROM 
+    sessoes se
+LEFT JOIN 
+    vendas v ON se.id_sessao = v.id_sessao
+JOIN 
+    salas s ON se.sala_id = s.id_sala
+GROUP BY 
+    se.id_sessao, 
+    se.data_sessao, 
+    se.hora_sessao, 
+    se.filme_id, 
+    se.sala_id, 
+    se.filial_id, 
+    se.preco_ingresso, 
+    s.capacidade
+HAVING 
+    assentos_disponiveis >= 0;
+";
     $result = $conn->query($sql);
 
     if ($result) {
-        $sessions = $result->fetch_all(MYSQLI_ASSOC);
-        echo json_encode($sessions);
+        $movies = $result->fetch_all(MYSQLI_ASSOC);
+        echo json_encode($movies);
     } else {
         echo json_encode([]);
     }
 }
-
 $conn->close();
 ?>
