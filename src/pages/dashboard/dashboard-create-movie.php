@@ -34,8 +34,15 @@ include ('../../pages/login-funcionario/protect.php')
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/sessoes/sessoes.php" class="nav-link text-white">
+                    <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/sessoes/sessoes.php"
+                        class="nav-link text-white">
                         Sessões
+                    </a>
+                </li>
+                <li>
+                    <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/fornecedores/fornecedores.php"
+                        class="nav-link text-white">
+                        Fornecedores
                     </a>
                 </li>
                 <li>

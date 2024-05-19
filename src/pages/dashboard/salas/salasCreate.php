@@ -30,23 +30,31 @@ include ('../../../pages/login-funcionario/protect.php')
             <hr>
             <ul class="nav nav-pills flex-column mb-auto">
                 <li class="nav-item">
-                    <a href="../dashboard.php" class="nav-link text-white">
+                    <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/dashboard.php" class="nav-link text-white">
                         Filmes
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/sessoes/sessoes.php" class="nav-link text-white">
+                    <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/sessoes/sessoes.php"
+                        class="nav-link text-white">
                         Sessões
                     </a>
                 </li>
                 <li>
-                    <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/funcionarios/funcionarios.php" class="nav-link text-white">
+                    <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/fornecedores/fornecedores.php"
+                        class="nav-link text-white">
+                        Fornecedores
+                    </a>
+                </li>
+                <li>
+                    <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/funcionarios/funcionarios.php"
+                        class="nav-link text-white">
                         Funcionarios
                     </a>
                 </li>
                 <li>
-                    <a href="salas.php"
-                        class="nav-link active"  aria-current="page">
+                    <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/salas/salas.php"
+                        class="nav-link active" aria-current="page">
                         Salas
                     </a>
                 </li>

@@ -1,6 +1,4 @@
-<?php
-include ('../../pages/login-funcionario/protect.php')
-  ?>
+<?php include ('../../login-funcionario/protect.php') ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -11,7 +9,7 @@ include ('../../pages/login-funcionario/protect.php')
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2598/2598702.png">
-  <link rel="stylesheet" href="http://127.0.0.1/ButacaBox/ButacaBox/src/css/dashboard.css">
+  <link rel="stylesheet" href="../../../css/dashboard.css">
 </head>
 
 <body class="vh-100">
@@ -30,7 +28,7 @@ include ('../../pages/login-funcionario/protect.php')
       <hr>
       <ul class="nav nav-pills flex-column mb-auto">
         <li class="nav-item">
-          <a href="dashboard.php" class="nav-link active" aria-current="page">
+          <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/dashboard.php" class="nav-link text-white">
             Filmes
           </a>
         </li>
@@ -42,7 +40,7 @@ include ('../../pages/login-funcionario/protect.php')
         </li>
         <li>
           <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/fornecedores/fornecedores.php"
-            class="nav-link text-white">
+            class="nav-link active" aria-current="page">
             Fornecedores
           </a>
         </li>
@@ -79,33 +77,30 @@ include ('../../pages/login-funcionario/protect.php')
         </ul>
       </div>
     </div>
+
     <div class="container-fluid h-100">
       <div class="d-flex flex-column h-100">
         <div class="p-3">
-          <input id="searchInput" type="text" class="form-control" placeholder="Buscar filme">
+          <input id="searchInput" type="text" class="form-control" placeholder="Buscar fornecedor">
         </div>
         <div class="table-responsive small flex-grow-1">
-          <table class="table table-responsive table-lg ">
+          <table class="table table-responsive table-lg">
             <thead>
               <tr>
                 <th scope="col">ID</th>
-                <th scope="col">Título</th>
-                <th scope="col">Diretor</th>
-                <th scope="col">Gênero</th>
-                <th scope="col">Duração (min)</th>
-                <th scope="col">ID do Fornecedor</th>
-                <th scope="col">Status</th>
-                <th scope="col">URL Trailer</th>
-                <th scope="col" class="text-center">Ações</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Email</th>
+                <th scope="col">Telefone</th>
+                <th scope="col" class="text-center" style="width: 185px;">Ações</th>
               </tr>
             </thead>
-            <tbody id="movieTableBody">
+            <tbody id="fornecedorTableBody">
             </tbody>
           </table>
         </div>
         <div class="p-3 text-end">
-          <a href="dashboard-create-movie.php">
-            <button class="btn btn-success ">Adicionar Filme</button>
+          <a href="fornecedoresCreate.php">
+            <button class="btn btn-success ">Adicionar Fornecedor</button>
           </a>
         </div>
       </div>
@@ -115,11 +110,11 @@ include ('../../pages/login-funcionario/protect.php')
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="confirmDeleteModalLabel">Confirmar Exclusão</h5>
+            <h5 class="modal-title" id="confirmDeleteModalLabel"></h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body label">
-            Tem certeza de que deseja excluir este filme?
+            Tem certeza de que deseja excluir este fornecedor?
           </div>
           <div class="modal-footer">
             <button type="button" class="btn" style="background-color: #3ba6ff; color: #fff;"
@@ -130,55 +125,27 @@ include ('../../pages/login-funcionario/protect.php')
         </div>
       </div>
     </div>
-    <div class="modal fade" id="editMovieModal" tabindex="-1" aria-labelledby="editMovieModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+    <div class="modal fade" id="editFornecedorModal" tabindex="-1" aria-labelledby="editFornecedorModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="editMovieModalLabel">Editar Filme</h5>
+            <h5 class="modal-title" id="editFornecedorModalLabel">Editar Fornecedor</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <form id="editForm">
               <div class="mb-3">
-                <label for="titulo" class="form-label">Título</label>
-                <input type="text" class="form-control" id="titulo" name="titulo">
+                <label for="nome" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="nome" name="nome">
               </div>
               <div class="mb-3">
-                <label for="cartaz_filme" class="form-label">URL do Cartaz</label>
-                <input type="text" class="form-control" id="cartaz_filme" name="cartaz_filme">
+                <label for="email" class="form-label">Email</label>
+                <input type="text" class="form-control" id="email" name="email">
               </div>
               <div class="mb-3">
-                <label for="diretor" class="form-label">Diretor</label>
-                <input type="text" class="form-control" id="diretor" name="diretor">
-              </div>
-              <div class="mb-3">
-                <label for="genero" class="form-label">Gênero</label>
-                <input type="text" class="form-control" id="genero" name="genero">
-              </div>
-              <div class="mb-3">
-                <label for="duracao" class="form-label">Duração</label>
-                <input type="number" class="form-control" id="duracao" name="duracao">
-              </div>
-              <div class="mb-3">
-                <label for="fornecedor_id" class="form-label">ID do Fornecedor</label>
-                <input type="number" class="form-control" id="fornecedor_id" name="fornecedor_id">
-              </div>
-              <div class="mb-3">
-                <label for="youtube_url" class="form-label">Link do trailer</label>
-                <input type="text" class="form-control" id="youtube_url" name="youtube_url">
-              </div>
-              <div class="mb-3">
-                <label for="descricao" class="form-label">Descrição</label>
-                <textarea class="form-control" id="descricao" name="descricao"></textarea>
-              </div>
-              <div class="mb-3">
-                <label for="status_filme" class="form-label ">Status de lançamento</label>
-                <select class="form-select form-select-md" name="status_filme" id="status_filme">
-                  <option selected disabled class="disabled">Selecionar filial</option>
-                  <option value="estreia">Estreia</option>
-                  <option value="cartaz">Em cartaz</option>
-                  <option value="em_breve">Em breve</option>
-                </select>
+                <label for="telefone" class="form-label">Telefone</label>
+                <input type="text" class="form-control" id="telefone" name="telefone">
               </div>
             </form>
           </div>
@@ -198,8 +165,7 @@ include ('../../pages/login-funcionario/protect.php')
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
     crossorigin="anonymous"></script>
-  <script src="../../js/dashboard.js"></script>
-
+  <script src="../../../js/fornecedores.js"></script>
 </body>
 
 </html>

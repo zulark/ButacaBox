@@ -13,7 +13,6 @@ include ('../../../pages/login-funcionario/protect.php')
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2598/2598702.png">
     <link rel="stylesheet" href="http://127.0.0.1/ButacaBox/ButacaBox/src/css/dashboard.css">
 </head>
-
 <body class="vh-100">
     <main class="d-flex flex-nowrap h-100">
         <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark sidebar">
@@ -37,13 +36,13 @@ include ('../../../pages/login-funcionario/protect.php')
                 </li>
                 <li class="nav-item">
                     <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/sessoes/sessoes.php"
-                        class="nav-link active" aria-current="page">
+                        class="nav-link text-white">
                         Sessões
                     </a>
                 </li>
                 <li>
                     <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/fornecedores/fornecedores.php"
-                        class="nav-link text-white">
+                        class="nav-link active" aria-current="page">
                         Fornecedores
                     </a>
                 </li>
@@ -85,34 +84,23 @@ include ('../../../pages/login-funcionario/protect.php')
                 <div class="p-3">
                     <form id="createForm" class="row g-3">
                         <div class="col-md-12">
-                            <label for="sessao_data" class="form-label">Data</label>
-                            <input type="date" class="form-control" id="sessao_data" name="sessao_data">
+                            <label for="nome" class="form-label">Nome</label>
+                            <input type="text" class="form-control" id="nome" name="nome">
                         </div>
                         <div class="col-md-12">
-                            <label for="sessao_hora" class="form-label">Hora</label>
-                            <input type="time" class="form-control" id="sessao_hora" name="sessao_hora">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email">
                         </div>
                         <div class="col-md-12">
-                            <label for="sessao_hora" class="form-label">Hora</label>
-                            <select class="form-select form-select-md" name="filial_id" id="filial_id">
-                                <option selected="" disabled="" class="disabled">Selecionar filial</option>
-                            </select>
-                        <div class="col-md-12">
-                            <label for="sessao_hora" class="form-label">Hora</label>
-                            <select class="form-select form-select-md" name="filial_id" id="filial_id">
-                                <option selected="" disabled="" class="disabled">Selecionar filial</option>
-                            </select>
-                        </div>
-                        <div class="col-md-12">
-                            <label for="id_filme" class="form-label">Filme</label>
-                            <input type="id_filme" class="form-control" id="id_filme" name="id_filme">
+                            <label for="telefone" class="form-label">Telefone</label>
+                            <input type="tel" class="form-control" id="telefone" name="telefone">
                         </div>
                         <div class="col-12">
                             <button type="submit" class="btn btn-success">Salvar</button>
                         </div>
                     </form>
                     <div class="p-3 text-end">
-                        <a href="sessoes.php">
+                        <a href="fornecedores.php">
                             <button class="btn btn-primary">
                                 <svg style="color: #fff;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                                     width="24" height="24" fill="currentColor">
@@ -123,10 +111,8 @@ include ('../../../pages/login-funcionario/protect.php')
                         </a>
                     </div>
                 </div>
-
                 <div class="alert-message d-none" id="alertMessage"></div>
                 <div id="errorMessage" class="alert alert-danger d-none" role="alert"></div>
-
             </div>
         </div>
     </main>
@@ -138,10 +124,11 @@ include ('../../../pages/login-funcionario/protect.php')
             event.preventDefault();
             var formData = {
                 nome: document.getElementById('nome').value,
-                capacidade: document.getElementById('capacidade').value,
+                email: document.getElementById('email').value,
+                telefone: document.getElementById('telefone').value,
             };
             var jsonData = JSON.stringify(formData);
-            fetch('http://127.0.0.1/ButacaBox/ButacaBox/src/api/salas/createMovieRoom.php', {
+            fetch('http://127.0.0.1/ButacaBox/ButacaBox/src/api/fornecedores/createFornecedores.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -151,7 +138,7 @@ include ('../../../pages/login-funcionario/protect.php')
                 .then(response => response.json())
                 .then(data => {
                     var alertMessage = document.getElementById('alertMessage');
-                    alertMessage.innerHTML = data.success ? '<div class="alert alert-success" role="alert">Sessão adicionada com sucesso!</div>' : '<div class="alert alert-danger" role="alert">Erro ao adicionar sessão!</div>';
+                    alertMessage.innerHTML = data.success ? '<div class="alert alert-success" role="alert">Fornecedor adicionado com sucesso!</div>' : '<div class="alert alert-danger" role="alert">Erro ao adicionar fornecedor!</div>';
                     alertMessage.classList.remove('d-none');
                     if (data.success) {
                         document.getElementById('createForm').reset();
@@ -180,7 +167,6 @@ include ('../../../pages/login-funcionario/protect.php')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
-
 </body>
 
 </html>

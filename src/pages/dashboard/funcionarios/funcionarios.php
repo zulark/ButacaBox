@@ -30,17 +30,25 @@ include ('../../../pages/login-funcionario/protect.php')
       <hr>
       <ul class="nav nav-pills flex-column mb-auto">
         <li class="nav-item">
-          <a href="../dashboard.php" class="nav-link text-white">
+          <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/dashboard.php" class="nav-link text-white">
             Filmes
           </a>
         </li>
         <li class="nav-item">
-          <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/sessoes/sessoes.php" class="nav-link text-white">
+          <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/sessoes/sessoes.php"
+            class="nav-link text-white">
             Sessões
           </a>
         </li>
         <li>
-          <a href="funcionarios.php" class="nav-link active" aria-current="page">
+          <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/fornecedores/fornecedores.php"
+            class="nav-link text-white">
+            Fornecedores
+          </a>
+        </li>
+        <li>
+          <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/funcionarios/funcionarios.php"
+            class="nav-link active"  aria-current="page">
             Funcionarios
           </a>
         </li>
@@ -71,7 +79,6 @@ include ('../../../pages/login-funcionario/protect.php')
         </ul>
       </div>
     </div>
-
     <div class="container-fluid h-100">
       <div class="d-flex flex-column h-100">
         <div class="p-3">
@@ -85,6 +92,7 @@ include ('../../../pages/login-funcionario/protect.php')
                 <th scope="col">Nome</th>
                 <th scope="col">Email</th>
                 <th scope="col">Filial</th>
+                <th scope="col">Salário Mensal</th>
                 <th scope="col" class="text-center" style="width: 185px;">Ações</th>
               </tr>
             </thead>
@@ -99,9 +107,6 @@ include ('../../../pages/login-funcionario/protect.php')
         </div>
       </div>
     </div>
-
-    <!-- Modal de Exclusão -->
-
     <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel"
       aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
@@ -122,8 +127,6 @@ include ('../../../pages/login-funcionario/protect.php')
         </div>
       </div>
     </div>
-
-    <!-- Modal de Edição -->
     <div class="modal fade" id="editEmployeeModal" tabindex="-1" aria-labelledby="editEmployeeModalLabel"
       aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
@@ -146,6 +149,10 @@ include ('../../../pages/login-funcionario/protect.php')
                 <label for="filial_id" class="form-label">Filial</label>
                 <input type="text" class="form-control" id="filial_id" name="filial_id">
               </div>
+              <div class="mb-3">
+                <label for="salario_base" class="form-label">Salário</label>
+                <input placeholder="R$0,00" type="text" class="form-control" id="salario_base" name="salario_base">
+              </div>
             </form>
           </div>
           <div class="modal-footer">
@@ -158,16 +165,13 @@ include ('../../../pages/login-funcionario/protect.php')
       </div>
     </div>
   </main>
-  <!-- Bootstrap JS files -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
     integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
     crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
     crossorigin="anonymous"></script>
-
   <script src="../../../js/funcionarios.js"></script>
-
 </body>
 
 </html>

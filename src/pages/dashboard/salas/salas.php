@@ -28,29 +28,37 @@ include ('../../../pages/login-funcionario/protect.php')
         <strong style="font-size: .8em;">BUTACABOX</strong>
       </a>
       <hr>
-           <ul class="nav nav-pills flex-column mb-auto">
-                <li class="nav-item">
-                    <a href="../dashboard.php" class="nav-link text-white">
-                        Filmes
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/sessoes/sessoes.php" class="nav-link text-white">
-                        Sessões
-                    </a>
-                </li>
-                <li>
-                    <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/funcionarios/funcionarios.php" class="nav-link text-white">
-                        Funcionarios
-                    </a>
-                </li>
-                <li>
-                    <a href="salas.php"
-                        class="nav-link active"  aria-current="page">
-                        Salas
-                    </a>
-                </li>
-            </ul>
+      <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+          <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/dashboard.php" class="nav-link text-white">
+            Filmes
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/sessoes/sessoes.php"
+            class="nav-link text-white">
+            Sessões
+          </a>
+        </li>
+        <li>
+          <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/fornecedores/fornecedores.php"
+            class="nav-link text-white">
+            Fornecedores
+          </a>
+        </li>
+        <li>
+          <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/funcionarios/funcionarios.php"
+            class="nav-link text-white">
+            Funcionarios
+          </a>
+        </li>
+        <li>
+          <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/salas/salas.php" class="nav-link active"
+            aria-current="page">
+            Salas
+          </a>
+        </li>
+      </ul>
       <hr>
       <div class="dropdown">
         <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
@@ -123,7 +131,8 @@ include ('../../../pages/login-funcionario/protect.php')
     </div>
 
     <!-- Modal de Edição -->
-    <div class="modal fade" id="editMovieRoomModal" tabindex="-1" aria-labelledby="editMovieMovieMovieRoomModalLabel" aria-hidden="true">
+    <div class="modal fade" id="editMovieRoomModal" tabindex="-1" aria-labelledby="editMovieMovieMovieRoomModalLabel"
+      aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
         <div class="modal-content">
           <div class="modal-header">
