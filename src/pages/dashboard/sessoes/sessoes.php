@@ -142,24 +142,24 @@ include ('../../../pages/login-funcionario/protect.php')
           <div class="modal-body">
             <form id="editForm">
               <div class="mb-3">
-                <label for="data_sessao" class="form-label">Data</label>
-                <input type="text" class="form-control" id="data_sessao" name="data_sessao">
+                <label id="data_sessao_label" for="data_sessao" class="form-label">Data</label>
+                <input type="date" class="form-control" id="data_sessao" name="data_sessao">
               </div>
               <div class="mb-3">
-                <label for="hora_sessao" class="form-label">Hora</label>
+                <label id="hora_sessao_label" for="hora_sessao" class="form-label">Hora</label>
                 <input type="text" class="form-control" id="hora_sessao" name="hora_sessao">
               </div>
               <div class="mb-3">
-                <label for="nome_filme" class="form-label">Filme</label>
-                <input type="text" class="form-control" id="nome_filme" name="nome_filme">
+                <label id="nome_filme_label" for="nome_filme" class="form-label">Filme</label>
+                <input type="number" class="form-control" id="nome_filme" name="nome_filme">
               </div>
               <div class="mb-3">
-                <label for="nome_sala" class="form-label">Sala</label>
-                <input type="text" class="form-control" id="nome_sala" name="nome_sala">
+                <label id="nome_sala_label" for="nome_sala" class="form-label">Sala</label>
+                <input type="number" class="form-control" id="nome_sala" name="nome_sala">
               </div>
               <div class="mb-3">
-                <label for="nome_filial" class="form-label">Filial</label>
-                <input type="text" class="form-control" id="nome_filial" name="nome_filial">
+                <label id="nome_filial_label" for="nome_filial" class="form-label">Filial</label>
+                <input type="number" class="form-control" id="nome_filial" name="nome_filial">
               </div>
               <div class="mb-3">
                 <label for="preco_ingresso" class="form-label">Preço do ingresso</label>
