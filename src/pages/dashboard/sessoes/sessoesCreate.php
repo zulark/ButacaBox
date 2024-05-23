@@ -94,7 +94,9 @@ include ('../../../pages/login-funcionario/protect.php')
                         </div>
                         <div class="col-md-12">
                             <label for="filme_id" class="form-label">Filme</label>
-                            <input type="number" class="form-control" id="filme_id" name="filme_id">
+                            <select class="form-select" id="filme_id" name="filme_id">
+                                <option selected disabled>Selecionar filme</option>
+                            </select>
                         </div>
                         <div class="col-md-12">
                             <label for="sala_id" class="form-label">Sala</label>
@@ -134,8 +136,24 @@ include ('../../../pages/login-funcionario/protect.php')
         </div>
     </main>
     <script>
+        function fetchMovies() {
+            fetch('http://127.0.0.1/ButacaBox/ButacaBox/src/api/filmes/getmovies.php')
+                .then(response => response.json())
+                .then(data => {
+                    const selectFilme = document.getElementById('filme_id');
+                    data.forEach(movie => {
+                        const option = document.createElement('option');
+                        option.value = movie.id_filme;
+                        option.textContent = movie.titulo;
+                        selectFilme.appendChild(option)
+                        console.log(`${movie.id_filme} - ${movie.titulo}`)
+                    });
+                })
+                .catch(error => console.error(error))
+        }
         document.addEventListener('DOMContentLoaded', function () {
             document.getElementById('createForm').reset();
+            fetchMovies()
         });
         document.getElementById('createForm').addEventListener('submit', function (event) {
             event.preventDefault();
