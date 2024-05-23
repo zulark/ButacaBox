@@ -18,7 +18,7 @@ function displayMovieSessions(movieSessions) {
             <td class="text-center">${movieSession.id_sessao}</td>
             <td class="text-center">${movieSession.data_sessao}</td>
             <td class="text-center">${movieSession.hora_sessao}</td>
-            <td>${movieSession.nome_filme}</td> 
+            <td class="text-justify">${movieSession.nome_filme}</td> 
             <td class="text-center">${movieSession.nome_sala}</td>
             <td class="text-center">${movieSession.nome_filial}</td>
             <td class="text-center">${movieSession.assentos_disponiveis}</td>
@@ -68,12 +68,16 @@ function editmovieSession(id) {
             return response.json();
         })
         .then(data => {
-            document.getElementById('data_sessao').value = data.data_sessao
-            document.getElementById('hora_sessao').value = data.hora_sessao
-            document.getElementById('nome_filme').value = data.nome_filme
-            document.getElementById('nome_sala').value = data.nome_sala
-            document.getElementById('nome_filial').value = data.nome_filial
-            document.getElementById('preco_ingresso').value = data.preco_ingresso
+            document.getElementById('nome_filme_label').innerHTML = `Filme: ${data.nome_filme}`;
+            document.getElementById('nome_sala_label').innerHTML = `${data.nome_sala}`;
+            document.getElementById('nome_filial_label').innerHTML = `Filial: ${data.nome_filial}`;
+
+            document.getElementById('data_sessao').value = data.data_sessao;
+            document.getElementById('hora_sessao').value = data.hora_sessao;
+            document.getElementById('nome_filme').value = data.filme_id;
+            document.getElementById('nome_sala').value = data.sala_id;
+            document.getElementById('nome_filial').value = data.filial_id;
+            document.getElementById('preco_ingresso').value = data.preco_ingresso;
             editModal.show();
         })
         .catch(error => {
@@ -93,9 +97,9 @@ function savemovieSessionChanges(id) {
     var movieSessionData = {
         data_sessao: data_sessao,
         hora_sessao: hora_sessao,
-        nome_filme: nome_filme,
-        nome_sala: nome_sala,
-        nome_filial: nome_filial,
+        filme_id: nome_filme,
+        sala_id: nome_sala,
+        filial_d: nome_filial,
         preco_ingresso: preco_ingresso
     };
     fetch(`http://127.0.0.1/ButacaBox/ButacaBox/src/api/sessoes/updateMovieSessions.php?id=${id}`, {
