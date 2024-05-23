@@ -1,5 +1,4 @@
 var movieRooms = [];
-
 function fetchMovieRooms() {
     fetch('../../../api/salas/getMovieRooms.php')
         .then(response => response.json())
@@ -9,7 +8,6 @@ function fetchMovieRooms() {
         })
         .catch(error => console.error(error));
 }
-
 function displayMovieRooms(movieRooms) {
     var tableBody = document.getElementById('movieRoomTableBody');
     tableBody.innerHTML = '';
@@ -27,8 +25,6 @@ function displayMovieRooms(movieRooms) {
         tableBody.appendChild(row);
     });
 }
-
-
 function searchMovieRooms() {
     var searchValue = document.getElementById('searchInput').value.trim().toLowerCase();
     if (searchValue !== '') {
@@ -40,24 +36,15 @@ function searchMovieRooms() {
         displayMovieRooms(movieRooms);
     }
 }
-
 document.getElementById('searchInput').addEventListener('input', searchMovieRooms);
-
 fetchMovieRooms();
-
 var editModal = new bootstrap.Modal(document.getElementById('editMovieRoomModal'));
-
-
 document.getElementById('saveChanges').addEventListener('click', function (event) {
     event.preventDefault();
-
     var id = document.getElementById('editMovieRoomModalLabel').innerText.split(":")[1].trim();
-
     savemovieRoomChanges(id);
-
     editModal.hide();
 });
-
 function editmovieRoom(id) {
     fetch(`../../../api/salas/getMovieRooms.php?id=${id}`, {
         method: 'GET',
@@ -76,23 +63,19 @@ function editmovieRoom(id) {
             document.getElementById("capacidade").value = data.capacidade;
             editModal.show();
         })
-        .catch(error => {
-            console.error('Erro:', error);
-        });
-
+    .catch(error => {
+        console.error('Erro:', error);
+    });
     const modalLabel = document.getElementById('editMovieRoomModalLabel');
     modalLabel.innerText = `Editar sala: ${id}`;
 }
-
 function savemovieRoomChanges(id) {
     var nome = document.getElementById('nome').value;
     var capacidade = document.getElementById('capacidade').value;
-
     var movieRoomData = {
         nome: nome,
         capacidade: capacidade,
     };
-
     fetch(`../../../api/salas/updateMovieRoom.php?id=${id}`, {
         method: 'PUT',
         headers: {
@@ -106,18 +89,16 @@ function savemovieRoomChanges(id) {
             }
             fetchMovieRooms();
         })
-        .catch(error => {
-            console.error('Erro ao salvar alterações da sala:', error);
-            alert('Erro ao salvar alterações da sala: ' + error.message);
-        });
+    .catch(error => {
+        console.error('Erro ao salvar alterações da sala:', error);
+        alert('Erro ao salvar alterações da sala: ' + error.message);
+    });
 }
-
 function deletemovieRoom(id) {
     var confirmDeleteModal = new bootstrap.Modal(document.getElementById('confirmDeleteModal'));
     const modalLabel = document.getElementById('confirmDeleteModalLabel');
     modalLabel.innerText = `Excluir sala: ${id}?`;
     confirmDeleteModal.show();
-
     document.getElementById('confirmDeleteButton').addEventListener('click', function () {
         fetch(`../../../api/salas/deleteMovieRoom.php?id=${id}`, {
             method: 'DELETE'
@@ -131,7 +112,6 @@ function deletemovieRoom(id) {
                 console.error('Erro ao excluir sala:', error);
                 alert('Erro ao excluir sala: ' + error.message);
             });
-
         confirmDeleteModal.hide();
     });
 }
