@@ -94,21 +94,21 @@
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/ingresso/detalhes-filme.html?id=16">
+                    <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/ingresso/detalhes-filme.php?id=15">
                         <img style="max-height: 543px; min-height: 500px;"
                             src="https://www.cinemark.com.br/Content/uploads/banner/banner_desk_guerra-civil_1920x550px.jpg"
                             class="d-block w-100" alt="...">
                     </a>
                 </div>
                 <div class="carousel-item">
-                    <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/ingresso/detalhes-filme.html?id=15">
+                    <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/ingresso/detalhes-filme.php?id=14">
                         <img style="max-height: 543px; min-height: 500px"
                             src="https://www.cinemark.com.br/Content/uploads/banner/banner_desk_jorge-da-capadocia_1920x550px.jpg"
                             class="d-block w-100" alt="...">
                     </a>
                 </div>
                 <div class="carousel-item">
-                    <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/ingresso/detalhes-filme.html?id=3">
+                    <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/ingresso/detalhes-filme.php?id=3">
 
                         <img style="max-height: 543px; min-height: 500px;"
                             src="https://www.cinemark.com.br/Content/uploads/banner/banner_desk_ghostbusters_apocalipse-de-gelo_1920x550px.jpg"
