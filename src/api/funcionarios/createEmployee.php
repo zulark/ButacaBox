@@ -10,11 +10,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         http_response_code(400);
         exit;
     }
-
     $nome = mysqli_real_escape_string($conn, $data['nome']);
     $email = mysqli_real_escape_string($conn, $data['email']);
     $senha = mysqli_real_escape_string($conn, $data['senha']);
     $senhaCriptografada = password_hash($senha, PASSWORD_DEFAULT);
+    $salario_base = mysqli_real_escape_string($conn, (string) (float) $data['salario_base']);
     $filial_id = intval($data['filial_id']);
 
     $sql = "INSERT INTO funcionarios (nome, email, senha, filial_id) 
@@ -36,6 +36,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo json_encode(['error' => 'Request Inválido']);
     http_response_code(405);
 }
-
 $conn->close();
 ?>

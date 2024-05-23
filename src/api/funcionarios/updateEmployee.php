@@ -27,6 +27,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
         $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
         $update_fields[] = "senha = '$senha_hash'";
     }
+    if (isset($data['salario_base'])) {
+        $salario_base = mysqli_real_escape_string($conn, (string) (float) $data['salario_base']);
+        $update_fields[] = "salario_base = '$salario_base'";
+    }
     if (isset($data['filial_id'])) {
         $filial_id = mysqli_real_escape_string($conn, $data['filial_id']);
         $update_fields[] = "filial_id = '$filial_id'";
