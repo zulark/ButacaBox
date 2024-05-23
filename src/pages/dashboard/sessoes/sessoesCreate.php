@@ -85,27 +85,32 @@ include ('../../../pages/login-funcionario/protect.php')
                 <div class="p-3">
                     <form id="createForm" class="row g-3">
                         <div class="col-md-12">
-                            <label for="sessao_data" class="form-label">Data</label>
-                            <input type="date" class="form-control" id="sessao_data" name="sessao_data">
+                            <label for="data_sessao" class="form-label">Data</label>
+                            <input type="date" class="form-control" id="data_sessao" name="data_sessao">
                         </div>
                         <div class="col-md-12">
-                            <label for="sessao_hora" class="form-label">Hora</label>
-                            <input type="time" class="form-control" id="sessao_hora" name="sessao_hora">
+                            <label for="hora_sessao" class="form-label">Hora</label>
+                            <input type="time" class="form-control" id="hora_sessao" name="hora_sessao">
                         </div>
                         <div class="col-md-12">
-                            <label for="sessao_hora" class="form-label">Hora</label>
+                            <label for="filme_id" class="form-label">Filme</label>
+                            <input type="number" class="form-control" id="filme_id" name="filme_id">
+                        </div>
+                        <div class="col-md-12">
+                            <label for="sala_id" class="form-label">Sala</label>
+                            <input type="number" class="form-control" id="sala_id" name="sala_id">
+                        </div>
+                        <div class="col-md-12">
+                            <label for="filial_id" class="form-label">Filial</label>
                             <select class="form-select form-select-md" name="filial_id" id="filial_id">
-                                <option selected="" disabled="" class="disabled">Selecionar filial</option>
-                            </select>
-                        <div class="col-md-12">
-                            <label for="sessao_hora" class="form-label">Hora</label>
-                            <select class="form-select form-select-md" name="filial_id" id="filial_id">
-                                <option selected="" disabled="" class="disabled">Selecionar filial</option>
+                                <option selected disabled class="disabled">Selecionar filial</option>
+                                <option value="1">Matriz</option>
+                                <option value="2">Tarumã</option>
                             </select>
                         </div>
                         <div class="col-md-12">
-                            <label for="id_filme" class="form-label">Filme</label>
-                            <input type="id_filme" class="form-control" id="id_filme" name="id_filme">
+                            <label for="preco_ingresso" class="form-label">Preço do ingresso</label>
+                            <input type="preco_ingresso" class="form-control" id="preco_ingresso" name="preco_ingresso">
                         </div>
                         <div class="col-12">
                             <button type="submit" class="btn btn-success">Salvar</button>
@@ -123,10 +128,8 @@ include ('../../../pages/login-funcionario/protect.php')
                         </a>
                     </div>
                 </div>
-
                 <div class="alert-message d-none" id="alertMessage"></div>
                 <div id="errorMessage" class="alert alert-danger d-none" role="alert"></div>
-
             </div>
         </div>
     </main>
@@ -137,11 +140,15 @@ include ('../../../pages/login-funcionario/protect.php')
         document.getElementById('createForm').addEventListener('submit', function (event) {
             event.preventDefault();
             var formData = {
-                nome: document.getElementById('nome').value,
-                capacidade: document.getElementById('capacidade').value,
+                data_sessao: document.getElementById('data_sessao').value,
+                hora_sessao: document.getElementById('hora_sessao').value,
+                filme_id: document.getElementById('filme_id').value,
+                sala_id: document.getElementById('sala_id').value,
+                filial_id: document.getElementById('filial_id').value,
+                preco_ingresso: document.getElementById('preco_ingresso').value,
             };
             var jsonData = JSON.stringify(formData);
-            fetch('http://127.0.0.1/ButacaBox/ButacaBox/src/api/salas/createMovieRoom.php', {
+            fetch('http://127.0.0.1/ButacaBox/ButacaBox/src/api/sessoes/createMovieSessions.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
