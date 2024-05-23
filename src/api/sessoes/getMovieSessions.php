@@ -1,5 +1,4 @@
 <?php
-// Database connection code
 include '../db_connection.php';
 if (isset($_GET['id'])) {
     $id_filme = intval($_GET['id']);
@@ -45,7 +44,7 @@ GROUP BY
         $movie = $result->fetch_assoc();
         echo json_encode($movie);
     } else {
-        echo json_encode(['error' => 'Filme não encontrado']);
+        echo json_encode(['error' => 'Sessão não encontrada']);
     }
 } else {
     $sql = "SELECT 
