@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 20px;
+    text-decoration: none;
+    font-family: 'Arimo', Arial, sans-serif;
+
+}
+
+body {
+}
+
+form a {
+    font-weight: 500;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn {
+    color: #EEEEEE;
+}
+
+.header {
+    margin: 0;
+    height: 85px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 45px;
+}
+
+.navbar-brand-logo img {
+    width: 75px;
+    transform: rotate(25deg);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #F5F5F5;
+    font-size: 1em !important;
+}
