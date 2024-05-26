@@ -24,7 +24,7 @@ function displayMovieSessions(movieSessions) {
             <td class="text-center">${movieSession.assentos_disponiveis}</td>
             <td class="text-center">R$${movieSession.preco_ingresso}</td>
             <td class="d-flex">
-                <button style="background-color: #3ba6ff;" class="btn btn-sm w-50 text-white" id="editmovieSessionButton" onclick="editmovieSession(${movieSession.id_sessao})">Editar</button>
+                <button style="background-color: #3ba6ff;" class="btn btn-sm w-50 text-white" id="editmovieSessionButton" onclick="editMovieSession(${movieSession.id_sessao})">Editar</button>
                 <button style="background-color: #d9534f;" class="btn btn-sm w-50 text-white" onclick="deletemovieSession(${movieSession.id_sessao})">Deletar</button>
             </td>
         `;
@@ -54,7 +54,7 @@ document.getElementById('saveChanges').addEventListener('click', function (event
     savemovieSessionChanges(id);
     editModal.hide();
 });
-function editmovieSession(id) {
+function editMovieSession(id) {
     fetch(`http://127.0.0.1/ButacaBox/ButacaBox/src/api/sessoes/getMovieSessions.php?id=${id}`, {
         method: 'GET',
         headers: {
@@ -68,10 +68,6 @@ function editmovieSession(id) {
             return response.json();
         })
         .then(data => {
-            document.getElementById('nome_filme_label').innerHTML = `Filme: ${data.nome_filme}`;
-            document.getElementById('nome_sala_label').innerHTML = `${data.nome_sala}`;
-            document.getElementById('nome_filial_label').innerHTML = `Filial: ${data.nome_filial}`;
-
             document.getElementById('data_sessao').value = data.data_sessao;
             document.getElementById('hora_sessao').value = data.hora_sessao;
             document.getElementById('nome_filme').value = data.filme_id;

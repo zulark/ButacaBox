@@ -94,11 +94,15 @@ include ('../../../pages/login-funcionario/protect.php')
                         </div>
                         <div class="col-md-12">
                             <label for="filme_id" class="form-label">Filme</label>
-                            <input type="number" class="form-control" id="filme_id" name="filme_id">
+                            <select class="form-select" id="filme_id" name="filme_id">
+                                <option selected disabled>Selecionar Filme</option>
+                            </select>
                         </div>
                         <div class="col-md-12">
                             <label for="sala_id" class="form-label">Sala</label>
-                            <input type="number" class="form-control" id="sala_id" name="sala_id">
+                            <select class="form-select" id="sala_id" name="sala_id">
+                                <option selected disabled>Selecionar Sala</option>
+                            </select>
                         </div>
                         <div class="col-md-12">
                             <label for="filial_id" class="form-label">Filial</label>
@@ -134,6 +138,38 @@ include ('../../../pages/login-funcionario/protect.php')
         </div>
     </main>
     <script>
+        function fetchMovies() {
+            fetch('http://127.0.0.1/ButacaBox/ButacaBox/src/api/filmes/getMovies.php')
+                .then(response => response.json())
+                .then(data => {
+                    const selectFilme = document.getElementById('filme_id');
+                    data.forEach(movie => {
+                        const option = document.createElement('option');
+                        option.value = movie.id_filme;
+                        option.textContent = movie.titulo;
+                        selectFilme.appendChild(option)
+                        console.log(movie)
+                    });
+                })
+                .catch(error => console.error(error))
+        }
+        function fetchMovieRooms() {
+            fetch('http://127.0.0.1/ButacaBox/ButacaBox/src/api/salas/getMovieRooms.php')
+                .then(response => response.json())
+                .then(data => {
+                    const selectSala = document.getElementById('sala_id');
+                    data.forEach(room => {
+                        const option = document.createElement('option');
+                        option.value = room.id_sala;
+                        option.textContent = room.nome;
+                        selectSala.appendChild(option)
+                        console.log(room)
+                    });
+                })
+                .catch(error => console.error(error))
+        }
+        fetchMovies();
+        fetchMovieRooms();
         document.addEventListener('DOMContentLoaded', function () {
             document.getElementById('createForm').reset();
         });

@@ -161,7 +161,9 @@ include ('../../pages/login-funcionario/protect.php')
               </div>
               <div class="mb-3">
                 <label for="fornecedor_id" class="form-label">ID do Fornecedor</label>
-                <input type="number" class="form-control" id="fornecedor_id" name="fornecedor_id">
+                <select class="form-select" id="fornecedor_id" name="fornecedor_id">
+                  <option selected disabled>Selecionar fornecedor</option>
+                </select>
               </div>
               <div class="mb-3">
                 <label for="youtube_url" class="form-label">Link do trailer</label>
@@ -178,6 +180,7 @@ include ('../../pages/login-funcionario/protect.php')
                   <option value="estreia">Estreia</option>
                   <option value="cartaz">Em cartaz</option>
                   <option value="em_breve">Em breve</option>
+                  <option value="desativado">Desativado</option>
                 </select>
               </div>
             </form>

@@ -1,6 +1,18 @@
-
 var movies = [];
-
+function fetchFornecedores() {
+    fetch('../../api/fornecedores/getFornecedores.php')
+        .then(response => response.json())
+        .then(data => {
+            const selectFornecedor = document.getElementById('fornecedor_id');
+            data.forEach(provider => {
+                const option = document.createElement('option');
+                option.value = provider.id_fornecedor;
+                option.textContent = provider.nome;
+                selectFornecedor.appendChild(option);
+            });
+        })
+}
+fetchFornecedores();
 function fetchMovies() {
     fetch('../../api/filmes/getMovies.php', {
         method: 'GET',
@@ -8,7 +20,6 @@ function fetchMovies() {
             'Content-Type': 'application/json'
         }
     })
-    
         .then(response => response.json())
         .then(data => {
             movies = data;
@@ -16,7 +27,7 @@ function fetchMovies() {
         })
         .catch(error => console.error(error));
 }
-function displayMovies(movies) {    
+function displayMovies(movies) {
     var tableBody = document.getElementById('movieTableBody');
     tableBody.innerHTML = '';
     movies.forEach(function (movie) {
@@ -38,37 +49,28 @@ function displayMovies(movies) {
         tableBody.appendChild(row);
     });
 }
-
 function searchMovies() {
     var searchValue = document.getElementById('searchInput').value.trim();
     if (searchValue !== '') {
         var filteredMovies = movies.filter(function (movie) {
-            return movie.id_filme.toString().indexOf(searchValue) !== -1 || movie.titulo.toLowerCase().includes(searchValue) || movie.status_filme.toLowerCase().includes(searchValue) ;
+            return movie.id_filme.toString().indexOf(searchValue) !== -1 || movie.titulo.toLowerCase().includes(searchValue) || movie.status_filme.toLowerCase().includes(searchValue);
         });
         displayMovies(filteredMovies);
     } else {
         displayMovies(movies);
     }
 }
-
 document.getElementById('searchInput').addEventListener('input', searchMovies);
-
 fetchMovies();
-
 var editModal = new bootstrap.Modal(document.getElementById('editMovieModal'), {
     keyboard: false
 });
-
 document.getElementById('saveChanges').addEventListener('click', function (event) {
-    event.preventDefault(); 
-
+    event.preventDefault();
     var id = document.getElementById('editMovieModalLabel').innerText.split(":")[1].trim();
-
     saveMovieChanges(id);
-
     editModal.hide();
 });
-
 function editMovie(id) {
     fetch(`../../api/filmes/getMovies.php?id=${id}`, {
         method: 'GET',
@@ -101,7 +103,6 @@ function editMovie(id) {
     const modalLabel = document.getElementById('editMovieModalLabel');
     modalLabel.innerText = `Editar filme: ${id}`;
 }
-
 function saveMovieChanges(id) {
     var titulo = document.getElementById('titulo').value;
     var cartaz_filme = document.getElementById('cartaz_filme').value;
@@ -112,7 +113,6 @@ function saveMovieChanges(id) {
     var descricao = document.getElementById('descricao').value;
     var youtube_url = document.getElementById('youtube_url').value;
     var status_filme = document.getElementById('status_filme').value;
-
     var filmeData = {
         titulo: titulo,
         cartaz_filme: cartaz_filme,
@@ -124,7 +124,6 @@ function saveMovieChanges(id) {
         status_filme: status_filme,
         youtube_url: youtube_url
     };
-
     fetch(`../../api/filmes/updateMovie.php?id=${id}`, {
         method: 'PUT',
         headers: {
@@ -143,14 +142,9 @@ function saveMovieChanges(id) {
             alert('Erro ao salvar alterações do filme: ' + error.message);
         });
 }
-
-
-
-
 function deleteMovie(id_filme) {
     var confirmDeleteModal = new bootstrap.Modal(document.getElementById('confirmDeleteModal'));
     confirmDeleteModal.show();
-
     document.getElementById('confirmDeleteButton').addEventListener('click', function () {
         fetch(`../../api/filmes/deleteMovie.php?id_filme=${id_filme}`, {
             method: 'DELETE'
