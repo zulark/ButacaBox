@@ -123,7 +123,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     valor_venda: parseFloat(document.querySelector('.preco_total').innerText.substring(2)),
                     filial_id: sessionData.id_filial
                 };
-                console.log(dadosDaVenda);
                 fetch('http://127.0.0.1/ButacaBox/ButacaBox/src/api/venda/vendaIngresso.php', {
                     method: 'POST',
                     headers: {

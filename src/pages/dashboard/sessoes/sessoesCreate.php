@@ -148,7 +148,6 @@ include ('../../../pages/login-funcionario/protect.php')
                         option.value = movie.id_filme;
                         option.textContent = movie.titulo;
                         selectFilme.appendChild(option)
-                        console.log(movie)
                     });
                 })
                 .catch(error => console.error(error))
@@ -163,7 +162,6 @@ include ('../../../pages/login-funcionario/protect.php')
                         option.value = room.id_sala;
                         option.textContent = room.nome;
                         selectSala.appendChild(option)
-                        console.log(room)
                     });
                 })
                 .catch(error => console.error(error))
