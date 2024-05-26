@@ -104,8 +104,9 @@ include ('../../pages/login-funcionario/protect.php')
                         </div>
                         <div class="col-md-12">
                             <label for="fornecedor_id" class="form-label">ID do Fornecedor</label>
-                            <input type="number" min="1" max="999" class="form-control" id="fornecedor_id"
-                                name="fornecedor_id">
+                            <select class="form-select" id="fornecedor_id" name="fornecedor_id">
+                                <option selected disabled>Selecionar fornecedor</option>
+                            </select>
                         </div>
                         <div class="col-12">
                             <label for="descricao" class="form-label">Descrição</label>
@@ -122,6 +123,7 @@ include ('../../pages/login-funcionario/protect.php')
                                 <option value="estreia">Estreia</option>
                                 <option value="cartaz">Em cartaz</option>
                                 <option value="em_breve">Em breve</option>
+                                <option value="desativado">Desativado</option>
                             </select>
                         </div>
                         <div class="col-12">
@@ -147,10 +149,23 @@ include ('../../pages/login-funcionario/protect.php')
     </main>
 
     <script>
+        function fecthMovie() {
+            fetch('http://127.0.0.1/ButacaBox/ButacaBox/src/api/fornecedores/getFornecedores.php')
+                .then(response => response.json())
+                .then(data => {
+                    const selectFornecedor = document.getElementById('fornecedor_id');
+                    data.forEach(provider => {
+                        const option = document.createElement('option');
+                        option.value = provider.id_fornecedor;
+                        option.textContent = provider.nome;
+                        selectFornecedor.appendChild(option);
+                    });
+                })
+        }
         document.addEventListener('DOMContentLoaded', function () {
             document.getElementById('createForm').reset();
+            fecthMovie();
         });
-
         document.getElementById('createForm').addEventListener('submit', function (event) {
             event.preventDefault();
 
@@ -202,7 +217,6 @@ include ('../../pages/login-funcionario/protect.php')
         });
     </script>
 
-    <!-- Bootstrap JS files -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
         crossorigin="anonymous"></script>
