@@ -16,7 +16,7 @@ include ('../../../pages/login-funcionario/protect.php')
 
 <body class="vh-100">
   <main class="d-flex flex-nowrap h-100">
-  <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark sidebar">
+    <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark sidebar">
       <a href="../../../index.php"
         class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
         <svg class="bi pe-none me-2" width="40" height="32">
@@ -35,8 +35,8 @@ include ('../../../pages/login-funcionario/protect.php')
           </a>
         </li>
         <li class="nav-item">
-          <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/sessoes/sessoes.php"
-            class="nav-link active" aria-current="page">
+          <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/sessoes/sessoes.php" class="nav-link active"
+            aria-current="page">
             Sessões
           </a>
         </li>
@@ -150,16 +150,24 @@ include ('../../../pages/login-funcionario/protect.php')
                 <input type="text" class="form-control" id="hora_sessao" name="hora_sessao">
               </div>
               <div class="mb-3">
-                <label id="nome_filme_label" for="nome_filme" class="form-label">Filme</label>
-                <input type="number" class="form-control" id="nome_filme" name="nome_filme">
+                <label for="nome_filme" class="form-label">Filme</label>
+                <select class="form-select" id="nome_filme" name="nome_filme">
+                  <option selected disabled>Selecionar filme</option>
+                </select>
               </div>
               <div class="mb-3">
-                <label id="nome_sala_label" for="nome_sala" class="form-label">Sala</label>
-                <input type="number" class="form-control" id="nome_sala" name="nome_sala">
+                <label for="nome_sala" class="form-label">Filme</label>
+                <select class="form-select" id="nome_sala" name="nome_sala">
+                  <option selected disabled>Selecionar Sala</option>
+                </select>
               </div>
               <div class="mb-3">
-                <label id="nome_filial_label" for="nome_filial" class="form-label">Filial</label>
-                <input type="number" class="form-control" id="nome_filial" name="nome_filial">
+                <label for="nome_filial" class="form-label">Filial</label>
+                <select class="form-select form-select-md" name="nome_filial" id="nome_filial">
+                  <option selected disabled class="disabled">Selecionar filial</option>
+                  <option value="1">Matriz</option>
+                  <option value="2">Tarumã</option>
+                </select>
               </div>
               <div class="mb-3">
                 <label for="preco_ingresso" class="form-label">Preço do ingresso</label>
@@ -184,7 +192,40 @@ include ('../../../pages/login-funcionario/protect.php')
     integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
     crossorigin="anonymous"></script>
   <script src="../../../js/sessoes.js"></script>
-
+  <script>
+    function fetchMovies() {
+      fetch('http://127.0.0.1/ButacaBox/ButacaBox/src/api/filmes/getMovies.php')
+        .then(response => response.json())
+        .then(data => {
+          const selectFilme = document.getElementById('nome_filme');
+          data.forEach(movie => {
+            const option = document.createElement('option');
+            option.value = movie.id_filme;
+            option.textContent = movie.titulo;
+            selectFilme.appendChild(option)
+            console.log(movie)
+          });
+        })
+        .catch(error => console.error(error))
+    }
+    function fetchMovieRooms() {
+      fetch('http://127.0.0.1/ButacaBox/ButacaBox/src/api/salas/getMovieRooms.php')
+        .then(response => response.json())
+        .then(data => {
+          const selectSala = document.getElementById('nome_sala');
+          data.forEach(room => {
+            const option = document.createElement('option');
+            option.value = room.id_sala;
+            option.textContent = room.nome;
+            selectSala.appendChild(option)
+            console.log(room)
+          });
+        })
+        .catch(error => console.error(error))
+    }
+    fetchMovies();
+    fetchMovieRooms();
+  </script>
 </body>
 
 </html>
