@@ -30,7 +30,8 @@ include ('../../../pages/login-funcionario/protect.php')
             <hr>
             <ul class="nav nav-pills flex-column mb-auto">
                 <li class="nav-item">
-                    <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/dashboard.php" class="nav-link text-white">
+                    <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/dashboard.php"
+                        class="nav-link text-white">
                         Filmes
                     </a>
                 </li>
@@ -126,7 +127,6 @@ include ('../../../pages/login-funcionario/protect.php')
             </div>
         </div>
     </main>
-
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             document.getElementById('createForm').reset();
@@ -134,16 +134,13 @@ include ('../../../pages/login-funcionario/protect.php')
 
         document.getElementById('createForm').addEventListener('submit', function (event) {
             event.preventDefault();
-
             var formData = {
                 nome: document.getElementById('nome').value,
                 email: document.getElementById('email').value,
                 senha: document.getElementById('senha').value,
                 filial_id: document.getElementById('filial_id').value,
             };
-
             var jsonData = JSON.stringify(formData);
-
             fetch('http://127.0.0.1/ButacaBox/ButacaBox/src/api/funcionarios/createEmployee.php', {
                 method: 'POST',
                 headers: {
@@ -178,14 +175,13 @@ include ('../../../pages/login-funcionario/protect.php')
         });
     </script>
 
-    <!-- Bootstrap JS files -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
-
+    F
 </body>
 
 </html>

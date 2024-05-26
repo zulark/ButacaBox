@@ -48,7 +48,7 @@ include ('../../../pages/login-funcionario/protect.php')
         </li>
         <li>
           <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/funcionarios/funcionarios.php"
-            class="nav-link active"  aria-current="page">
+            class="nav-link active" aria-current="page">
             Funcionarios
           </a>
         </li>
@@ -146,8 +146,12 @@ include ('../../../pages/login-funcionario/protect.php')
                 <input type="text" class="form-control" id="email" name="email">
               </div>
               <div class="mb-3">
-                <label for="filial_id" class="form-label">Filial</label>
-                <input type="text" class="form-control" id="filial_id" name="filial_id">
+                <label for="filial_id" class="form-label ">Filial</label>
+                <select class="form-select form-select-md" name="filial_id" id="filial_id">
+                  <option selected disabled class="disabled">Selecionar filial</option>
+                  <option value="1">Matriz</option>
+                  <option value="2">Tarumã</option>
+                </select>
               </div>
               <div class="mb-3">
                 <label for="salario_base" class="form-label">Salário</label>
