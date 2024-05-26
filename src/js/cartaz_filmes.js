@@ -2,40 +2,35 @@ function fetchMovieData() {
     fetch('http://127.0.0.1/ButacaBox/ButacaBox/src/api/filmes/getMovies.php')
         .then(response => response.json())
         .then(data => {
-            const filmes_estreia = document.querySelectorAll('.filmes_estreia');
-            const filmes_cartaz = document.querySelectorAll('.filmes_cartaz');
-            const filmes_em_breve = document.querySelectorAll('.filmes_em_breve');
-            let indexEstreia = 0;
-            let indexCartaz = 0;
-            let indexEmBreve = 0;
+            const estreiasRow = document.getElementById('estreias-row');
+            const emCartazRow = document.getElementById('em_cartaz-row');
+            const emBreveRow = document.getElementById('em_breve-row');
 
             data.forEach(movie => {
                 const posterURL = movie.cartaz_filme;
                 const id = movie.id_filme;
                 const movieURL = `http://127.0.0.1/ButacaBox/ButacaBox/src/pages/ingresso/detalhes-filme.php?id=${id}`;
 
-
+                let movieDiv = `
+                    <div class="col mb-5">
+                        <div class="movie-image d-flex justify-content-center align-items-center">
+                            <a href="${movieURL}" class="movie-link">
+                                <img class="img-fluid" src="${posterURL}" alt="">
+                            </a>
+                        </div>
+                    </div>
+                `;
                 switch (movie.status_filme) {
                     case 'estreia':
-                        if (indexEstreia < filmes_estreia.length) {
-                            filmes_estreia[indexEstreia].src = posterURL;
-                            filmes_estreia[indexEstreia].parentNode.href = movieURL;
-                            indexEstreia++;
-                        }
+                        estreiasRow.insertAdjacentHTML('beforeend', movieDiv);
                         break;
                     case 'cartaz':
-                        if (indexCartaz < filmes_cartaz.length) {
-                            filmes_cartaz[indexCartaz].src = posterURL;
-                            filmes_cartaz[indexCartaz].parentNode.href = movieURL;
-                            indexCartaz++;
-                        }
+                        emCartazRow.insertAdjacentHTML('beforeend', movieDiv);
                         break;
                     case 'em_breve':
-                        if (indexEmBreve < filmes_em_breve.length) {
-                            filmes_em_breve[indexEmBreve].src = posterURL;
-                            filmes_em_breve[indexEmBreve].parentNode.href = movieURL;
-                            indexEmBreve++;
-                        }
+                        emBreveRow.insertAdjacentHTML('beforeend', movieDiv);
+                        break;
+                    case 'desativado':
                         break;
                     default:
                         break;
@@ -48,16 +43,12 @@ function fetchMovieData() {
             console.error('Error:', error);
         });
 }
-
 function toggleLoadingIndicator(show) {
     const loadingElements = document.querySelectorAll('.spinner-border');
     loadingElements.forEach(element => {
         element.parentElement.style.display = show ? 'block' : 'none';
     });
 }
-
-
-
 function displayLoadingIndicator() {
     const loading = document.createElement('div');
     loading.classList.add("d-flex");
@@ -69,12 +60,10 @@ function displayLoadingIndicator() {
         col.appendChild(loading.cloneNode(true));
     });
 }
-
 function hideLoadingIndicator() {
     const loadingElements = document.querySelectorAll('.spinner-border');
     loadingElements.forEach(element => {
         element.parentElement.remove();
     });
 }
-
 fetchMovieData();
