@@ -4,7 +4,7 @@ body{
 }
 .h1 {
 	text-transform: uppercase;
-	font-weight: 500;
+	font-weight: 700;
 }
 .header {
 	padding-inline: 100px;
@@ -56,12 +56,8 @@ body{
 .carousel-item:hover {
 	cursor: pointer;
 }
-.col {
-}
-
 .col img {
 	width: 100%;
-	min-width: 200px;
 	transition: .8s;
 	border-radius: 10px;
 }
