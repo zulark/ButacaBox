@@ -16,10 +16,11 @@
     <nav class="navbar">
         <div class="container-fluid header d-flex justify-content-between align-items-center">
             <div style="display: flex; flex-direction: column; align-items: center;">
-                <span class="navbar-brand-logo">
-                    <img class="d-none d-sm-block" src="https://cdn-icons-png.flaticon.com/512/2598/2598702.png" alt="">
-                </span>
-                <strong class="d-none d-sm-block">BUTACABOX</strong>
+                    <span class="navbar-brand-logo">
+                        <img class="d-none d-sm-block" src="https://cdn-icons-png.flaticon.com/512/2598/2598702.png"
+                            alt="">
+                    </span>
+                    <strong class="d-none d-sm-block">BUTACABOX</strong>
             </div>
 
             <div class="d-flex align-items-center">
@@ -96,23 +97,22 @@
                 <div class="carousel-item active">
                     <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/ingresso/detalhes-filme.php?id=15">
                         <img style="max-height: 543px; min-height: 500px;"
-                            src="https://www.cinemark.com.br/Content/uploads/banner/banner_desk_guerra-civil_1920x550px.jpg"
-                            class="d-block w-100" alt="...">
+                            src="..\img\FURIOSA-BANNER-SITE-COMPRE-AGORA-2.jpg" class="d-block w-100"
+                            alt="Poster do filme Furiosa">
                     </a>
                 </div>
                 <div class="carousel-item">
                     <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/ingresso/detalhes-filme.php?id=14">
                         <img style="max-height: 543px; min-height: 500px"
-                            src="https://www.cinemark.com.br/Content/uploads/banner/banner_desk_jorge-da-capadocia_1920x550px.jpg"
-                            class="d-block w-100" alt="...">
+                            src="..\img\FURIA-PRIMITIVA-COMPRE-AGORA-2.jpg" class="d-block w-100"
+                            alt="Poster do film Furia Primitiva">
                     </a>
                 </div>
                 <div class="carousel-item">
                     <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/ingresso/detalhes-filme.php?id=3">
 
-                        <img style="max-height: 543px; min-height: 500px;"
-                            src="https://www.cinemark.com.br/Content/uploads/banner/banner_desk_ghostbusters_apocalipse-de-gelo_1920x550px.jpg"
-                            class="d-block w-100" alt="...">
+                        <img style="max-height: 543px; min-height: 500px;" src="..\img\BANNER-SITE-M2-2.jpg"
+                            class="d-block w-100" alt="Poster informativo">
                     </a>
                 </div>
             </div>
@@ -132,14 +132,15 @@
     <div class="container-fluid mt-5 mb-5" id="estreias">
         <div class="container text-center">
             <p class="h1 mb-4">Estreia</p>
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2 row-cols-xl-4 j justify-content-evenly" id="estreias-row"></div>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 j justify-content-evenly"
+                id="estreias-row"></div>
         </div>
     </div>
 
     <div class="container-fluid mt-5 mb-5" id="em_cartaz">
         <div class="container text-center">
             <p class="h1 mb-4">Em cartaz</p>
-            <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-6 justify-content-between"
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 row-cols-xl-6 justify-content-start"
                 id="em_cartaz-row"></div>
         </div>
     </div>
@@ -147,7 +148,7 @@
     <div class="container-fluid mt-5 mb-5" id="em_breve">
         <div class="container text-center">
             <p class="h1 mb-4">Em breve</p>
-            <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-6 justify-content-between"
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 row-cols-xl-6 justify-content-start"
                 id="em_breve-row"></div>
         </div>
     </div>
