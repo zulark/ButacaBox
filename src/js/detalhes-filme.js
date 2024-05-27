@@ -7,6 +7,10 @@ document.addEventListener('DOMContentLoaded', function () {
         fetch(`http://127.0.0.1/ButacaBox/Butacabox/src/api/filmes/getMovies.php?id=${movieId}`)
             .then(response => response.json())
             .then(data => {
+                if(data.status_filme == 'desativado' || data.status_filme === ''){
+                    location.href = "http://127.0.0.1/ButacaBox/ButacaBox/src/pages/ingresso/detalhes-filme-erro.php"
+                }
+                
                 document.getElementById('cartaz_filme').src = data.cartaz_filme;
                 document.getElementById('titulo').innerText = data.titulo;
                 document.getElementById('diretor').innerText = `Direção: ${data.diretor}`;
