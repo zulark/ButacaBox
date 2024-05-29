@@ -19,14 +19,15 @@
 
     <nav class="navbar">
         <div class="container-fluid header d-flex justify-content-between align-items-center">
-            <div style="display: flex; flex-direction: column; align-items: center;">
-                <span class="navbar-brand-logo">
-                    <img class="d-none d-sm-block" src="https://cdn-icons-png.flaticon.com/512/2598/2598702.png" alt="">
-                </span>
-                <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/index.php">
+            <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/index.php">
+                <div style="display: flex; flex-direction: column; align-items: center;">
+                    <span class="navbar-brand-logo">
+                        <img class="d-none d-sm-block" src="https://cdn-icons-png.flaticon.com/512/2598/2598702.png"
+                            alt="">
+                    </span>
                     <strong class="d-none d-sm-block">BUTACABOX</strong>
-                </a>
-            </div>
+                </div>
+            </a>
 
             <div class="d-flex align-items-center">
                 <?php

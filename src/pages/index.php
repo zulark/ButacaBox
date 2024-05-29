@@ -15,13 +15,15 @@
 <body>
     <nav class="navbar">
         <div class="container-fluid header d-flex justify-content-between align-items-center">
-            <div style="display: flex; flex-direction: column; align-items: center;">
+            <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/index.php">
+                <div style="display: flex; flex-direction: column; align-items: center;">
                     <span class="navbar-brand-logo">
                         <img class="d-none d-sm-block" src="https://cdn-icons-png.flaticon.com/512/2598/2598702.png"
                             alt="">
                     </span>
                     <strong class="d-none d-sm-block">BUTACABOX</strong>
-            </div>
+                </div>
+            </a>
 
             <div class="d-flex align-items-center">
                 <?php
@@ -81,8 +83,6 @@
         </div>
     </nav>
 
-
-
     <div class="container-fluid carousel">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
             <div class="carousel-indicators">
@@ -95,25 +95,24 @@
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/ingresso/detalhes-filme.php?id=15">
+                    <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/ingresso/detalhes-filme.php?id=32">
                         <img style="max-height: 543px; min-height: 500px;"
                             src="..\img\FURIOSA-BANNER-SITE-COMPRE-AGORA-2.jpg" class="d-block w-100"
                             alt="Poster do filme Furiosa">
                     </a>
                 </div>
                 <div class="carousel-item">
-                    <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/ingresso/detalhes-filme.php?id=14">
+                    <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/ingresso/detalhes-filme.php?id=31">
                         <img style="max-height: 543px; min-height: 500px"
                             src="..\img\FURIA-PRIMITIVA-COMPRE-AGORA-2.jpg" class="d-block w-100"
                             alt="Poster do film Furia Primitiva">
                     </a>
                 </div>
                 <div class="carousel-item">
-                    <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/ingresso/detalhes-filme.php?id=3">
-
-                        <img style="max-height: 543px; min-height: 500px;" src="..\img\BANNER-SITE-M2-2.jpg"
-                            class="d-block w-100" alt="Poster informativo">
-                    </a>
+                    <!-- <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/ingresso/detalhes-filme.php?id=3"> -->
+                    <img style="max-height: 543px; min-height: 500px;" src="..\img\BANNER-SITE-M2-2.jpg"
+                        class="d-block w-100" alt="Poster informativo">
+                    <!-- </a> -->
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
