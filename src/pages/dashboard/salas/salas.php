@@ -7,16 +7,19 @@ include ('../../../pages/login-funcionario/protect.php')
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ButacaBox</title>
+  <title>Butacabox Dashboard</title>
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2598/2598702.png">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2598/2598702.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="http://127.0.0.1/ButacaBox/ButacaBox/src/css/dashboard.css">
 </head>
+
 
 <body class="vh-100">
   <main class="d-flex flex-nowrap h-100">
     <?php
+    include ('../../../../components/sidebarSmall.php');
     include ('../../../../components/sidebar.php');
     ?>
     <div class="container-fluid h-100">
@@ -29,8 +32,8 @@ include ('../../../pages/login-funcionario/protect.php')
             <thead>
               <tr>
                 <th scope="col">ID</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Capacidade</th>
+                <th scope="col" class="text-center">Nome</th>
+                <th scope="col" class="text-center">Capacidade</th>
                 <th scope="col" class="text-center" style="width: 185px;">Ações</th>
               </tr>
             </thead>

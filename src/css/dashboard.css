@@ -2,13 +2,20 @@
   background-color: #f2f2f2;
 }
 
-.sidebar {
-  width: 280px;
+.searchinput{
+  width: 100%;
 }
 
+#sidebarMenu {
+  width: 300px;
+}
+.nav-pills .nav-link.active{
+  background-color: #f2f2f2;
+  color: #000;
+}
 @media (max-width: 576px) {
-  .sidebar {
-      display: none !important;
+  #sidebarMenu {
+    width: 100vw;
   }
 }
 
