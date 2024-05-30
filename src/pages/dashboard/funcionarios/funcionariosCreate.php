@@ -36,6 +36,10 @@ include ('../../../pages/login-funcionario/protect.php')
                             <input type="password" class="form-control" id="senha" name="senha">
                         </div>
                         <div class="col-md-12">
+                            <label for="salario_base" class="form-label">salario_base</label>
+                            <input type="text" class="form-control" id="salario_base" name="salario_base">
+                        </div>
+                        <div class="col-md-12">
                             <label for="filial_id" class="form-label ">Filial</label>
                             <select class="form-select form-select-md" name="filial_id" id="filial_id">
                                 <option selected disabled class="disabled">Selecionar filial</option>
@@ -78,6 +82,7 @@ include ('../../../pages/login-funcionario/protect.php')
                 email: document.getElementById('email').value,
                 senha: document.getElementById('senha').value,
                 filial_id: document.getElementById('filial_id').value,
+                salario_base: document.getElementById('salario_base').value,
             };
             var jsonData = JSON.stringify(formData);
             fetch('http://127.0.0.1/ButacaBox/ButacaBox/src/api/funcionarios/createEmployee.php', {
@@ -120,7 +125,6 @@ include ('../../../pages/login-funcionario/protect.php')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
-    F
 </body>
 
 </html>
