@@ -1,5 +1,6 @@
 <?php
-include ('../../pages/login-funcionario/protect.php')
+include ('../../pages/login-funcionario/protect.php');
+
   ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -16,69 +17,12 @@ include ('../../pages/login-funcionario/protect.php')
 
 <body class="vh-100">
   <main class="d-flex flex-nowrap h-100">
-    <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark sidebar">
-      <a href="../../../index.php"
-        class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-        <svg class="bi pe-none me-2" width="40" height="32">
-          <use xlink:href="#bootstrap"></use>
-        </svg>
-        <span class="navbar-brand-logo">
-          <img src="https://cdn-icons-png.flaticon.com/512/2598/2598702.png" alt="">
-        </span>
-        <strong style="font-size: .8em;">BUTACABOX</strong>
-      </a>
-      <hr>
-      <ul class="nav nav-pills flex-column mb-auto">
-        <li class="nav-item">
-          <a href="dashboard.php" class="nav-link active" aria-current="page">
-            Filmes
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/sessoes/sessoes.php"
-            class="nav-link text-white">
-            Sessões
-          </a>
-        </li>
-        <li>
-          <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/fornecedores/fornecedores.php"
-            class="nav-link text-white">
-            Fornecedores
-          </a>
-        </li>
-        <li>
-          <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/funcionarios/funcionarios.php"
-            class="nav-link text-white">
-            Funcionarios
-          </a>
-        </li>
-        <li>
-          <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/salas/salas.php"
-            class="nav-link text-white">
-            Salas
-          </a>
-        </li>
-      </ul>
-      <hr>
-      <div class="dropdown">
-        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
-          data-bs-toggle="dropdown" aria-expanded="false">
-          <img src="https://cdn-icons-png.flaticon.com/512/5556/5556468.png" alt="" width="32" height="32"
-            class="rounded-circle me-2">
-          <strong><?php echo $_SESSION['nome']; ?></strong>
-        </a>
-        <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-          <li><a class="dropdown-item" href="#">Perfil</a></li>
-          <li>
-            <hr class="dropdown-divider">
-          </li>
-          <li><a class="dropdown-item"
-              href="http://127.0.0.1/butacabox/butacabox/src/pages/login-funcionario/logout.php">
-              Encerrar Sessão
-            </a></li>
-        </ul>
-      </div>
-    </div>
+
+    <!-- Sidebar -->
+    <?php 
+    include('../../../components/sidebar.php');
+    ?>
+
     <div class="container-fluid h-100">
       <div class="d-flex flex-column h-100">
         <div class="p-3">
@@ -110,6 +54,7 @@ include ('../../pages/login-funcionario/protect.php')
         </div>
       </div>
     </div>
+    
     <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel"
       aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
@@ -130,6 +75,7 @@ include ('../../pages/login-funcionario/protect.php')
         </div>
       </div>
     </div>
+
     <div class="modal fade" id="editMovieModal" tabindex="-1" aria-labelledby="editMovieModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
         <div class="modal-content">
@@ -194,6 +140,7 @@ include ('../../pages/login-funcionario/protect.php')
         </div>
       </div>
     </div>
+    
   </main>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
     integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
