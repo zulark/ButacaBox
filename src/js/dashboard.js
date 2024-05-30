@@ -145,7 +145,12 @@ function saveMovieChanges(id) {
 function deleteMovie(id_filme) {
     var confirmDeleteModal = new bootstrap.Modal(document.getElementById('confirmDeleteModal'));
     confirmDeleteModal.show();
-    document.getElementById('confirmDeleteButton').addEventListener('click', function () {
+
+    const confirmButton = document.getElementById('confirmDeleteButton');
+    const newButton = confirmButton.cloneNode(true);
+    confirmButton.parentNode.replaceChild(newButton, confirmButton);
+
+    newButton.addEventListener('click', function () {
         fetch(`../../api/filmes/deleteMovie.php?id_filme=${id_filme}`, {
             method: 'DELETE'
         })

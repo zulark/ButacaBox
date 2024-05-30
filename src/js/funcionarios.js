@@ -9,6 +9,7 @@ function fetchEmployees() {
         })
         .catch(error => console.error(error));
 }
+
 function displayEmployees(employees) {
     var tableBody = document.getElementById('employeeTableBody');
     tableBody.innerHTML = '';
@@ -27,6 +28,7 @@ function displayEmployees(employees) {
         tableBody.appendChild(row);
     });
 }
+
 function searchEmployees() {
     var searchValue = document.getElementById('searchInput').value.trim().toLowerCase();
     if (searchValue !== '') {
@@ -38,8 +40,10 @@ function searchEmployees() {
         displayEmployees(employees);
     }
 }
+
 document.getElementById('searchInput').addEventListener('input', searchEmployees);
 fetchEmployees();
+
 var editModal = new bootstrap.Modal(document.getElementById('editEmployeeModal'));
 document.getElementById('saveChanges').addEventListener('click', function (event) {
     event.preventDefault();
@@ -47,6 +51,7 @@ document.getElementById('saveChanges').addEventListener('click', function (event
     saveEmployeeChanges(id);
     editModal.hide();
 });
+
 function editEmployee(id) {
     fetch(`../../../api/funcionarios/getEmployee.php?id=${id}`, {
         method: 'GET',
@@ -67,13 +72,14 @@ function editEmployee(id) {
             document.getElementById("salario_base").value = data.salario_base;
             editModal.show();
         })
-    .catch(error => {
-        console.error('Erro:', error);
-    });
+        .catch(error => {
+            console.error('Erro:', error);
+        });
 
     const modalLabel = document.getElementById('editEmployeeModalLabel');
     modalLabel.innerText = `Editar funcionário: ${id}`;
 }
+
 function saveEmployeeChanges(id) {
     var nome = document.getElementById('nome').value;
     var email = document.getElementById('email').value;
@@ -85,6 +91,7 @@ function saveEmployeeChanges(id) {
         filial_id: filial_id,
         salario_base: salario_base
     };
+
     fetch(`../../../api/funcionarios/updateEmployee.php?id=${id}`, {
         method: 'PUT',
         headers: {
@@ -98,23 +105,31 @@ function saveEmployeeChanges(id) {
             }
             fetchEmployees();
         })
-    .catch(error => {
-        console.error('Erro ao salvar alterações do funcionário:', error);
-        alert('Erro ao salvar alterações do funcionário: ' + error.message);
-    });
+        .catch(error => {
+            console.error('Erro ao salvar alterações do funcionário:', error);
+            alert('Erro ao salvar alterações do funcionário: ' + error.message);
+        });
 }
+
 function deleteEmployee(id) {
     var confirmDeleteModal = new bootstrap.Modal(document.getElementById('confirmDeleteModal'));
     const modalLabel = document.getElementById('confirmDeleteModalLabel');
     modalLabel.innerText = `Excluir funcionário: ${id}?`;
     confirmDeleteModal.show();
-    document.getElementById('confirmDeleteButton').addEventListener('click', function () {
+
+    const confirmButton = document.getElementById('confirmDeleteButton');
+    const newButton = confirmButton.cloneNode(true);
+    confirmButton.parentNode.replaceChild(newButton, confirmButton);
+
+    newButton.addEventListener('click', function () {
         fetch(`../../../api/funcionarios/deleteEmployee.php?id=${id}`, {
             method: 'DELETE'
         })
             .then(response => {
                 if (response.ok) {
                     fetchEmployees();
+                } else {
+                    throw new Error(`Erro HTTP! status: ${response.status}`);
                 }
             })
             .catch(error => {

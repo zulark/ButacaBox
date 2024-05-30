@@ -121,7 +121,11 @@ function deletemovieSession(id) {
     const modalLabel = document.getElementById('confirmDeleteModalLabel');
     modalLabel.innerText = `Excluir sessão: ${id}?`;
     confirmDeleteModal.show();
-    document.getElementById('confirmDeleteButton').addEventListener('click', function () {
+    const confirmButton = document.getElementById('confirmDeleteButton');
+    const newButton = confirmButton.cloneNode(true);
+    confirmButton.parentNode.replaceChild(newButton, confirmButton);
+
+    newButton.addEventListener('click', function () {
         fetch(`http://127.0.0.1/ButacaBox/ButacaBox/src/api/sessoes/deleteMovieSessions.php?id=${id}`, {
             method: 'DELETE'
         })

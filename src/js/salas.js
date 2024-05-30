@@ -15,8 +15,8 @@ function displayMovieRooms(movieRooms) {
         var row = document.createElement('tr');
         row.innerHTML = `
             <td>${movieRoom.id_sala}</td>
-            <td>${movieRoom.nome}</td>
-            <td>${movieRoom.capacidade}</td>
+            <td class="text-center">${movieRoom.nome}</td>
+            <td class="text-center">${movieRoom.capacidade}</td>
             <td class="d-flex">
                 <button style="background-color: #3ba6ff;" class="btn btn-sm w-50 text-white" id="editmovieRoomButton" onclick="editmovieRoom(${movieRoom.id_sala})">Editar</button>
                 <button style="background-color: #d9534f;" class="btn btn-sm w-50 text-white" onclick="deletemovieRoom(${movieRoom.id_sala})">Deletar</button>
@@ -99,7 +99,12 @@ function deletemovieRoom(id) {
     const modalLabel = document.getElementById('confirmDeleteModalLabel');
     modalLabel.innerText = `Excluir sala: ${id}?`;
     confirmDeleteModal.show();
-    document.getElementById('confirmDeleteButton').addEventListener('click', function () {
+    
+    const confirmButton = document.getElementById('confirmDeleteButton');
+    const newButton = confirmButton.cloneNode(true);
+    confirmButton.parentNode.replaceChild(newButton, confirmButton);
+
+    newButton.addEventListener('click', function () {
         fetch(`../../../api/salas/deleteMovieRoom.php?id=${id}`, {
             method: 'DELETE'
         })

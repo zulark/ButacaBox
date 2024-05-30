@@ -102,8 +102,12 @@ function deleteFornecedor(id) {
     const modalLabel = document.getElementById('confirmDeleteModalLabel');
     modalLabel.innerText = `Excluir fornecedor: ${id}?`;
     confirmDeleteModal.show();
+    
+    const confirmButton = document.getElementById('confirmDeleteButton');
+    const newButton = confirmButton.cloneNode(true);
+    confirmButton.parentNode.replaceChild(newButton, confirmButton);
 
-    document.getElementById('confirmDeleteButton').addEventListener('click', function () {
+    newButton.addEventListener('click', function () {
         fetch(`../../../api/fornecedores/deleteFornecedores.php?id=${id}`, {
             method: 'DELETE'
         })
