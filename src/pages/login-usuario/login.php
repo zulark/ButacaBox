@@ -91,7 +91,7 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
                             <button type="submit" class="btn btn-block submit w-100"
                                 style="background-color: #fd8f32;">Entrar</button>
                         </div>
-                        <div class="form-group d-md-flex">
+                        <div class="form-group d-flex">
                             <div class="w-50 text-start">
                                 <a class="break" href="register.php">Não é cadastrado? Registre-se</a>
                             </div>

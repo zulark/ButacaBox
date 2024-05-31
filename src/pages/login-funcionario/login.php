@@ -1,22 +1,16 @@
 <?php
 session_start();
-
 include ('../../api/db_connection.php');
-
 if (isset($_POST['email']) && isset($_POST['senha'])) {
-
     if (empty($_POST['email'])) {
         $errorMessage = "Preencha seu e-mail";
     } else if (empty($_POST['senha'])) {
         $errorMessage = "Preencha sua senha";
     } else {
-
         $email = $conn->real_escape_string($_POST['email']);
         $senha = $conn->real_escape_string($_POST['senha']);
-
         $sql_code = "SELECT * FROM funcionarios WHERE email = '$email'";
         $sql_query = $conn->query($sql_code) or die("Falha na execução do código SQL: " . $conn->error);
-
         if ($sql_query->num_rows == 1) {
             $usuario = $sql_query->fetch_assoc();
             if (password_verify($senha, $usuario['senha'])) {
@@ -72,7 +66,7 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
                             <button type="submit" class="btn btn-block submit w-100"
                                 style="background-color: #fd8f32;">Entrar</button>
                         </div>
-                        <div class="form-group d-md-flex">
+                        <div class="form-group d-flex">
                             <div class="w-50 text-start">
                                 <a class="break" href="#">Esqueci minha senha</a>
                             </div>
@@ -83,11 +77,9 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
         </div>
     </div>
 
-    <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
-
     <script>
         function createErrorAlert(message) {
             const errorDiv = document.createElement('div');
