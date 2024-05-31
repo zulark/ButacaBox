@@ -25,7 +25,7 @@ include ('../../../pages/login-funcionario/protect.php')
     <div class="container-fluid h-100">
       <div class="d-flex flex-column h-100">
         <div class="p-3">
-          <input id="searchInput" type="text" class="form-control" placeholder="Buscar filme">
+          <input id="searchInput" type="text" class="form-control" placeholder="Buscar sala">
         </div>
         <div class="table-responsive small flex-grow-1">
           <table class="table table-responsive table-lg ">
