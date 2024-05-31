@@ -11,53 +11,72 @@ $current_page = basename($_SERVER['PHP_SELF']);
     <hr>
     <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
         <li class="nav-item">
-            <button
-                class="btn <?php echo $current_page == 'dashboard.php' || $current_page == 'dashboard-create-movie.php' ? 'btn-light' : 'btn-dark'; ?>"
-                type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu">
+            <button class="btn btn-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu"
+                aria-controls="sidebarMenu">
                 <span class="navbar-toggler-icon">
-                    <?php echo $current_page == 'dashboard.php' || $current_page == 'dashboard-create-movie.php' ? '<i class="bi bi-camera-reels-fill"></i>' : '<i class="bi bi-camera-reels"></i>'; ?>
+                    <i class="bi bi-list text-white"></i>
                 </span>
             </button>
         </li>
         <hr>
         <li class="nav-item">
-            <button
-                class=" btn <?php echo $current_page == 'sessoes.php' || $current_page == 'createSessoes' ? 'btn-light' : 'btn-dark'; ?>"
-                type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu">
-                <span class="navbar-toggler-icon">
-                    <?php echo $current_page == 'sessoes.php' || $current_page == 'createSessoes' ? '<i class="bi bi-ticket-perforated-fill"></i>' : '<i class="bi bi-ticket-perforated"></i>'; ?>
-                </span>
-            </button>
+            <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/dashboard.php">
+                <button
+                    class="btn <?php echo $current_page == 'dashboard.php' || $current_page == 'dashboard-create-movie.php' ? 'btn-light' : 'btn-dark'; ?>"
+                    type="button">
+                    <span class="navbar-toggler-icon">
+                        <?php echo $current_page == 'dashboard.php' || $current_page == 'dashboard-create-movie.php' ? '<i class="bi bi-camera-reels"></i>' : '<i class="bi bi-camera-reels-fill"></i>'; ?>
+                    </span>
+                </button>
+            </a>
         </li>
         <hr>
         <li class="nav-item">
-            <button
-                class=" btn <?php echo $current_page == 'fornecedores.php' || $current_page == 'createFornecedores' ? 'btn-light' : 'btn-dark'; ?>"
-                type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu">
-                <span class="navbar-toggler-icon">
-                    <?php echo $current_page == 'fornecedores.php' || $current_page == 'createFornecedores' ? '<i class="bi bi-share-fill"></i>' : '<i class="bi bi-share"></i>'; ?>
-                </span>
-            </button>
+            <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/sessoes/sessoes.php">
+                <button
+                    class=" btn <?php echo $current_page == 'sessoes.php' || $current_page == 'sessoesCreate.php' ? 'btn-light' : 'btn-dark'; ?>"
+                    type="button">
+                    <span class="navbar-toggler-icon">
+                        <?php echo $current_page == 'sessoes.php' || $current_page == 'sessoesCreate.php' ? '<i class="bi bi-clock"></i>' : '<i class="bi bi-clock-fill"></i>'; ?>
+                    </span>
+                </button>
+            </a>
         </li>
         <hr>
         <li class="nav-item">
-            <button
-                class=" btn <?php echo $current_page == 'funcionarios.php' || $current_page == 'createFuncionarios' ? 'btn-light' : 'btn-dark'; ?>"
-                type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu">
-                <span class="navbar-toggler-icon">
-                    <?php echo $current_page == 'funcionarios.php' || $current_page == 'createFuncionarios' ? '<i class="bi bi-people-fill"></i>' : '<i class="bi bi-people"></i>'; ?>
-                </span>
-            </button>
+            <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/fornecedores/fornecedores.php">
+                <button
+                    class=" btn <?php echo $current_page == 'fornecedores.php' || $current_page == 'fornecedoresCreate.php' ? 'btn-light' : 'btn-dark'; ?>"
+                    type="button">
+                    <span class="navbar-toggler-icon">
+                        <?php echo $current_page == 'fornecedores.php' || $current_page == 'fornecedoresCreate.php' ? '<i class="bi bi-box"></i>' : '<i class="bi bi-box-fill"></i>'; ?>
+                    </span>
+                </button>
+            </a>
         </li>
         <hr>
         <li class="nav-item">
-            <button
-                class=" btn <?php echo $current_page == 'salas.php' || $current_page == 'createSalas' ? 'btn-light' : 'btn-dark'; ?>"
-                type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu">
-                <span class="navbar-toggler-icon">
-                    <?php echo $current_page == 'salas.php' || $current_page == 'createSalas' ? '<i class="bi bi-house-fill"></i>' : '<i class="bi bi-house"></i>'; ?>
-                </span>
-            </button>
+            <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/funcionarios/funcionarios.php">
+                <button
+                    class=" btn <?php echo $current_page == 'funcionarios.php' || $current_page == 'funcionariosCreate.php' ? 'btn-light' : 'btn-dark'; ?>"
+                    type="button">
+                    <span class="navbar-toggler-icon">
+                        <?php echo $current_page == 'funcionarios.php' || $current_page == 'funcionariosCreate.php' ? '<i class="bi bi-people-fill"></i>' : '<i class="bi bi-people"></i>'; ?>
+                    </span>
+                </button>
+            </a>
+        </li>
+        <hr>
+        <li class="nav-item">
+            <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/salas/salas.php">
+                <button
+                    class=" btn <?php echo $current_page == 'salas.php' || $current_page == 'salasCreate.php' ? 'btn-light' : 'btn-dark'; ?>"
+                    type="button">
+                    <span class="navbar-toggler-icon">
+                        <?php echo $current_page == 'salas.php' || $current_page == 'salasCreate.php' ? '<i class="bi bi-door-open"></i>' : '<i class="bi bi-door-open-fill"></i>'; ?>
+                    </span>
+                </button>
+            </a>
         </li>
     </ul>
     <hr>
