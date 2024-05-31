@@ -1,9 +1,18 @@
 .container-fluid {
-  background-color: #f2f2f2;
+  background-color: #EEEDEB;
 }
 
-.sidebar {
-  width: 280px;
+.searchinput {
+  width: 100%;
+}
+
+#sidebarMenu {
+  width: 300px;
+}
+
+.nav-pills .nav-link.active {
+  background-color: #f2f2f2;
+  color: #000;
 }
 
 @media (max-width: 576px) {
@@ -27,22 +36,25 @@
 }
 
 @media (min-width: 768px) {
+
   .table th,
   .table td {
-      font-size: 0.9rem;
+    font-size: 0.9rem;
   }
 }
 
 @media (min-width: 992px) {
+
   .table th,
   .table td {
-      font-size: 0.8rem;
+    font-size: 0.8rem;
   }
 }
 
 @media (min-width: 1200px) {
+
   .table th,
   .table td {
-      font-size: 0.85rem;
+    font-size: 0.85rem;
   }
 }
