@@ -22,8 +22,16 @@
     ?>
     <div class="container-fluid h-100">
       <div class="d-flex flex-column h-100">
-        <div class="p-3">
-          <input id="searchInput" type="text" class="form-control" placeholder="Buscar fornecedor">
+        <div class="pt-3 pb-3 d-flex justify-content-between align-items-center">
+          <div class="searchinput">
+            <input id="searchInput" type="text" class="form-control" placeholder="Buscar filme">
+          </div>
+          <button id="mobileBtn" class="btn btn-dark d-flex d-md-none" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#sidebarMenu" aria-controls="sidebarMenu">
+            <span class="navbar-toggler-icon">
+              <i class="bi bi-list text-white"></i>
+            </span>
+          </button>
         </div>
         <div class="table-responsive small flex-grow-1">
           <table class="table table-responsive table-lg">

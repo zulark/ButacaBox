@@ -15,12 +15,6 @@
   color: #000;
 }
 
-@media (max-width: 576px) {
-  .sidebar {
-      display: none !important;
-  }
-}
-
 .navbar-brand-logo img {
   width: 50px;
   transform: rotate(25deg);
@@ -35,6 +29,25 @@
   font-size: 1rem;
 }
 
+.btn-sm {
+  margin-right: 5px;
+}
+
+#mobileBtn {
+  margin-left: 10px;
+}
+
+@media (max-width: 576px) {
+  #sidebarMenu {
+    width: 100%;
+  }
+
+  #smallSidebarMenu {
+    display: none !important;
+  }
+
+}
+
 @media (min-width: 768px) {
 
   .table th,
@@ -43,7 +56,22 @@
   }
 }
 
-@media (min-width: 992px) {
+@media (max-width: 992px) {
+  #sidebarMenu {
+    width: 100%;
+  }
+
+  #dropdown a{
+    text-align: center;
+  }
+  
+  #smallSidebarMenu {
+    display: none !important;
+  }
+
+  #mobileBtn {
+    display: block !important;
+  }
 
   .table th,
   .table td {

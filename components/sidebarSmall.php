@@ -1,7 +1,7 @@
 <?php
 $current_page = basename($_SERVER['PHP_SELF']);
 ?>
-<div class="d-flex  flex-column flex-shrink-0 text-bg-dark" style="width: 4.5rem;">
+<div id="smallSidebarMenu" class="d-none d-sm-flex flex-column flex-shrink-0 text-bg-dark" style="width: 4.5rem;">
     <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/dashboard.php"
         class="d-block p-3 link-dark text-decoration-none" data-bs-toggle="tooltip" data-bs-placement="right"
         data-bs-original-title="Icon-only">

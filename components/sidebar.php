@@ -13,7 +13,6 @@ $current_page = basename($_SERVER['PHP_SELF']);
             aria-label="Close"></button>
     </div>
     <div class="offcanvas-body d-flex flex-column p-3">
-
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item">

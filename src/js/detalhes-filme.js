@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <td class="text-center">${formatHour(session.hora_sessao)}</td>
                 <td class="text-center">${session.nome_sala}</td>
                 <td class="text-center">${session.assentos_disponiveis}</td>
-                <td class="text-center"><button class="btn w-100" ${userIdToken ? 'data-toggle="modal" data-target="#buyTicketModalCenter"' : ''}>Compre aqui</button></td>`;
+                <td class="text-center"><button class="btn" ${userIdToken ? 'data-toggle="modal" data-target="#buyTicketModalCenter"' : ''}>Compre aqui</button></td>`;
             const button = row.querySelector('button');
             if (!userIdToken) {
                 button.addEventListener('click', (event) => {
