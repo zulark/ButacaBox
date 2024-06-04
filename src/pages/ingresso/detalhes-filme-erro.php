@@ -15,61 +15,9 @@
 
 <body>
 
-    <nav class="navbar">
-        <div class="container-fluid header d-flex justify-content-between align-items-center">
-            <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/index.php">
-                <div style="display: flex; flex-direction: column; align-items: center;">
-                    <span class="navbar-brand-logo">
-                        <img class="d-none d-sm-block" src="https://cdn-icons-png.flaticon.com/512/2598/2598702.png"
-                            alt="">
-                    </span>
-                    <strong class="d-none d-sm-block">BUTACABOX</strong>
-                </div>
-            </a>
-
-            <div class="d-flex align-items-center">
-                <?php
-                session_start();
-                if (!isset($_SESSION['id_usuario'])) {
-                    echo '<script>window.id_usuario = null;</script>';
-                    echo
-                        '
-                    <div class=" d-none d-sm-block svg m-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
-                    <path fill-rule="evenodd"
-                                    d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
-                                    </svg>
-                                    </div>
-                                    <div class="fs-2">
-                                    <a class="d-xs-flex flex-direction column d-block fs-sx-1" id="loginbutton" href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/login-usuario/login.php">Entrar </br>ou cadastrar-se</a>
-                                    </div>
-                                    ';
-                } else {
-                    echo '<script>window.id_usuario = ' . $_SESSION['id_usuario'] . ';</script>';
-                    echo
-                        '
-                            <div class="dropdown"">
-                            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            <strong>' . $_SESSION['nome'] . '</strong>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-dark text-small shadow dropdown-menu-left">
-                            <li><a class="dropdown-item" href="#">Perfil</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/login-usuario/logout.php">
-                                Encerrar Sessão
-                                </a></li>
-                            </ul>
-                        </div>        
-                        ';
-                }
-                ?>
-            </div>
-        </div>
-    </nav>
+    <?php
+    include ('../../../components/sidebarUser.php');
+    ?>
 
     <div class="container-fluid vh-100 d-flex justify-content-center align-items-center">
         <div class="d-block text-center">

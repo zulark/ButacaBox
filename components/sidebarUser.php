@@ -18,13 +18,13 @@
 </style>
 <header class="navbar">
     <div class="container-fluid px-3 py-3">
-        <a class="navbar-brand-logo  flex-column align-items-center justify-content-center d-none d-sm-flex"
+        <a class="navbar-brand-logo  flex-column align-items-center justify-content-center d-none d-md-flex"
             href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/index.php">
             <img src="https://cdn-icons-png.flaticon.com/512/2598/2598702.png" alt="Logo"
                 class="d-inline-block align-top me-2" width="40">
             <span class="d-none d-sm-block">BUTACABOX</span>
         </a>
-        <ul class="nav nav-pills d-none d-sm-flex">
+        <ul class="nav nav-pills d-none d-md-flex">
             <li class="nav-item"><a href="#estreias" class="nav-link text-white">Estreia</a></li>
             <li class="nav-item"><a href="#em_cartaz" class="nav-link text-white">Em cartaz</a></li>
             <li class="nav-item"><a href="#em_breve" class="nav-link text-white">Em breve</a></li>
@@ -39,7 +39,7 @@
         <a href="login-usuario/login.php" class="nav-link text-white">Entrar</a>
         </div>
         <div class="btn text-uppercase">
-        <a href="#" class="nav-link text-white">Cadastrar-se</a>
+        <a href="login-usuario/register.php" class="nav-link text-white">Cadastrar-se</a>
         </div>
         </div>';
             } else {
@@ -57,7 +57,7 @@
 
             </li>
         </div>
-        <button class="navbar-toggler d-xs-block d-sm-none" type="button" data-bs-toggle="offcanvas"
+        <button class="navbar-toggler d-xs-block d-md-none" type="button" data-bs-toggle="offcanvas"
             data-bs-target="#sidebarMenu" aria-controls="sidebarMenu">
             <span class="navbar-toggler-icon"></span>
         </button>

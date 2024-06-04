@@ -13,75 +13,10 @@
 </head>
 
 <body>
-    <nav class="navbar">
-        <div class="container-fluid header d-flex justify-content-between align-items-center">
-            <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/index.php">
-                <div style="display: flex; flex-direction: column; align-items: center;">
-                    <span class="navbar-brand-logo">
-                        <img class="d-none d-sm-block" src="https://cdn-icons-png.flaticon.com/512/2598/2598702.png"
-                            alt="">
-                    </span>
-                    <strong class="d-none d-sm-block">BUTACABOX</strong>
-                </div>
-            </a>
 
-            <div class="d-flex align-items-center">
-                <?php
-                session_start();
-                if (!isset($_SESSION['id_usuario'])) {
-                    echo
-                        '
-                    <div class=" d-none d-sm-block svg m-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
-                            <path fill-rule="evenodd"
-                                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
-                         </svg>
-                    </div>
-                    <div class="fs-2">
-                        <a class="d-xs-flex flex-direction column d-block fs-sx-1" id="loginbutton" href="login-usuario/login.php">Entrar </br>ou cadastrar-se</a>
-                    </div>
-                    ';
-                } else {
-                    echo
-                        '
-                        <div class="dropdown"">
-                        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
-                          data-bs-toggle="dropdown" aria-expanded="false">
-                          <strong>' . $_SESSION['nome'] . '</strong>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-dark text-small shadow dropdown-menu-left">
-                          <li><a class="dropdown-item" href="#">Perfil</a></li>
-                          <li>
-                            <hr class="dropdown-divider">
-                          </li>
-                          <li><a class="dropdown-item" href="http://127.0.0.1\ButacaBox\ButacaBox\src\pages\login-usuario\logout.php">
-                              Encerrar Sessão
-                            </a></li>
-                        </ul>
-                      </div>        
-                    ';
-                }
-                ?>
-            </div>
-        </div>
-    </nav>
-
-    <nav class="navbar" id="navheader">
-        <div class="container d-flex justify-content-center align-items-center">
-            <div class="row w-100 text-center">
-                <div class="col-12 col-lg-4 mb-2 mt-2 d-flex justify-content-center">
-                    <a class="navbar-brand" href="#estreias">Estreias</a>
-                </div>
-                <div class="col-12 col-lg-4 mb-2 mt-2 d-flex justify-content-center">
-                    <a class="navbar-brand" href="#em_cartaz">Em cartaz</a>
-                </div>
-                <div class="col-12 col-lg-4 mb-2 mt-2 d-flex justify-content-center">
-                    <a class="navbar-brand" href="#em_breve">Pré Venda</a>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <?php
+    include ('..\..\components\sidebarUser.php');
+    ?>
 
     <div class="container-fluid carousel">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
@@ -96,21 +31,21 @@
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/ingresso/detalhes-filme.php?id=32">
-                        <img style="max-height: 543px; min-height: 500px;"
+                        <img style="max-height: 600px; min-height: 400px;"
                             src="..\img\FURIOSA-BANNER-SITE-COMPRE-AGORA-2.jpg" class="d-block w-100"
                             alt="Poster do filme Furiosa">
                     </a>
                 </div>
                 <div class="carousel-item">
                     <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/ingresso/detalhes-filme.php?id=31">
-                        <img style="max-height: 543px; min-height: 500px"
+                        <img style="max-height: 600px; min-height: 400px;"
                             src="..\img\FURIA-PRIMITIVA-COMPRE-AGORA-2.jpg" class="d-block w-100"
                             alt="Poster do film Furia Primitiva">
                     </a>
                 </div>
                 <div class="carousel-item">
                     <!-- <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/ingresso/detalhes-filme.php?id=3"> -->
-                    <img style="max-height: 543px; min-height: 500px;" src="..\img\BANNER-SITE-M2-2.jpg"
+                    <img style="max-height: 600px; min-height: 400px;" src="..\img\BANNER-SITE-M2-2.jpg"
                         class="d-block w-100" alt="Poster informativo">
                     <!-- </a> -->
                 </div>
@@ -488,8 +423,6 @@
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
     <script src="../js/cartaz_filmes.js"></script>
-
-
 </body>
 
 </html>
