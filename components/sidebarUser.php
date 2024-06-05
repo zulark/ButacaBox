@@ -1,3 +1,6 @@
+<?php
+$current_page = basename($_SERVER['PHP_SELF']);
+?>
 <style>
     header {
         background-color: #ce6b1a;
@@ -24,7 +27,8 @@
                 class="d-inline-block align-top me-2" width="40">
             <span class="d-none d-sm-block">BUTACABOX</span>
         </a>
-        <ul class="nav nav-pills d-none d-md-flex">
+
+        <ul class="nav nav-pills <?php echo $current_page == 'detalhes-filme.php' ? 'd-none' : 'd-none d-md-flex'; ?>">
             <li class="nav-item"><a href="#estreias" class="nav-link text-white">Estreia</a></li>
             <li class="nav-item"><a href="#em_cartaz" class="nav-link text-white">Em cartaz</a></li>
             <li class="nav-item"><a href="#em_breve" class="nav-link text-white">Em breve</a></li>
@@ -33,17 +37,17 @@
             <?php
             session_start();
             if (!isset($_SESSION['id_usuario'])) {
-
+                echo '<div id="user-data" data-id-usuario=""></div>';
                 echo '  <div class="d-flex justify-content-center align-items-center">
         <div class="btn text-uppercase">
-        <a href="login-usuario/login.php" class="nav-link text-white">Entrar</a>
+        <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/login-usuario/login.php" class="nav-link text-white">Entrar</a>
         </div>
         <div class="btn text-uppercase">
-        <a href="login-usuario/register.php" class="nav-link text-white">Cadastrar-se</a>
+        <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/login-usuario/register.php" class="nav-link text-white">Cadastrar-se</a>
         </div>
         </div>';
             } else {
-                echo '<script>window.id_usuario = ' . $_SESSION['id_usuario'] . ';</script>';
+                echo '<div id="user-data" data-id-usuario="' . $_SESSION['id_usuario'] . '"></div>';
                 echo '  <div class="dropdown">
         <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
             <span class="fw-light">' . $_SESSION['nome'] . '</span>
@@ -54,6 +58,7 @@
         </div>';
             }
             ?>
+
 
             </li>
         </div>
