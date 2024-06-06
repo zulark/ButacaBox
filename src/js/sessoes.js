@@ -95,7 +95,7 @@ function savemovieSessionChanges(id) {
         hora_sessao: hora_sessao,
         filme_id: nome_filme,
         sala_id: nome_sala,
-        filial_d: nome_filial,
+        filial_id: nome_filial,
         preco_ingresso: preco_ingresso
     };
     fetch(`http://127.0.0.1/ButacaBox/ButacaBox/src/api/sessoes/updateMovieSessions.php?id=${id}`, {
