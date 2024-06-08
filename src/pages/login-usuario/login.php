@@ -24,14 +24,13 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
             $usuario = $sql_query->fetch_assoc();
             if (password_verify($senha, $usuario['senha'])) {
                 $_SESSION['id_usuario'] = $usuario['id_usuario'];
-                $_SESSION['nome'] = $usuario['nome'];
+                $_SESSION['nome_usuario'] = $usuario['nome'];
                 header("Location: http://127.0.0.1/ButacaBox/ButacaBox/src/pages/index.php");
                 exit();
             } else {
                 $errorMessage = "Falha ao logar! E-mail ou senha incorretos";
             }
-        } 
-        else {
+        } else {
             $errorMessage = "Falha ao logar! E-mail ou senha incorretos";
         }
     }
