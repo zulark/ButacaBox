@@ -78,6 +78,28 @@ $current_page = basename($_SERVER['PHP_SELF']);
                 </button>
             </a>
         </li>
+        <hr>
+        <li class="nav-item">
+            <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/relatorios/vendas.php">
+                <button class=" btn <?php echo $current_page == 'vendas.php' ? 'btn-light' : 'btn-dark'; ?>"
+                    type="button">
+                    <span class="navbar-toggler-icon">
+                        <i class="bi bi-cart"></i>
+                    </span>
+                </button>
+            </a>
+        </li>
+        <hr>
+        <li class="nav-item">
+            <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/relatorios/pagamentos.php">
+                <button class=" btn <?php echo $current_page == 'pagamentos.php' ? 'btn-light' : 'btn-dark'; ?>"
+                    type="button">
+                    <span class="navbar-toggler-icon">
+                        <i class="bi bi-currency-dollar"></i>
+                    </span>
+                </button>
+            </a>
+        </li>
     </ul>
     <hr>
     <div class="dropdown p-2">

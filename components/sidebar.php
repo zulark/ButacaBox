@@ -51,13 +51,27 @@ $current_page = basename($_SERVER['PHP_SELF']);
                     Salas
                 </a>
             </li>
+            <li>
+                <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/relatorios/vendas.php"
+                    class="nav-link <?php echo $current_page == 'vendas.php' ? 'active' : 'text-white'; ?>">
+                    <i class="bi bi-cart"></i>
+                    Vendas
+                </a>
+            </li>
+            <li>
+                <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/salas/salas.php"
+                    class="nav-link <?php echo $current_page == 'salas.php' || $current_page == 'salasCreate.php' ? 'active' : 'text-white'; ?>">
+                    <i class="bi bi-currency-dollar"></i>
+                    Pagamentos
+                </a>
+            </li>
         </ul>
         <hr>
         <div class="dropdown">
             <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
                 data-bs-toggle="dropdown" aria-expanded="false">
                 <span class="navbar-toggler-icon font fs-4"><i class="bi bi-person-circle"></i></span>
-                <strong><?php echo $_SESSION['nome']; ?></strong>
+                <strong><?php echo $_SESSION['nome_funcionario']; ?></strong>
             </a>
             <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
                 <li><a class="dropdown-item"

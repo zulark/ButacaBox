@@ -6,10 +6,6 @@ $current_page = basename($_SERVER['PHP_SELF']);
         background-color: #ce6b1a;
     }
 
-    #dropdown {
-        margin-right: 50px;
-    }
-
     .navbar-brand-logo {
         margin-left: 50px;
     }
@@ -17,6 +13,20 @@ $current_page = basename($_SERVER['PHP_SELF']);
     .navbar-brand-logo img {
         width: 50px;
         transform: rotate(25deg);
+    }
+
+    @media (min-width: 576px) {
+        #dropdownuser {
+            right: 0;
+            left: auto;
+        }
+    }
+
+    @media (max-width: 768px) {
+        #dropdownuser {
+            left: 0;
+            right: auto;
+        }
     }
 </style>
 <header class="navbar">
@@ -50,9 +60,9 @@ $current_page = basename($_SERVER['PHP_SELF']);
                 echo '<div id="user-data" data-id-usuario="' . $_SESSION['id_usuario'] . '"></div>';
                 echo '  <div class="dropdown">
         <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            <span class="fw-light">' . $_SESSION['nome'] . '</span>
+            <span class="fw-light">' . $_SESSION['nome_usuario'] . '</span>
         </a>
-        <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-start text-small shadow">
+        <ul id="dropdownuser" class="dropdown-menu dropdown-menu-dark text-small shadow">
         <li><a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/login-usuario/logout.php" class="dropdown-item">Encerrar Sessão</a></li>
         </ul>
         </div>';
