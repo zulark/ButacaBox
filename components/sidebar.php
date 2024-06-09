@@ -45,6 +45,13 @@ $current_page = basename($_SERVER['PHP_SELF']);
                 </a>
             </li>
             <li>
+                <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/setores/setores.php"
+                    class="nav-link <?php echo $current_page == 'setores.php' || $current_page == 'setoresCreate.php' ? 'active' : 'text-white'; ?>">
+                    <i class="bi bi-people-fill"></i>
+                    Setor
+                </a>
+            </li>
+            <li>
                 <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/salas/salas.php"
                     class="nav-link <?php echo $current_page == 'salas.php' || $current_page == 'salasCreate.php' ? 'active' : 'text-white'; ?>">
                     <i class="bi bi-door-open"></i>

@@ -15,7 +15,6 @@ include ('../../../pages/login-funcionario/protect.php')
     <link rel="stylesheet" href="http://127.0.0.1/ButacaBox/ButacaBox/src/css/dashboard.css">
 </head>
 
-
 <body class="vh-100">
     <main class="d-flex flex-nowrap h-100">
         <?php
@@ -26,34 +25,14 @@ include ('../../../pages/login-funcionario/protect.php')
             <div class="d-flex flex-column h-100 d-flex align-items-center justify-content-center">
                 <div class="p-3">
                     <form id="createForm" class="row g-3">
-                        <div class="col-md-12">
-                            <label for="nome" class="form-label">Nome</label>
+                        <div class="col-md-6">
+                            <label for="nome" class="form-label">Nome do setor:</label>
                             <input type="text" class="form-control" id="nome" name="nome">
                         </div>
-                        <div class="col-md-12">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" name="email">
-                        </div>
-                        <div class="col-md-12">
-                            <label for="senha" class="form-label">Senha</label>
-                            <input type="password" class="form-control" id="senha" name="senha">
-                        </div>
-                        <div class="col-md-12">
-                            <label for="salario_base" class="form-label">Salário base</label>
-                            <input type="text" class="form-control" id="salario_base" name="salario_base">
-                        </div>
-                        <div class="col-md-12">
-                            <label for="filial_id" class="form-label ">Filial</label>
-                            <select class="form-select form-select-md" name="filial_id" id="filial_id">
-                                <option selected disabled class="disabled">Selecionar filial</option>
-                                <option value="1">Matriz</option>
-                                <option value="2">Tarumã</option>
-                            </select>
-                        </div>
-                        <div class="col-md-12">
-                            <label for="setor_id" class="form-label ">Setor</label>
-                            <select class="form-select form-select-md" name="setor_id" id="setor_id">
-                                <option selected disabled class="disabled">Selecionar setor</option>
+                        <div class="col-md-6">
+                            <label for="preco_ingresso" class="form-label">Chefia:</label>
+                            <select class="form-select" id="chefia" name="chefia">
+                                <option selected disabled>Selecionar chefia</option>
                             </select>
                         </div>
                         <div class="col-12">
@@ -61,7 +40,7 @@ include ('../../../pages/login-funcionario/protect.php')
                         </div>
                     </form>
                     <div class="p-3 text-end">
-                        <a href="funcionarios.php">
+                        <a href="setores.php">
                             <button class="btn btn-primary">
                                 <svg style="color: #fff;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                                     width="24" height="24" fill="currentColor">
@@ -72,44 +51,38 @@ include ('../../../pages/login-funcionario/protect.php')
                         </a>
                     </div>
                 </div>
-
                 <div class="alert-message d-none" id="alertMessage"></div>
                 <div id="errorMessage" class="alert alert-danger d-none" role="alert"></div>
-
             </div>
         </div>
     </main>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            document.getElementById('createForm').reset();
-        });
-        function fetchSetor() {
-            fetch('http://127.0.0.1/ButacaBox/ButacaBox/src/api/setores/getSetor.php')
+        function fetchChefia() {
+            fetch('http://127.0.0.1/ButacaBox/ButacaBox/src/api/funcionarios/getEmployee.php')
                 .then(response => response.json())
                 .then(data => {
-                    const selectSetor = document.getElementById('setor_id');
-                    data.forEach(setor => {
+                    const selectChefia = document.getElementById('chefia');
+                    data.forEach(employee => {
                         const option = document.createElement('option');
-                        option.value = setor.id_setor;
-                        option.textContent = setor.nome;
-                        selectSetor.appendChild(option)
+                        option.value = employee.id_funcionario;
+                        option.textContent = employee.nome;
+                        selectChefia.appendChild(option)
                     });
                 })
                 .catch(error => console.error(error))
         }
-        fetchSetor();
+        fetchChefia();
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('createForm').reset();
+        });
         document.getElementById('createForm').addEventListener('submit', function (event) {
             event.preventDefault();
             var formData = {
                 nome: document.getElementById('nome').value,
-                email: document.getElementById('email').value,
-                senha: document.getElementById('senha').value,
-                filial_id: document.getElementById('filial_id').value,
-                setor_id: document.getElementById('setor_id').value,
-                salario_base: document.getElementById('salario_base').value
+                chefe_id: document.getElementById('chefia').value,
             };
             var jsonData = JSON.stringify(formData);
-            fetch('http://127.0.0.1/ButacaBox/ButacaBox/src/api/funcionarios/createEmployee.php', {
+            fetch('http://127.0.0.1/ButacaBox/ButacaBox/src/api/setores/createSetor.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -119,7 +92,7 @@ include ('../../../pages/login-funcionario/protect.php')
                 .then(response => response.json())
                 .then(data => {
                     var alertMessage = document.getElementById('alertMessage');
-                    alertMessage.innerHTML = data.success ? '<div class="alert alert-success" role="alert">Funcionario adicionado com sucesso!</div>' : '<div class="alert alert-danger" role="alert">Erro ao adicionar funcionario!</div>';
+                    alertMessage.innerHTML = data.success ? '<div class="alert alert-success" role="alert">Setor adicionada com sucesso!</div>' : '<div class="alert alert-danger" role="alert">Erro ao adicionar setor!</div>';
                     alertMessage.classList.remove('d-none');
                     if (data.success) {
                         document.getElementById('createForm').reset();
@@ -142,7 +115,6 @@ include ('../../../pages/login-funcionario/protect.php')
                 });
         });
     </script>
-
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
         crossorigin="anonymous"></script>

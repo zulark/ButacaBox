@@ -40,7 +40,7 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
 </head>
 
-<body class="bg-secondary bg-gradient text-white">
+<body class="bg-secondary bg-dark text-white">
     <div class="container-lg">
         <div class="row justify-content-center align-items-center vh-100">
             <div class="col-md-8 col-lg-6">

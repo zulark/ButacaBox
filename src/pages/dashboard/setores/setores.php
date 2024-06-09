@@ -36,25 +36,22 @@ include ('../../../pages/login-funcionario/protect.php')
           </button>
         </div>
         <div class="table-responsive small flex-grow-1">
-          <table class="table table-responsive table-lg">
+          <table class="table table-responsive table-lg ">
             <thead>
               <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Email</th>
-                <th scope="col">Setor</th>
-                <th scope="col">Filial</th>
-                <th scope="col">Salário Mensal</th>
+                <th scope="col" class="text-center">ID</th>
+                <th scope="col" class="text-center">Nome</th>
+                <th scope="col" class="text-center">Chefia</th>
                 <th scope="col" class="text-center" style="width: 185px;">Ações</th>
               </tr>
             </thead>
-            <tbody id="employeeTableBody">
+            <tbody id="TableBody">
             </tbody>
           </table>
         </div>
         <div class="p-3 text-end">
-          <a href="funcionariosCreate.php">
-            <button class="btn btn-success ">Adicionar Funcionario</button>
+          <a href="setoresCreate.php">
+            <button class="btn btn-success ">Adicionar setor</button>
           </a>
         </div>
       </div>
@@ -62,13 +59,13 @@ include ('../../../pages/login-funcionario/protect.php')
     <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel"
       aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">s
+        <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="confirmDeleteModalLabel"></h5>
+            <h5 class="modal-title" id="confirmDeleteModalLabel">Confirmar Exclusão</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body label">
-            Tem certeza de que deseja excluir este funcionario?
+            Tem certeza de que deseja excluir esta setor?
           </div>
           <div class="modal-footer">
             <button type="button" class="btn" style="background-color: #3ba6ff; color: #fff;"
@@ -79,41 +76,24 @@ include ('../../../pages/login-funcionario/protect.php')
         </div>
       </div>
     </div>
-    <div class="modal fade" id="editEmployeeModal" tabindex="-1" aria-labelledby="editEmployeeModalLabel"
-      aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
+    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="editEmployeeModalLabel">Editar Funcionario</h5>
+            <h5 class="modal-title" id="editModalLabel">Editar setor</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <form id="editForm">
               <div class="mb-3">
-                <label for="nome" class="form-label">Nome</label>
-                <input type="text" class="form-control" id="nome" name="nome">
+                <label for="setor_nome" class="form-label">Setor</label>
+                <input type="text" class="form-control" id="setor_nome" name="setor_nome">
               </div>
               <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="text" class="form-control" id="email" name="email">
-              </div>
-              <div class="mb-3">
-                <label for="filial_id" class="form-label ">Filial</label>
-                <select class="form-select form-select-md" name="filial_id" id="filial_id">
-                  <option selected disabled class="disabled">Selecionar filial</option>
-                  <option value="1">Matriz</option>
-                  <option value="2">Tarumã</option>
+                <label for="chefe_id" class="form-label">Chefe</label>
+                <select class="form-select" id="chefe_id" name="chefe_id">
+                  <option selected disabled>Selecionar Chefe</option>
                 </select>
-              </div>
-              <div class="mb-3">
-                <label for="setor_id" class="form-label ">Setor</label>
-                <select class="form-select form-select-md" name="setor_id" id="setor_id">
-                  <option selected disabled class="disabled">Selecionar setor</option>
-                </select>
-              </div>
-              <div class="mb-3">
-                <label for="salario_base" class="form-label">Salário</label>
-                <input placeholder="R$0,00" type="text" class="form-control" id="salario_base" name="salario_base">
               </div>
             </form>
           </div>
@@ -133,7 +113,7 @@ include ('../../../pages/login-funcionario/protect.php')
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
     crossorigin="anonymous"></script>
-  <script src="../../../js/funcionarios.js"></script>
+  <script src="../../../js/setores.js"></script>
 </body>
 
 </html>
