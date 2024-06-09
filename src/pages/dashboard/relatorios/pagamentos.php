@@ -44,13 +44,13 @@ include ('../../login-funcionario/protect.php');
                 </div>
                 <button type="submit" class="btn btn-primary">Filtrar</button>
             </form>
+            <hr>
             <div id="error-message" class="alert alert-danger mt-3" style="display: none;">Nenhum dado encontrado.</div>
             <table id="report-table" class="table table-striped mt-4" style="display: none;">
                 <thead>
                     <tr>
                         <th class="text-center">Filial</th>
-                        <th class="text-center">Período</th>
-                        <th class="text-center">Valor total de pagamentos</th>
+                        <th class="text-center">Valor total de pagamentos mensais</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -73,7 +73,6 @@ include ('../../login-funcionario/protect.php');
                 const reportTable = document.getElementById('report-table');
                 const errorMessage = document.getElementById('error-message');
                 if (data.length > 0) {
-                    console.log(data)
                     errorMessage.style.display = 'none';
                     reportTable.style.display = 'table';
                     const tbody = reportTable.querySelector('tbody');
@@ -81,7 +80,6 @@ include ('../../login-funcionario/protect.php');
                     data.forEach(row => {
                         const tr = document.createElement('tr');
                         tr.innerHTML = `
-                            <td class="text-center">${row.id_filial}</td>
                             <td class="text-center">${row.nome}</td>
                             <td class="text-center">${parseFloat(row.valor_total_pagamentos).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
                             `;

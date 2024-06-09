@@ -70,6 +70,7 @@ include ('../../login-funcionario/protect.php');
                 </div>
                 <button type="submit" class="btn btn-primary">Filtrar</button>
             </form>
+            <hr>
             <div id="error-message" class="alert alert-danger mt-3" style="display: none;">Nenhum dado encontrado.</div>
             <table id="report-table" class="table table-striped mt-4" style="display: none;">
                 <thead>
