@@ -15,14 +15,15 @@ function displayEmployees(employees) {
     tableBody.innerHTML = '';
     employees.forEach(function (employee) {
         var row = document.createElement('tr');
-        row.innerHTML = 
-        `<td>${employee.id_funcionario}</td>
+        row.innerHTML =
+            `<td>${employee.id_funcionario}</td>
          <td>${employee.nome}</td>
          <td>${employee.email}</td>
+         <td>${employee.nome_setor}</td>
          <td>${employee.nome_filial}</td>
          <td><strong>R$${employee.salario_base}</strong></td>
          <td class="d-flex">
-             <button style="background-color: #3ba6ff;" class="btn btn-sm w-50 text-white" id="editEmployeeButton" onclick="editEmployee(${employee.id_funcionario})">Editar</button>
+             <button style="background-color: #3ba6ff;" class="btn btn-sm w-50 text-white" id="editButton" onclick="editEmployee(${employee.id_funcionario})">Editar</button>
              <button style="background-color: #d9534f;" class="btn btn-sm w-50 text-white" onclick="deleteEmployee(${employee.id_funcionario})">Deletar</button>
          </td>`;
         tableBody.appendChild(row);
@@ -33,7 +34,8 @@ function searchEmployees() {
     var searchValue = document.getElementById('searchInput').value.trim().toLowerCase();
     if (searchValue !== '') {
         var filteredEmployees = employees.filter(function (employee) {
-            return employee.id_funcionario.toString().indexOf(searchValue) !== -1 || employee.nome.toLowerCase().includes(searchValue) || employee.email.toLowerCase().includes(searchValue);
+            return employee.id_funcionario.toString().indexOf(searchValue) !== -1 || employee.nome.toLowerCase().includes(searchValue)
+                || employee.email.toLowerCase().includes(searchValue) || employee.nome_setor.toLowerCase().includes(searchValue);
         });
         displayEmployees(filteredEmployees);
     } else {
@@ -69,6 +71,7 @@ function editEmployee(id) {
             document.getElementById("nome").value = data.nome;
             document.getElementById("email").value = data.email;
             document.getElementById("filial_id").value = data.filial_id;
+            document.getElementById("setor_id").value = data.setor_id;
             document.getElementById("salario_base").value = data.salario_base;
             editModal.show();
         })
@@ -85,10 +88,12 @@ function saveEmployeeChanges(id) {
     var email = document.getElementById('email').value;
     var salario_base = document.getElementById('salario_base').value;
     var filial_id = document.getElementById('filial_id').value;
+    var setor_id = document.getElementById('setor_id').value;
     var employeeData = {
         nome: nome,
         email: email,
         filial_id: filial_id,
+        setor_id: setor_id,
         salario_base: salario_base
     };
 
@@ -139,3 +144,19 @@ function deleteEmployee(id) {
         confirmDeleteModal.hide();
     });
 }
+
+function fetchSetor() {
+    fetch('http://127.0.0.1/ButacaBox/ButacaBox/src/api/setores/getSetor.php')
+        .then(response => response.json())
+        .then(data => {
+            const selectSetor = document.getElementById('setor_id');
+            data.forEach(setor => {
+                const option = document.createElement('option');
+                option.value = setor.id_setor;
+                option.textContent = setor.nome;
+                selectSetor.appendChild(option)
+            });
+        })
+        .catch(error => console.error(error))
+}
+fetchSetor();

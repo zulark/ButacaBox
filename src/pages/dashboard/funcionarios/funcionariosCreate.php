@@ -39,7 +39,7 @@ include ('../../../pages/login-funcionario/protect.php')
                             <input type="password" class="form-control" id="senha" name="senha">
                         </div>
                         <div class="col-md-12">
-                            <label for="salario_base" class="form-label">salario_base</label>
+                            <label for="salario_base" class="form-label">Salário base</label>
                             <input type="text" class="form-control" id="salario_base" name="salario_base">
                         </div>
                         <div class="col-md-12">
@@ -48,6 +48,12 @@ include ('../../../pages/login-funcionario/protect.php')
                                 <option selected disabled class="disabled">Selecionar filial</option>
                                 <option value="1">Matriz</option>
                                 <option value="2">Tarumã</option>
+                            </select>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="setor_id" class="form-label ">Setor</label>
+                            <select class="form-select form-select-md" name="setor_id" id="setor_id">
+                                <option selected disabled class="disabled">Selecionar setor</option>
                             </select>
                         </div>
                         <div class="col-12">
@@ -77,7 +83,21 @@ include ('../../../pages/login-funcionario/protect.php')
         document.addEventListener('DOMContentLoaded', function () {
             document.getElementById('createForm').reset();
         });
-
+        function fetchSetor() {
+            fetch('http://127.0.0.1/ButacaBox/ButacaBox/src/api/setores/getSetor.php')
+                .then(response => response.json())
+                .then(data => {
+                    const selectSetor = document.getElementById('setor_id');
+                    data.forEach(setor => {
+                        const option = document.createElement('option');
+                        option.value = setor.id_setor;
+                        option.textContent = setor.nome;
+                        selectSetor.appendChild(option)
+                    });
+                })
+                .catch(error => console.error(error))
+        }
+        fetchSetor();
         document.getElementById('createForm').addEventListener('submit', function (event) {
             event.preventDefault();
             var formData = {
@@ -85,7 +105,8 @@ include ('../../../pages/login-funcionario/protect.php')
                 email: document.getElementById('email').value,
                 senha: document.getElementById('senha').value,
                 filial_id: document.getElementById('filial_id').value,
-                salario_base: document.getElementById('salario_base').value,
+                setor_id: document.getElementById('setor_id').value,
+                salario_base: document.getElementById('salario_base').value
             };
             var jsonData = JSON.stringify(formData);
             fetch('http://127.0.0.1/ButacaBox/ButacaBox/src/api/funcionarios/createEmployee.php', {

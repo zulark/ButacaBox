@@ -42,6 +42,7 @@ include ('../../../pages/login-funcionario/protect.php')
                 <th scope="col">ID</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Email</th>
+                <th scope="col">Setor</th>
                 <th scope="col">Filial</th>
                 <th scope="col">Salário Mensal</th>
                 <th scope="col" class="text-center" style="width: 185px;">Ações</th>
@@ -102,6 +103,12 @@ include ('../../../pages/login-funcionario/protect.php')
                   <option selected disabled class="disabled">Selecionar filial</option>
                   <option value="1">Matriz</option>
                   <option value="2">Tarumã</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="setor_id" class="form-label ">Setor</label>
+                <select class="form-select form-select-md" name="setor_id" id="setor_id">
+                  <option selected disabled class="disabled">Selecionar setor</option>
                 </select>
               </div>
               <div class="mb-3">

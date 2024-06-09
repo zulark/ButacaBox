@@ -31,9 +31,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
         $salario_base = mysqli_real_escape_string($conn, (string) (float) $data['salario_base']);
         $update_fields[] = "salario_base = '$salario_base'";
     }
-    if (isset($data['filial_id'])) {
+    if (isset($data['setor_id'])) {
         $filial_id = mysqli_real_escape_string($conn, $data['filial_id']);
         $update_fields[] = "filial_id = '$filial_id'";
+    }
+    if (isset($data['setor_id'])) {
+        $setor_id = mysqli_real_escape_string($conn, $data['setor_id']);
+        $update_fields[] = "setor_id = '$setor_id'";
     }
     $update_sql = "UPDATE funcionarios SET " . implode(", ", $update_fields) . " WHERE id_funcionario = ?";
     $stmt = $conn->prepare($update_sql);
