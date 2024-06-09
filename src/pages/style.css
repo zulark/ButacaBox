@@ -1,38 +1,38 @@
-body{
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+body {
 	background-color: #041218;
 	color: #fff;
+	font-family: "Montserrat", sans-serif;
 }
+
 a {
 	text-decoration: none;
 	color: #fff;
 }
-a:hover{
+
+.navbar-toggler {
+	border: none;
+}
+
+a:hover {
 	color: #fff;
 }
+
 .h1 {
 	text-transform: uppercase;
 	font-weight: 700;
 }
-.header {
-	padding-inline: 100px;
+
+.categories {
+	color: #fff;
+	text-decoration: none;
+	font-weight: 800;
+	text-transform: uppercase;
 }
 
 .navbar-brand-logo img {
-    width: 75px;
-    transform: rotate(25deg);
-}
-
-:first-of-type nav {
-	background-color: #e8771ae3;
-	color: #F6F1EE;
-}
-
-#navheader {
-	background-color: #E8751A;
-}
-
-#navheader .container-fluid {
-	justify-content: center;
+	width: 50px;
+	transform: rotate(25deg);
 }
 
 .navbar-brand {
@@ -44,32 +44,28 @@ a:hover{
 	cursor: pointer;
 }
 
-.header button {
-	background-color: #4F4A45;
-	color: #F6F1EE;
-	border: none;
-}
-
-.header button:hover{ 
-	background-color: #55504a;
-	border: none;
-}
-
 .carousel {
 	padding: 0;
 	margin-bottom: 100px;
 }
 
+.carousel img {
+	height: 60;
+	object-fit: center;
+	object-position: center;
+}
+
 .carousel-item:hover {
 	cursor: pointer;
 }
+
 .col img {
 	width: 100%;
 	transition: .8s;
 	border-radius: 10px;
 }
 
-.col img:hover{
+.col img:hover {
 	cursor: pointer;
 	transform: scale(1.05);
 }
@@ -79,21 +75,21 @@ footer {
 	color: #F6F1EE;
 }
 
-#loginbutton{
+#loginbutton {
 	color: #F6F1EE;
 	text-decoration: none;
 	font-size: 1.2rem;
 }
 
 
-.footer-text p{
+.footer-text p {
 	font-size: .8em;
 }
 
-.footer-text p:first-child{
+.footer-text p:first-child {
 	font-size: .8em;
 }
 
-.footer-text p:last-child{
+.footer-text p:last-child {
 	font-size: .5em;
 }
