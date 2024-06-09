@@ -68,6 +68,18 @@ $current_page = basename($_SERVER['PHP_SELF']);
         </li>
         <hr>
         <li class="nav-item">
+            <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/setores/setores.php">
+                <button
+                    class=" btn <?php echo $current_page == 'setores.php' || $current_page == 'setoresCreate.php' ? 'btn-light' : 'btn-dark'; ?>"
+                    type="button">
+                    <span class="navbar-toggler-icon">
+                        <?php echo $current_page == 'setores.php' || $current_page == 'setoresCreate.php' ? '<i class="bi bi-suitcase-lg"></i>' : '<i class="bi bi-suitcase-lg-fill"></i>'; ?>
+                    </span>
+                </button>
+            </a>
+        </li>
+        <hr>
+        <li class="nav-item">
             <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/salas/salas.php">
                 <button
                     class=" btn <?php echo $current_page == 'salas.php' || $current_page == 'salasCreate.php' ? 'btn-light' : 'btn-dark'; ?>"
