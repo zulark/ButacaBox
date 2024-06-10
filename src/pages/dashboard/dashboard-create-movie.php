@@ -17,7 +17,7 @@ include ('../../pages/login-funcionario/protect.php')
 
 
 <body>
-    <main class="d-flex flex-nowrap h-100">
+    <main class="d-flex flex-nowrap vh-100">
         <!-- Sidebar -->
         <?php
         include ('../../../components/sidebarSmall.php');
@@ -27,27 +27,27 @@ include ('../../pages/login-funcionario/protect.php')
             <div class="d-flex flex-column h-100 d-flex align-items-center justify-content-center">
                 <div class="p-5">
                     <form id="createForm" class="row g-3">
-                        <div class="col-md-12">
+                        <div class="col-6">
                             <label for="titulo" class="form-label">Título</label>
                             <input type="text" class="form-control" id="titulo" name="titulo">
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-6">
                             <label for="cartaz_filme" class="form-label">Cartaz do Filme</label>
                             <input type="text" class="form-control" id="cartaz_filme" name="cartaz_filme">
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-6">
                             <label for="diretor" class="form-label">Diretor</label>
                             <input type="text" class="form-control" id="diretor" name="diretor">
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-6">
                             <label for="genero" class="form-label">Gênero</label>
                             <input type="text" class="form-control" id="genero" name="genero">
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-6">
                             <label for="duracao" class="form-label">Duração (min)</label>
                             <input type="number" min="1" max="999" class="form-control" id="duracao" name="duracao">
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-6">
                             <label for="fornecedor_id" class="form-label">ID do Fornecedor</label>
                             <select class="form-select" id="fornecedor_id" name="fornecedor_id">
                                 <option selected disabled>Selecionar fornecedor</option>

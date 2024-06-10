@@ -15,8 +15,8 @@ include ('../../../pages/login-funcionario/protect.php')
     <link rel="stylesheet" href="http://127.0.0.1/ButacaBox/ButacaBox/src/css/dashboard.css">
 </head>
 
-<body class="vh-100">
-    <main class="d-flex flex-nowrap h-100">
+<body>
+    <main class="d-flex flex-nowrap vh-100">
         <?php
         include ('../../../../components/sidebarSmall.php');
         include ('../../../../components/sidebar.php');
@@ -25,27 +25,27 @@ include ('../../../pages/login-funcionario/protect.php')
             <div class="d-flex flex-column h-100 d-flex align-items-center justify-content-center">
                 <div class="p-3">
                     <form id="createForm" class="row g-3">
-                        <div class="col-md-12">
+                        <div class="col-md-3">
                             <label for="data_sessao" class="form-label">Data</label>
                             <input type="date" class="form-control" id="data_sessao" name="data_sessao">
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-3">
                             <label for="hora_sessao" class="form-label">Hora</label>
                             <input type="time" class="form-control" id="hora_sessao" name="hora_sessao">
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-3">
                             <label for="filme_id" class="form-label">Filme</label>
                             <select class="form-select" id="filme_id" name="filme_id">
                                 <option selected disabled>Selecionar Filme</option>
                             </select>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-3">
                             <label for="sala_id" class="form-label">Sala</label>
                             <select class="form-select" id="sala_id" name="sala_id">
                                 <option selected disabled>Selecionar Sala</option>
                             </select>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <label for="filial_id" class="form-label">Filial</label>
                             <select class="form-select form-select-md" name="filial_id" id="filial_id">
                                 <option selected disabled class="disabled">Selecionar filial</option>
@@ -53,9 +53,9 @@ include ('../../../pages/login-funcionario/protect.php')
                                 <option value="2">Tarumã</option>
                             </select>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <label for="preco_ingresso" class="form-label">Preço do ingresso</label>
-                            <input type="preco_ingresso" class="form-control" id="preco_ingresso" name="preco_ingresso">
+                            <input type="number" class="form-control" id="preco_ingresso" name="preco_ingresso">
                         </div>
                         <div class="col-12">
                             <button type="submit" class="btn btn-success">Salvar</button>

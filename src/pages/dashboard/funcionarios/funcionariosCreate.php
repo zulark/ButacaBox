@@ -16,13 +16,13 @@ include ('../../../pages/login-funcionario/protect.php')
 </head>
 
 
-<body class="vh-100">
-    <main class="d-flex flex-nowrap h-100">
+<body>
+    <main class="d-flex flex-nowrap vh-100">
         <?php
         include ('../../../../components/sidebarSmall.php');
         include ('../../../../components/sidebar.php');
         ?>
-        <div class="container-fluid h-100">
+        <div class="container-fluid">
             <div class="d-flex flex-column h-100 d-flex align-items-center justify-content-center">
                 <div class="p-3">
                     <form id="createForm" class="row g-3">

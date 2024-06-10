@@ -15,8 +15,8 @@ include ('../../../pages/login-funcionario/protect.php')
     <link rel="stylesheet" href="http://127.0.0.1/ButacaBox/ButacaBox/src/css/dashboard.css">
 </head>
 
-<body class="vh-100">
-    <main class="d-flex flex-nowrap h-100">
+<body>
+    <main class="d-flex flex-nowrap vh-100">
         <?php
         include ('../../../../components/sidebarSmall.php');
         include ('../../../../components/sidebar.php');
