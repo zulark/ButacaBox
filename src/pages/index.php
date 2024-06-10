@@ -27,27 +27,29 @@
                     aria-label="Slide 2"></button>
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
                     aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+                    aria-label="Slide 4"></button>
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/ingresso/detalhes-filme.php?id=32">
-                        <img style="max-height: 600px; min-height: 400px;"
-                            src="..\img\FURIOSA-BANNER-SITE-COMPRE-AGORA-2.jpg" class="d-block w-100"
-                            alt="Poster do filme Furiosa">
+                        <img style="max-height: 400px; min-height: 400px;" src="..\img\BAD-BOYS.png"
+                            class="d-block w-100" alt="Poster do filme Bad Boys">
                     </a>
                 </div>
                 <div class="carousel-item">
                     <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/ingresso/detalhes-filme.php?id=31">
-                        <img style="max-height: 600px; min-height: 400px;"
-                            src="..\img\FURIA-PRIMITIVA-COMPRE-AGORA-2.jpg" class="d-block w-100"
-                            alt="Poster do film Furia Primitiva">
+                        <img style="max-height: 400px; min-height: 400px;" src="..\img\IMACULADA.png"
+                            class="d-block w-100" alt="Poster do filme Imaculada">
                     </a>
                 </div>
                 <div class="carousel-item">
-                    <!-- <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/ingresso/detalhes-filme.php?id=3"> -->
-                    <img style="max-height: 600px; min-height: 400px;" src="..\img\BANNER-SITE-M2-2.jpg"
+                    <img style="max-height: 400px; min-height: 400px;" src="..\img\BANNER-SITE-M2-2.jpg"
                         class="d-block w-100" alt="Poster informativo">
-                    <!-- </a> -->
+                </div>
+                <div class="carousel-item">
+                    <img style="max-height: 400px; min-height: 400px;" src="..\img\cheetos.png" class="d-block w-100"
+                        alt="Poster informativo">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
