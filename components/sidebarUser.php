@@ -7,7 +7,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
     }
 
     .navbar-brand-logo {
-        margin-left: 50px;
+        margin-left: 40px;
     }
 
     .navbar-brand-logo img {
@@ -30,7 +30,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
     }
 </style>
 <header class="navbar">
-    <div class="container-fluid px-3 py-3">
+    <div class="container-fluid px-3 py-3  d-flex align-items-center justify-content-between">
         <a class="navbar-brand-logo  flex-column align-items-center justify-content-center d-none d-md-flex"
             href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/index.php">
             <img src="https://cdn-icons-png.flaticon.com/512/2598/2598702.png" alt="Logo"
@@ -38,7 +38,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
             <span class="d-none d-sm-block">BUTACABOX</span>
         </a>
 
-        <ul class="nav nav-pills <?php echo $current_page == 'detalhes-filme.php' ? 'd-none' : 'd-none d-md-flex'; ?>">
+        <ul class="nav nav-pills mx-auto <?php echo $current_page == 'detalhes-filme.php' ? 'd-none' : 'd-none d-md-flex'; ?>">
             <li class="nav-item"><a href="#estreias" class="nav-link text-white">Estreia</a></li>
             <li class="nav-item"><a href="#em_cartaz" class="nav-link text-white">Em cartaz</a></li>
             <li class="nav-item"><a href="#em_breve" class="nav-link text-white">Em breve</a></li>
