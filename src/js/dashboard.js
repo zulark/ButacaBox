@@ -37,8 +37,8 @@ function displayMovies(movies) {
                 <td class="text-center">${movie.titulo}</td>
                 <td class="text-center">${movie.diretor}</td>
                 <td class="text-center">${movie.genero}</td>
-                <td class="text-center">${movie.duracao}</td>
-                <td class="text-center">${movie.fornecedor_id}</td>
+                <td class="text-center">${movie.duracao} min</td>
+                <td class="text-center">${movie.fornecedor}</td>
                 <td class="text-center">${movie.status_filme}</td>
                 <td class="text-center">${movie.youtube_url}</td>
                 <td" class="d-flex">
