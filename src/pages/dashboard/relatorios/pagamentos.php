@@ -22,7 +22,7 @@ include ('../../login-funcionario/protect.php');
         include ('../../../../components/sidebar.php');
         ?>
         <div class="container">
-            <div class="pt-3 pb-3 d-flex justify-content-center align-items-center">
+            <div class="pt-3 pb-3 d-flex justify-content-between align-items-center">
                 <h1>Relatório de pagamentos</h1>
                 <button id="mobileBtn" class="btn btn-dark d-flex d-md-none" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#sidebarMenu" aria-controls="sidebarMenu">
@@ -49,6 +49,7 @@ include ('../../login-funcionario/protect.php');
             <table id="report-table" class="table table-striped mt-4" style="display: none;">
                 <thead>
                     <tr>
+                        <th class="text-center">Data</th>
                         <th class="text-center">Filial</th>
                         <th class="text-center">Valor total de pagamentos mensais</th>
                     </tr>
@@ -73,6 +74,11 @@ include ('../../login-funcionario/protect.php');
                 const reportTable = document.getElementById('report-table');
                 const errorMessage = document.getElementById('error-message');
                 if (data.length > 0) {
+                    var currentDate = new Date();
+                    var dd = String(currentDate.getDate()).padStart(2, '0');
+                    var mm = String(currentDate.getMonth() + 1).padStart(2, '0');
+                    var yy = currentDate.getFullYear();
+                    currentDate = dd + '/' + mm + '/' + yy;
                     errorMessage.style.display = 'none';
                     reportTable.style.display = 'table';
                     const tbody = reportTable.querySelector('tbody');
@@ -80,6 +86,7 @@ include ('../../login-funcionario/protect.php');
                     data.forEach(row => {
                         const tr = document.createElement('tr');
                         tr.innerHTML = `
+                            <td class="text-center">${currentDate}</td>
                             <td class="text-center">${row.nome}</td>
                             <td class="text-center">${parseFloat(row.valor_total_pagamentos).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
                             `;
