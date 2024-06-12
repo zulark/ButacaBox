@@ -22,7 +22,7 @@ include ('../../login-funcionario/protect.php');
         include ('../../../../components/sidebar.php');
         ?>
         <div class="container">
-            <div class="pt-3 pb-3 text-center">
+            <div class="pt-3 pb-3 d-flex justify-content-between align-items-center">
                 <h1>Relatório de Vendas</h1>
                 <button id="mobileBtn" class="btn btn-dark d-flex d-md-none" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#sidebarMenu" aria-controls="sidebarMenu">

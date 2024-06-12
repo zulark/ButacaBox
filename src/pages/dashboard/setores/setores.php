@@ -23,7 +23,7 @@ include ('../../../pages/login-funcionario/protect.php')
     include ('../../../../components/sidebar.php');
     ?>
     <div class="container-fluid h-100">
-      <div class="d-flex flex-column h-100">
+      <div class="d-flex flex-column h-100 p-3">
         <div class="pt-3 pb-3 d-flex justify-content-between align-items-center">
           <div class="searchinput">
             <input id="searchInput" type="text" class="form-control" placeholder="Buscar setores">
