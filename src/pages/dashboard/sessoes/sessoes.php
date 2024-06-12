@@ -46,6 +46,7 @@ include ('../../../pages/login-funcionario/protect.php')
                 <th scope="col" class="text-center">Sala</th>
                 <th scope="col" class="text-center">Filial</th>
                 <th scope="col" class="text-center">Assentos Disponíveis</th>
+                <th scope="col" class="text-center">Ingressos Vendidos</th>
                 <th scope="col" class="text-center">Preço do ingresso</th>
                 <th scope="col" class="text-center" style="width: 185px;">Ações</th>
               </tr>

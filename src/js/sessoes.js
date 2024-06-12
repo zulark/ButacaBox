@@ -22,6 +22,7 @@ function displayMovieSessions(movieSessions) {
             <td class="text-center">${movieSession.nome_sala}</td>
             <td class="text-center">${movieSession.nome_filial}</td>
             <td class="text-center">${movieSession.assentos_disponiveis}</td>
+            <td class="text-center">${movieSession.ingressos_vendidos}</td>
             <td class="text-center">R$${movieSession.preco_ingresso}</td>
             <td class="d-flex">
                 <button style="background-color: #3ba6ff;" class="btn btn-sm w-50 text-white" id="editmovieSessionButton" onclick="editMovieSession(${movieSession.id_sessao})">Editar</button>
