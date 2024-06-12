@@ -32,13 +32,13 @@
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/ingresso/detalhes-filme.php?id=32">
+                    <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/ingresso/detalhes-filme.php?id=34">
                         <img style="max-height: 400px; min-height: 400px;" src="..\img\BAD-BOYS.png"
                             class="d-block w-100" alt="Poster do filme Bad Boys">
                     </a>
                 </div>
                 <div class="carousel-item">
-                    <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/ingresso/detalhes-filme.php?id=31">
+                    <a href="http://127.0.0.1/ButacaBox/ButacaBox/src/pages/ingresso/detalhes-filme.php?id=38">
                         <img style="max-height: 400px; min-height: 400px;" src="..\img\IMACULADA.png"
                             class="d-block w-100" alt="Poster do filme Imaculada">
                     </a>
