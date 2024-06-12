@@ -16,6 +16,7 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
             if (password_verify($senha, $usuario['senha'])) {
                 $_SESSION['id_funcionario'] = $usuario['id_funcionario'];
                 $_SESSION['nome_funcionario'] = $usuario['nome'];
+                $_SESSION['setor_id'] = $usuario['setor_id'];
                 header("Location: http://127.0.0.1/ButacaBox/ButacaBox/src/pages/dashboard/dashboard.php");
                 exit();
             } else {
